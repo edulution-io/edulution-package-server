@@ -1,0 +1,7 @@
+Origin: package.edulution.io
+Label: package.edulution.io
+Codename: nobel
+Architectures: i386 amd64 source
+Components: main
+Description: nobel stable
+SignWith: BD35E6DB4655161B
