@@ -18,7 +18,7 @@ jobs:
           cd package_server
 
           # import keys
-          gpg2 --import package_server/pub.gpg
+          gpg2 --import pub.gpg
           echo -e "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --import --no-tty --batch --yes
           
           mkdir incoming
