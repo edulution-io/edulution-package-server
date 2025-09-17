@@ -1,1 +1,206 @@
-<h1>edulution Package Server</h1>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edulution Paket-Server</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('media/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-block code {
+            display: block;
+            line-height: 1.6;
+        }
+
+        .comment {
+            color: #95a5a6;
+            font-style: italic;
+        }
+
+        .step {
+            background: #ecf0f1;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .note {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .note strong {
+            color: #664d03;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <div class="container">
+        <h1>🚀 Edulution Paket-Server</h1>
+        <p class="subtitle">Debian Repository für Edulution-Pakete</p>
+
+        <h2>📦 Repository einrichten</h2>
+        <p>Folgen Sie diesen Schritten, um das Edulution Debian-Repository auf Ihrem System zu installieren:</p>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>GPG-Schlüssel hinzufügen</strong>
+            <p>Fügen Sie den öffentlichen Schlüssel des Repositories hinzu:</p>
+            <div class="code-block">
+                <code>curl -fsSL https://package.edulution.io/pub.gpg | sudo gpg --dearmor -o /usr/share/keyrings/edulution.gpg</code>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Repository zur Quellenliste hinzufügen</strong>
+            <p>Fügen Sie das Repository zu Ihrer APT-Konfiguration hinzu:</p>
+            <div class="code-block">
+                <code>echo "deb [signed-by=/usr/share/keyrings/edulution.gpg] https://package.edulution.io/ nobel main" | sudo tee /etc/apt/sources.list.d/edulution.list</code>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>Paketliste aktualisieren</strong>
+            <p>Aktualisieren Sie die Paketquellen:</p>
+            <div class="code-block">
+                <code>sudo apt update</code>
+            </div>
+        </div>
+
+        <!-- <div class="step">
+            <span class="step-number">4</span>
+            <strong>Pakete installieren</strong>
+            <p>Jetzt können Sie Edulution-Pakete installieren:</p>
+            <div class="code-block">
+                <code>sudo apt install &lt;paketname&gt;</code>
+            </div>
+        </div> -->
+
+        <h2>🔧 Alternative: Einzeiler-Installation</h2>
+        <p>Für eine schnelle Installation können Sie diesen Einzeiler verwenden:</p>
+        <div class="code-block">
+            <code><span class="comment"># Alles in einem Befehl</span><br>curl -fsSL https://&lt;your-domain&gt;/install.sh | sudo bash</code>
+        </div>
+
+        <h2>📋 Verfügbare Pakete</h2>
+        <p>Eine Liste aller verfügbaren Pakete finden Sie im <a href="/dists/stable/main/binary-amd64/Packages">Paketindex</a>.</p>
+
+        <h2>🔍 Repository-Struktur</h2>
+        <ul style="line-height: 1.8; margin-left: 20px;">
+            <li><a href="/dists/">dists/</a> - Distributionsverzeichnisse</li>
+            <li><a href="/pool/">pool/</a> - Paket-Pool</li>
+            <li><a href="/pub.gpg">pub.gpg</a> - Öffentlicher GPG-Schlüssel</li>
+        </ul>
+
+        <div class="footer">
+            <p>Edulution Paket-Server | <a href="https://github.com/your-org/edulution">GitHub</a></p>
+        </div>
+    </div>
+</body>
+</html>
