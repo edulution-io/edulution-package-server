@@ -22,9 +22,14 @@ jobs:
           echo -e "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --import --no-tty --batch --yes
           
           mkdir incoming
-          cp ../packages/*/*/* incoming/
 
-          reprepro -V processincoming default
+          if [ -n "$(find ../packages -type f -name '*.deb' 2>/dev/null)" ]; then
+            cp ../packages/*/*/* incoming/
+            reprepro -V processincoming default
+          else
+            echo "No packages found, skipping processincoming"
+          fi
+          
           reprepro -V export
 
           #mv dists package_server
