@@ -31,6 +31,9 @@ jobs:
           fi
 
           reprepro -V export
+          
+          # Generate directory index files for browsing
+          bash generate-indices.sh
 
       - name: Deploy 🚀
         if: ${{ github.ref == 'refs/heads/main' }}
