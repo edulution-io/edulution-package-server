@@ -188,7 +188,7 @@ EOF
     local file_count=0
     
     # Add directories first
-    for item in "$dir"/*/ 2>/dev/null; do
+    for item in "$dir"/*/; do
         if [ -d "$item" ]; then
             name=$(basename "$item")
             if [ "$name" != "media" ]; then  # Skip media folder
@@ -196,10 +196,10 @@ EOF
                 ((dir_count++))
             fi
         fi
-    done
+    done 2>/dev/null
     
     # Add files
-    for item in "$dir"/* 2>/dev/null; do
+    for item in "$dir"/*; do
         if [ -f "$item" ]; then
             name=$(basename "$item")
             size=$(du -h "$item" | cut -f1)
@@ -222,7 +222,7 @@ EOF
                 ((file_count++))
             fi
         fi
-    done
+    done 2>/dev/null
     
     # Replace content
     sed -i "s|CONTENT_PLACEHOLDER|$content|" "$dir/index.html"

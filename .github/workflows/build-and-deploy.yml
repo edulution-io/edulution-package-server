@@ -32,6 +32,9 @@ jobs:
 
           reprepro -V export
           
+          # Generate package list JSON for main page
+          bash generate-package-json.sh
+          
           # Generate directory index files for browsing
           bash generate-indices.sh
 
