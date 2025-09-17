@@ -20,6 +20,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            color: #ecf0f1;
         }
 
         .overlay {
@@ -28,50 +29,67 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.8);
             z-index: -1;
         }
 
         .container {
             max-width: 800px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(30, 30, 30, 0.95);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
         }
 
         h1 {
-            color: #2c3e50;
+            color: #ecf0f1;
             text-align: center;
             margin-bottom: 10px;
             font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .subtitle {
-            color: #7f8c8d;
+            color: #bdc3c7;
             text-align: center;
             margin-bottom: 40px;
             font-size: 1.1em;
         }
 
         h2 {
-            color: #34495e;
+            color: #ecf0f1;
             margin-top: 30px;
             margin-bottom: 20px;
             border-bottom: 2px solid #3498db;
             padding-bottom: 10px;
         }
 
-        .code-block {
-            background: #2c3e50;
+        p, li {
             color: #ecf0f1;
+        }
+
+        .code-block {
+            background: #1a1a1a;
+            color: #00ff00;
             padding: 20px;
             border-radius: 10px;
             margin: 15px 0;
             font-family: 'Courier New', monospace;
             overflow-x: auto;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(52, 152, 219, 0.3);
         }
 
         .code-block code {
@@ -80,16 +98,17 @@
         }
 
         .comment {
-            color: #95a5a6;
+            color: #7f8c8d;
             font-style: italic;
         }
 
         .step {
-            background: #ecf0f1;
+            background: rgba(44, 62, 80, 0.7);
             padding: 15px;
             border-left: 4px solid #3498db;
             margin: 20px 0;
             border-radius: 5px;
+            color: #ecf0f1;
         }
 
         .step-number {
@@ -106,24 +125,26 @@
         }
 
         .note {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            color: #856404;
+            background: rgba(241, 196, 15, 0.2);
+            border: 1px solid #f1c40f;
+            color: #f1c40f;
             padding: 15px;
             border-radius: 5px;
             margin: 20px 0;
         }
 
         .note strong {
-            color: #664d03;
+            color: #f39c12;
         }
 
         a {
             color: #3498db;
             text-decoration: none;
+            transition: color 0.3s;
         }
 
         a:hover {
+            color: #5dade2;
             text-decoration: underline;
         }
 
@@ -131,8 +152,8 @@
             text-align: center;
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid #e0e0e0;
-            color: #7f8c8d;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #95a5a6;
         }
     </style>
 </head>
@@ -140,11 +161,14 @@
     <div class="overlay"></div>
     
     <div class="container">
+        <div class="logo-container">
+            <img src="media/logo.png" alt="Edulution Logo" class="logo">
+        </div>
         <h1>🚀 Edulution Paket-Server</h1>
-        <p class="subtitle">Debian Repository für Edulution-Pakete</p>
+        <p class="subtitle">Repository für Edulution-Pakete</p>
 
         <h2>📦 Repository einrichten</h2>
-        <p>Folgen Sie diesen Schritten, um das Edulution Debian-Repository auf Ihrem System zu installieren:</p>
+        <p>Folgen Sie diesen Schritten, um das Edulution-Repository auf Ihrem System zu installieren:</p>
 
         <div class="step">
             <span class="step-number">1</span>
@@ -173,23 +197,27 @@
             </div>
         </div>
 
-        <!-- <div class="step">
-            <span class="step-number">4</span>
-            <strong>Pakete installieren</strong>
-            <p>Jetzt können Sie Edulution-Pakete installieren:</p>
-            <div class="code-block">
-                <code>sudo apt install &lt;paketname&gt;</code>
-            </div>
-        </div> -->
-
-        <h2>🔧 Alternative: Einzeiler-Installation</h2>
-        <p>Für eine schnelle Installation können Sie diesen Einzeiler verwenden:</p>
-        <div class="code-block">
-            <code><span class="comment"># Alles in einem Befehl</span><br>curl -fsSL https://&lt;your-domain&gt;/install.sh | sudo bash</code>
-        </div>
-
         <h2>📋 Verfügbare Pakete</h2>
-        <p>Eine Liste aller verfügbaren Pakete finden Sie im <a href="/dists/stable/main/binary-amd64/Packages">Paketindex</a>.</p>
+        <div id="package-list" style="margin-bottom: 30px;">
+            <div style="background: rgba(44, 62, 80, 0.5); padding: 20px; border-radius: 10px; border: 1px solid rgba(52, 152, 219, 0.3);">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #3498db;">
+                            <th style="text-align: left; padding: 10px; color: #3498db;">Paket</th>
+                            <th style="text-align: left; padding: 10px; color: #3498db;">Version</th>
+                            <th style="text-align: left; padding: 10px; color: #3498db;">Architektur</th>
+                            <th style="text-align: left; padding: 10px; color: #3498db;">Größe</th>
+                        </tr>
+                    </thead>
+                    <tbody id="package-tbody">
+                        <!-- Packages will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+                <div id="no-packages" style="text-align: center; padding: 20px; color: #95a5a6; display: none;">
+                    <p>Aktuell sind keine Pakete verfügbar.</p>
+                </div>
+            </div>
+        </div>
 
         <h2>🔍 Repository-Struktur</h2>
         <ul style="line-height: 1.8; margin-left: 20px;">
@@ -199,8 +227,125 @@
         </ul>
 
         <div class="footer">
-            <p>Edulution Paket-Server | <a href="https://github.com/your-org/edulution">GitHub</a></p>
+            <p>Alle Informationen auf <a href="https://edulution.io" target="_blank">edulution.io</a></p>
         </div>
     </div>
+    
+    <script>
+        // Load and display packages
+        async function loadPackages() {
+            try {
+                const response = await fetch('/packages.json');
+                if (response.ok) {
+                    const packages = await response.json();
+                    displayPackages(packages);
+                } else {
+                    // Fallback: try to parse Packages file directly
+                    loadPackagesFromFile();
+                }
+            } catch (error) {
+                console.error('Error loading packages:', error);
+                loadPackagesFromFile();
+            }
+        }
+
+        async function loadPackagesFromFile() {
+            try {
+                const response = await fetch('/dists/nobel/main/binary-amd64/Packages');
+                if (response.ok) {
+                    const text = await response.text();
+                    const packages = parsePackagesFile(text);
+                    displayPackages(packages);
+                } else {
+                    showNoPackages();
+                }
+            } catch (error) {
+                console.error('Error loading Packages file:', error);
+                showNoPackages();
+            }
+        }
+
+        function parsePackagesFile(text) {
+            const packages = [];
+            const entries = text.split('\n\n');
+            
+            entries.forEach(entry => {
+                if (entry.trim()) {
+                    const pkg = {};
+                    const lines = entry.split('\n');
+                    
+                    lines.forEach(line => {
+                        const colonIndex = line.indexOf(':');
+                        if (colonIndex > -1) {
+                            const key = line.substring(0, colonIndex).trim();
+                            const value = line.substring(colonIndex + 1).trim();
+                            
+                            if (key === 'Package') pkg.name = value;
+                            if (key === 'Version') pkg.version = value;
+                            if (key === 'Architecture') pkg.architecture = value;
+                            if (key === 'Size') pkg.size = formatSize(parseInt(value));
+                            if (key === 'Filename') pkg.filename = value;
+                        }
+                    });
+                    
+                    if (pkg.name) {
+                        packages.push(pkg);
+                    }
+                }
+            });
+            
+            return packages;
+        }
+
+        function formatSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            if (bytes < 1024 * 1024 * 1024) return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+            return (bytes / (1024 * 1024 * 1024)).toFixed(1) + ' GB';
+        }
+
+        function displayPackages(packages) {
+            const tbody = document.getElementById('package-tbody');
+            const noPackages = document.getElementById('no-packages');
+            const table = tbody.parentElement;
+            
+            if (packages.length === 0) {
+                showNoPackages();
+                return;
+            }
+            
+            tbody.innerHTML = '';
+            packages.forEach(pkg => {
+                const row = document.createElement('tr');
+                row.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+                row.innerHTML = `
+                    <td style="padding: 10px;">
+                        <a href="${pkg.filename || '#'}" style="color: #3498db; text-decoration: none;">
+                            📦 ${pkg.name || 'Unknown'}
+                        </a>
+                    </td>
+                    <td style="padding: 10px; color: #ecf0f1;">${pkg.version || '-'}</td>
+                    <td style="padding: 10px; color: #95a5a6;">${pkg.architecture || '-'}</td>
+                    <td style="padding: 10px; color: #95a5a6;">${pkg.size || '-'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            table.style.display = 'table';
+            noPackages.style.display = 'none';
+        }
+
+        function showNoPackages() {
+            const tbody = document.getElementById('package-tbody');
+            const noPackages = document.getElementById('no-packages');
+            const table = tbody.parentElement;
+            
+            table.style.display = 'none';
+            noPackages.style.display = 'block';
+        }
+
+        // Load packages when page loads
+        document.addEventListener('DOMContentLoaded', loadPackages);
+    </script>
 </body>
 </html>
