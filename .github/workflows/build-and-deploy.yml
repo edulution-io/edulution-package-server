@@ -29,18 +29,12 @@ jobs:
           else
             echo "No packages found, skipping processincoming"
           fi
-          
+
           reprepro -V export
-
-          #mv dists package_server
-          #mv pool package_server
-          #mv deploy/deploy-disclaimer.md deploy/README.md
-
-          #python3 createStaticDirectoryListing.py deploy --indexPage README.md
 
       - name: Deploy 🚀
         if: ${{ github.ref == 'refs/heads/main' }}
         uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
           branch: package_server
-          folder: deploy
+          folder: package_server
