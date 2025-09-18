@@ -4,7 +4,7 @@ Hash: SHA512
 Origin: package.edulution.io
 Label: package.edulution.io
 Codename: nobel
-Date: Thu, 18 Sep 2025 10:29:56 UTC
+Date: Thu, 18 Sep 2025 10:36:47 UTC
 Architectures: i386 amd64
 Components: main
 Description: nobel stable
@@ -40,8 +40,8 @@ SHA256:
  efabd7f33b1f4ad5b399cbc088d407a3840b8b44bbefa799b9ab02666c67a1fc 120 main/source/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQTdj26S1bjyMzRQrWm9NebbRlUWGwUCaMvfJAAKCRC9NebbRlUW
-G+TDAQDfS5mXOUoai8yI848fPxD5jX6KY0hVqcFtG3Yd+Px4PgD+OxVJjY77uNf4
-j2WGy/XEjZfM6obWg7OIrNKaNOz23AA=
-=y7Gq
+iHUEARYKAB0WIQTdj26S1bjyMzRQrWm9NebbRlUWGwUCaMvgvwAKCRC9NebbRlUW
+G6kgAQC39lKYdpeH+DnT+rQkoI5QXzr2sSIrB+9cseF5wrHslAEA+cVlqUGFsOw6
+4tvokeHGd/+n9eOjYvFDX6gUT/m8hwE=
+=HRrY
 -----END PGP SIGNATURE-----
