@@ -4,7 +4,7 @@ Hash: SHA512
 Origin: package.edulution.io
 Label: package.edulution.io
 Codename: nobel
-Date: Wed, 17 Sep 2025 13:38:24 UTC
+Date: Thu, 18 Sep 2025 10:29:56 UTC
 Architectures: i386 amd64
 Components: main
 Description: nobel stable
@@ -12,8 +12,8 @@ MD5Sum:
  d41d8cd98f00b204e9800998ecf8427e 0 main/binary-i386/Packages
  7029066c27ac6f5ef18d660d5741979a 20 main/binary-i386/Packages.gz
  ad660a7a06590258675a86fd5c0025a8 118 main/binary-i386/Release
- d41d8cd98f00b204e9800998ecf8427e 0 main/binary-amd64/Packages
- 7029066c27ac6f5ef18d660d5741979a 20 main/binary-amd64/Packages.gz
+ 394c94192d5948f9f88ba80fb5532ca3 465 main/binary-amd64/Packages
+ f2c379684bd52fb4b8ef850232ec41f7 341 main/binary-amd64/Packages.gz
  bca7a7945b2c16ef71b3a4c17a2ceb9a 119 main/binary-amd64/Release
  d41d8cd98f00b204e9800998ecf8427e 0 main/source/Sources
  7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
@@ -22,8 +22,8 @@ SHA1:
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/binary-i386/Packages
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/binary-i386/Packages.gz
  5c6922c888c1d33671a83eaf20a42f26c72f9483 118 main/binary-i386/Release
- da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/binary-amd64/Packages
- 46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/binary-amd64/Packages.gz
+ 3c8cc680e956149b162c0f99f8711e542db33623 465 main/binary-amd64/Packages
+ 1b31b0b8893d6e6332fee7d96b7db723938f29d2 341 main/binary-amd64/Packages.gz
  6dbf6c634157c86da2501af04e603f96431a82b7 119 main/binary-amd64/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/source/Sources
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
@@ -32,16 +32,16 @@ SHA256:
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-i386/Packages
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/binary-i386/Packages.gz
  5de21b5350472bda2b9f1023c36cb18e61dfaad2c24d1747a9839dec5ff394d5 118 main/binary-i386/Release
- e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-amd64/Packages
- 59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/binary-amd64/Packages.gz
+ 609885f09a11ecd405e21c42a6038d3af532feeb5f6742397c89af9150d6405e 465 main/binary-amd64/Packages
+ 4d847c45fb309ccc1d962b4f772c0ddd9ffae94db27db4c29c8bd5f7af3da765 341 main/binary-amd64/Packages.gz
  bf0efa08f4ed03a3c71dd48bdc1c24b719d9a4f59d804622ce2f7cefd883579c 119 main/binary-amd64/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/source/Sources
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
  efabd7f33b1f4ad5b399cbc088d407a3840b8b44bbefa799b9ab02666c67a1fc 120 main/source/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQTdj26S1bjyMzRQrWm9NebbRlUWGwUCaMq50AAKCRC9NebbRlUW
-G8LsAP9F8OugGag2CGbPaybgoX4+z14oHzIgaCyqY51e3nwGrQD+NmKjFtUD/pOd
-Hd6iyrgD6M1ad0ZD6R57Tw7RUHEhpA8=
-=Tn5U
+iHUEARYKAB0WIQTdj26S1bjyMzRQrWm9NebbRlUWGwUCaMvfJAAKCRC9NebbRlUW
+G+TDAQDfS5mXOUoai8yI848fPxD5jX6KY0hVqcFtG3Yd+Px4PgD+OxVJjY77uNf4
+j2WGy/XEjZfM6obWg7OIrNKaNOz23AA=
+=y7Gq
 -----END PGP SIGNATURE-----
