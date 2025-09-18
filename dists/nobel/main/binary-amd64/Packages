@@ -1,13 +1,13 @@
 Package: edulution-fileproxy
-Version: 1.0.13
+Version: 1.0.14
 Architecture: amd64
 Maintainer: edulution.io <info@netzint.de>
 Priority: optional
 Section: utils
-Filename: pool/main/e/edulution-fileproxy/edulution-fileproxy_1.0.13_amd64.deb
-Size: 5875880
-SHA256: eae58c127ede4d4c36ff62a3f7d81d33d111bae065b98c77b82775be2c6df987
-SHA1: ce6873b23c9467d04cfd38796345cda502b3ecd1
-MD5sum: 72e69526e19dee6afa52d51184a74301
+Filename: pool/main/e/edulution-fileproxy/edulution-fileproxy_1.0.14_amd64.deb
+Size: 5877266
+SHA256: e35c8fc9e67948dd0af04004b7ab96fa592a5296939782e8f386e1e755a925ae
+SHA1: 208cc3f26d00c8b5f46adb2f8a02dd7b16ce6ff2
+MD5sum: 418afefaf9a0ed4007459e2f592b91ac
 Description: Webdav-Server with SMB support and NTLM authentication
 
