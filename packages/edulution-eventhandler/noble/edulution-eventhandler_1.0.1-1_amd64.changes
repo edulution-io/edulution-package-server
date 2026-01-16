@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Fri, 16 Jan 2026 21:53:20 +0000
+Source: edulution-eventhandler
+Binary: edulution-eventhandler
+Architecture: all
+Version: 1.0.1-1
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@edulution.io>
+Changed-By: Edulution Team <info@edulution.io>
+Description:
+ edulution-eventhandler - Samba JSON Audit Event Handler for Edulution
+Changes:
+ edulution-eventhandler (1.0.1-1) noble; urgency=medium
+ .
+   * Release 1.0.1
+Checksums-Sha1:
+ acbfed67a9fcd0780f8a4299ce738fc95a043838 20448 edulution-eventhandler_1.0.1-1_all.deb
+ ccec63e0e611e9ba2652007488ec0e605231a73e 5633 edulution-eventhandler_1.0.1-1_amd64.buildinfo
+Checksums-Sha256:
+ 77062f1c030288f885953ef60b40d5d38dbe916985b7a2d1755dbac3b1ff0b7c 20448 edulution-eventhandler_1.0.1-1_all.deb
+ ee411f182571a573a8e0bb32c386c69cb9e1a185dd0f1756e8dd30b5651e4b42 5633 edulution-eventhandler_1.0.1-1_amd64.buildinfo
+Files:
+ 74f5fe297849979dc2a0e2b663754a26 20448 admin optional edulution-eventhandler_1.0.1-1_all.deb
+ f34176b5984be7bb2e8d792228bb06b5 5633 admin optional edulution-eventhandler_1.0.1-1_amd64.buildinfo
