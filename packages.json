@@ -1,5 +1,12 @@
 [
     {
+        "name": "edulution-eventhandler",
+        "version": "1.0.2-1",
+        "architecture": "all",
+        "filename": "/pool/main/e/edulution-eventhandler/edulution-eventhandler_1.0.2-1_all.deb"
+        "size": "20452",
+    },
+    {
         "name": "edulution-fileproxy",
         "version": "1.0.15",
         "architecture": "amd64",
