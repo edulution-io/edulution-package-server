@@ -1,37 +1,37 @@
 Origin: package.edulution.io
 Label: package.edulution.io
 Codename: nobel
-Date: Mon, 10 Nov 2025 10:30:10 UTC
+Date: Sun, 18 Jan 2026 11:27:45 UTC
 Architectures: i386 amd64
 Components: main
-Description: nobel stable
+Description: Ubuntu 24.04 (noble) stable
 MD5Sum:
  d41d8cd98f00b204e9800998ecf8427e 0 main/binary-i386/Packages
  7029066c27ac6f5ef18d660d5741979a 20 main/binary-i386/Packages.gz
- ad660a7a06590258675a86fd5c0025a8 118 main/binary-i386/Release
+ acea83b51522524bb8ff8c3916bc11d3 133 main/binary-i386/Release
  a8a831cba22a1bd5be25eb6f887d50ff 465 main/binary-amd64/Packages
  7a78a81ff49ad3aa3e3eef213fac7c2a 341 main/binary-amd64/Packages.gz
- bca7a7945b2c16ef71b3a4c17a2ceb9a 119 main/binary-amd64/Release
+ b75f542ab8c306cfefbe73f18435ddd4 134 main/binary-amd64/Release
  d41d8cd98f00b204e9800998ecf8427e 0 main/source/Sources
  7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
- aa4dd2518a179b5388ce027649a71223 120 main/source/Release
+ d6398f3f1f276187617e6fe910f673c5 135 main/source/Release
 SHA1:
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/binary-i386/Packages
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/binary-i386/Packages.gz
- 5c6922c888c1d33671a83eaf20a42f26c72f9483 118 main/binary-i386/Release
+ f4570b84d00466a7061f1bd2087f88c657604319 133 main/binary-i386/Release
  0f8e320376b9edfc7a8953b53b0e62c1e4ba4504 465 main/binary-amd64/Packages
  ad9a6f94ae25bbd92da722cdcf314dcfab16151a 341 main/binary-amd64/Packages.gz
- 6dbf6c634157c86da2501af04e603f96431a82b7 119 main/binary-amd64/Release
+ 78e2b942c508e2b7f182a0a5795ae35c0e2f20ff 134 main/binary-amd64/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/source/Sources
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
- 7cca4fb88e633f89ed7c9d9fc41887410e714c81 120 main/source/Release
+ b0b6a1414ae066f52d2de370d62117c1628da458 135 main/source/Release
 SHA256:
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-i386/Packages
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/binary-i386/Packages.gz
- 5de21b5350472bda2b9f1023c36cb18e61dfaad2c24d1747a9839dec5ff394d5 118 main/binary-i386/Release
+ 1b9aa4164c5252c48cf1bfb803ce4ced526d01dba3b7d9c1d69c572468034aa1 133 main/binary-i386/Release
  27a5e81585aff71595896b2031b5b297d5bec3f2d8f23256b5eea73d5c3dd123 465 main/binary-amd64/Packages
  3861a8e58a5c8e53e89cfac2011359ca86d53fb54a33046471f39acd06946d2a 341 main/binary-amd64/Packages.gz
- bf0efa08f4ed03a3c71dd48bdc1c24b719d9a4f59d804622ce2f7cefd883579c 119 main/binary-amd64/Release
+ 74f7bfde17d1f414c85baeadf2b64625668094a01c665aad809e7ccdfe0809fa 134 main/binary-amd64/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/source/Sources
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
- efabd7f33b1f4ad5b399cbc088d407a3840b8b44bbefa799b9ab02666c67a1fc 120 main/source/Release
+ 1edb4cc120289e399d1aedbca7d2a0d19bca42ce2a806fc4eb20b515ba64fc26 135 main/source/Release

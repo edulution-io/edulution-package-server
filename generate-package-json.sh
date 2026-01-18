@@ -5,7 +5,7 @@
 echo "Generating packages.json..."
 
 # Check if Packages file exists
-PACKAGES_FILE="dists/nobel/main/binary-amd64/Packages"
+PACKAGES_FILE="dists/noble/main/binary-amd64/Packages"
 
 if [ ! -f "$PACKAGES_FILE" ]; then
     echo "[]" > packages.json
