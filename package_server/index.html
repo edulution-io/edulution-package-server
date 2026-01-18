@@ -184,7 +184,7 @@
             <strong>Repository zur Quellenliste hinzufügen</strong>
             <p>Fügen Sie das Repository zu Ihrer APT-Konfiguration hinzu:</p>
             <div class="code-block">
-                <code>echo "deb [signed-by=/usr/share/keyrings/edulution.gpg] https://package.edulution.io/ nobel main" | sudo tee /etc/apt/sources.list.d/edulution.list</code>
+                <code>echo "deb [signed-by=/usr/share/keyrings/edulution.gpg] https://package.edulution.io/ noble main" | sudo tee /etc/apt/sources.list.d/edulution.list</code>
             </div>
         </div>
 
@@ -251,7 +251,7 @@
 
         async function loadPackagesFromFile() {
             try {
-                const response = await fetch('/dists/nobel/main/binary-amd64/Packages');
+                const response = await fetch('/dists/noble/main/binary-amd64/Packages');
                 if (response.ok) {
                     const text = await response.text();
                     const packages = parsePackagesFile(text);

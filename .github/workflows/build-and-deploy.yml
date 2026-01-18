@@ -31,7 +31,10 @@ jobs:
           fi
 
           reprepro -V export
-          
+
+          # Create symlink so both 'nobel' (legacy typo) and 'noble' (correct) URLs work
+          ln -s nobel dists/noble
+
           # Generate package list JSON for main page
           bash generate-package-json.sh
           
