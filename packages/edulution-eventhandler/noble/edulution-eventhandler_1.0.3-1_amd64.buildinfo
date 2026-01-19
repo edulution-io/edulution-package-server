@@ -2,16 +2,16 @@ Format: 1.0
 Source: edulution-eventhandler
 Binary: edulution-eventhandler
 Architecture: all
-Version: 1.0.2-1
+Version: 1.0.3-1
 Checksums-Md5:
- a268abe3577d757b2fa857dca77e1e34 20452 edulution-eventhandler_1.0.2-1_all.deb
+ 68e710ecc0790c95a84c5ed99ea3900b 18892 edulution-eventhandler_1.0.3-1_all.deb
 Checksums-Sha1:
- 6dd23c6292d3cca9edcbc016ee9da3c0b82980fb 20452 edulution-eventhandler_1.0.2-1_all.deb
+ 93205a6a8e8b6a223738d1631b63b8a418ac3300 18892 edulution-eventhandler_1.0.3-1_all.deb
 Checksums-Sha256:
- fda61aa6e7b834e34bee97fc17565316df7254c3b06662a4d1d4327609d60a09 20452 edulution-eventhandler_1.0.2-1_all.deb
+ 5b5baef21e7b2c235f3824218967a339c2d73324113285c7dc74b46e0535136f 18892 edulution-eventhandler_1.0.3-1_all.deb
 Build-Origin: Debian
 Build-Architecture: amd64
-Build-Date: Fri, 16 Jan 2026 21:56:52 +0000
+Build-Date: Mon, 19 Jan 2026 11:36:50 +0000
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
 Installed-Build-Depends:
@@ -186,4 +186,4 @@ Installed-Build-Depends:
  zlib1g (= 1:1.2.13.dfsg-1)
 Environment:
  DEB_BUILD_OPTIONS="parallel=2"
- SOURCE_DATE_EPOCH="1768600610"
+ SOURCE_DATE_EPOCH="1768822609"
