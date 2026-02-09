@@ -2,16 +2,16 @@ Format: 1.0
 Source: edulution-eventhandler
 Binary: edulution-eventhandler
 Architecture: all
-Version: 1.1.0-1
+Version: 1.1.1-1
 Checksums-Md5:
- dc98f4ad59d3c6fbe6743ae8436e5475 23152 edulution-eventhandler_1.1.0-1_all.deb
+ 69769d086429fb379f4647fbb3b3b720 23884 edulution-eventhandler_1.1.1-1_all.deb
 Checksums-Sha1:
- f881dbb9ae25e88fb7d310e15739df65fe910e52 23152 edulution-eventhandler_1.1.0-1_all.deb
+ 042f93e99f486a1f8c8187dc62b6de39769f635a 23884 edulution-eventhandler_1.1.1-1_all.deb
 Checksums-Sha256:
- bdaf0e7cc8aa1f51fbf07824d6646736b597e761e673c5b55962aff19756b501 23152 edulution-eventhandler_1.1.0-1_all.deb
+ ebd3e4eb877807de78aa57e929bc46da4afeff82a9a916b954934464e93b0695 23884 edulution-eventhandler_1.1.1-1_all.deb
 Build-Origin: Debian
 Build-Architecture: amd64
-Build-Date: Tue, 20 Jan 2026 11:57:59 +0000
+Build-Date: Mon, 09 Feb 2026 09:12:24 +0000
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
 Installed-Build-Depends:
@@ -134,7 +134,7 @@ Installed-Build-Depends:
  libselinux1 (= 3.4-1+b6),
  libsmartcols1 (= 2.38.1-5+deb12u3),
  libsqlite3-0 (= 3.40.1-2+deb12u2),
- libssl3 (= 3.0.18-1~deb12u1),
+ libssl3 (= 3.0.18-1~deb12u2),
  libstdc++-12-dev (= 12.2.0-14+deb12u1),
  libstdc++6 (= 12.2.0-14+deb12u1),
  libsub-override-perl (= 0.09-4),
@@ -186,4 +186,4 @@ Installed-Build-Depends:
  zlib1g (= 1:1.2.13.dfsg-1)
 Environment:
  DEB_BUILD_OPTIONS="parallel=2"
- SOURCE_DATE_EPOCH="1768910278"
+ SOURCE_DATE_EPOCH="1770628342"
