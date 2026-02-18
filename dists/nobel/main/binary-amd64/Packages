@@ -1,17 +1,17 @@
 Package: edulution-eventhandler
-Version: 1.1.1-1
+Version: 1.1.2-1
 Architecture: all
 Maintainer: edulution.io <info@edulution.io>
-Installed-Size: 128
+Installed-Size: 129
 Depends: python3:any, python3-systemd, python3-aiohttp, python3-watchdog, python3-ldap3, python3-requests
 Homepage: https://github.com/edulution-io/edulution-eventhandler
 Priority: optional
 Section: admin
-Filename: pool/main/e/edulution-eventhandler/edulution-eventhandler_1.1.1-1_all.deb
-Size: 23884
-SHA256: ebd3e4eb877807de78aa57e929bc46da4afeff82a9a916b954934464e93b0695
-SHA1: 042f93e99f486a1f8c8187dc62b6de39769f635a
-MD5sum: 69769d086429fb379f4647fbb3b3b720
+Filename: pool/main/e/edulution-eventhandler/edulution-eventhandler_1.1.2-1_all.deb
+Size: 24144
+SHA256: f7fdd26d04a035c50cca33b5478b7622b1cd07433a55d3e0fdd499385cf3330e
+SHA1: ee6f223ed2174d491a3da36d8de4872fa83f2035
+MD5sum: 63d98bb7361ce98643e8fd97af626a63
 Description: Samba JSON Audit Event Handler for Edulution
  A Python daemon that reads Samba JSON Audit events from the systemd
  journal and triggers configurable hooks (scripts/webhooks) when
