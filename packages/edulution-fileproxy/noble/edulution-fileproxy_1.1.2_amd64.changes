@@ -1,0 +1,17 @@
+Format: 1.8
+Date: Mon, 02 Mar 2026 12:52:15 +0000
+Source: edulution-fileproxy
+Binary: edulution-fileproxy
+Architecture: amd64
+Version: 1.1.2
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@netzint.de>
+Description:
+ edulution-fileproxy - Webdav-Server with SMB support and NTLM authentication
+Changes:
+ edulution-fileproxy (1.1.2) noble; urgency=medium
+ .
+   * Release version 1.1.2
+Files:
+ 98d4b42b8e885539940fc19b0ecf40bd 5994316 utils optional edulution-fileproxy_1.1.2_amd64.deb
