@@ -8,9 +8,9 @@
     },
     {
         "name": "edulution-fileproxy",
-        "version": "1.1.3",
+        "version": "1.1.4",
         "architecture": "amd64",
-        "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.1.3_amd64.deb"
-        "size": "5994090",
+        "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.1.4_amd64.deb"
+        "size": "5996408",
     }
 ]
