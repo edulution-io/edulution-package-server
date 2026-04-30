@@ -1,0 +1,37 @@
+Format: 1.8
+Date: Thu, 30 Apr 2026 21:30:00 +0200
+Source: edulution-linbo-vdi
+Binary: edulution-linbo-vdi
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 1.0.0-1
+Distribution: resolute
+Urgency: medium
+Maintainer: Joanna Meinelt <joanna.meinelt@netzint.de>
+Changed-By: Lukas Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ edulution-linbo-vdi - linbo vdi server tool for linuxmuster.net v7.x
+Changes:
+ edulution-linbo-vdi (1.0.0-1) noble; urgency=medium
+ .
+   * Rewrite as proper Python package (edulution_linbo_vdi)
+   * Add interactive setup wizard (vdi-setup)
+   * Move REST API to linuxmuster-api (endpoints under /v1/vdi/)
+   * Support EFI/BIOS boot and Windows 10/11, Ubuntu, Debian images
+   * Use linked clones, add VirtIO RNG for PXE boot under EFI
+   * Improve master rebuild detection and reduce log noise
+Checksums-Sha1:
+ 0f4036c6e1ef081c9c45cb6e46f183fbb14e39db 573 edulution-linbo-vdi_1.0.0-1.dsc
+ fa5e68c9247961db85acdb3c6e3ae3c54fbe09a7 86308 edulution-linbo-vdi_1.0.0-1.tar.gz
+ 45c350f06dc2265b717087b50d093a0c6f5f8db2 95666 edulution-linbo-vdi_1.0.0-1_all.deb
+ 18c63044247c37301f94fb9673f4e023e8298fb0 7768 edulution-linbo-vdi_1.0.0-1_amd64.buildinfo
+Checksums-Sha256:
+ 0f54c5feda0d3281b71f07700a841116b82afa1675bf6952cb22295c7b78b0f3 573 edulution-linbo-vdi_1.0.0-1.dsc
+ cdc295ccd671edada784938a00c990ec55960c88afd8c63b81d4cb3b7f81f22a 86308 edulution-linbo-vdi_1.0.0-1.tar.gz
+ 3c27e0392991b6e40219037ae6e949cab7ab9b3fc9863b131c42b801e96a47b9 95666 edulution-linbo-vdi_1.0.0-1_all.deb
+ 22774ab6bb4cc3510f183b75e5ca7a5f966a6a165686e5e14bacafd0ac36039d 7768 edulution-linbo-vdi_1.0.0-1_amd64.buildinfo
+Files:
+ 261cfa31f6e5c7f8ec68c4b7cee2ff54 573 admin optional edulution-linbo-vdi_1.0.0-1.dsc
+ c7c91690df9fc42ec2b7220c85b7c97d 86308 admin optional edulution-linbo-vdi_1.0.0-1.tar.gz
+ accb927b6b50a414527cdc50f53dcb2e 95666 admin optional edulution-linbo-vdi_1.0.0-1_all.deb
+ 3060d4e91e9fc247c6f98d91f474724e 7768 admin optional edulution-linbo-vdi_1.0.0-1_amd64.buildinfo
