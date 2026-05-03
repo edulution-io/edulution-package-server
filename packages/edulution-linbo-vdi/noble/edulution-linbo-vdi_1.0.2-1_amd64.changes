@@ -1,0 +1,37 @@
+Format: 1.8
+Date: Thu, 30 Apr 2026 21:30:00 +0200
+Source: edulution-linbo-vdi
+Binary: edulution-linbo-vdi
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 1.0.2-1
+Distribution: noble
+Urgency: medium
+Maintainer: Joanna Meinelt <joanna.meinelt@netzint.de>
+Changed-By: Lukas Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ edulution-linbo-vdi - linbo vdi server tool for linuxmuster.net v7.x
+Changes:
+ edulution-linbo-vdi (1.0.2-1) noble; urgency=medium
+ .
+   * Rewrite as proper Python package (edulution_linbo_vdi)
+   * Add interactive setup wizard (vdi-setup)
+   * Move REST API to linuxmuster-api (endpoints under /v1/vdi/)
+   * Support EFI/BIOS boot and Windows 10/11, Ubuntu, Debian images
+   * Use linked clones, add VirtIO RNG for PXE boot under EFI
+   * Improve master rebuild detection and reduce log noise
+Checksums-Sha1:
+ f7e7e59676cebe30d052a1caa4a8554eeb0b48c8 573 edulution-linbo-vdi_1.0.2-1.dsc
+ cbed56278c8026897c11f317b227dac968ac4bc2 86749 edulution-linbo-vdi_1.0.2-1.tar.gz
+ dcd70d72ea3e5851072d66393b3e695c47d3ac76 96746 edulution-linbo-vdi_1.0.2-1_all.deb
+ 2de7130232648519407c9bec5c1b569fa648203b 7768 edulution-linbo-vdi_1.0.2-1_amd64.buildinfo
+Checksums-Sha256:
+ c10de94636cd50788d1b0de63a6b47b7a49ce95e180ddc11c7dd1bb494ca9c2f 573 edulution-linbo-vdi_1.0.2-1.dsc
+ e478fe2837ee2ce7c23ee2ae5c80c08ae07f71aef1bfbbdf3920991b485ce459 86749 edulution-linbo-vdi_1.0.2-1.tar.gz
+ f243b823717ba49c0f0ee370bc35d80ed53dfdb33e77b8fdae7b1647f6160cbf 96746 edulution-linbo-vdi_1.0.2-1_all.deb
+ 85398b354398a0df90173b7b74fb5007170d66482a2014464acf091c608f2b71 7768 edulution-linbo-vdi_1.0.2-1_amd64.buildinfo
+Files:
+ 5baf2a68bd43616eb8427fe731e32aa2 573 admin optional edulution-linbo-vdi_1.0.2-1.dsc
+ 17632b1a8e28e93330fdec9e35ae6d08 86749 admin optional edulution-linbo-vdi_1.0.2-1.tar.gz
+ c104bb0200f2b12f5dbe4fc7898ac32d 96746 admin optional edulution-linbo-vdi_1.0.2-1_all.deb
+ 84c9869aa75b147bd38e8ca717999cad 7768 admin optional edulution-linbo-vdi_1.0.2-1_amd64.buildinfo
