@@ -1,10 +1,16 @@
 name: Build and Deploy
+
 on: 
   push:
   workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v5
@@ -13,7 +19,7 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
-          sudo apt update && sudo apt install reprepro #python3 python3-pip python3-mako
+          sudo apt update && sudo apt install reprepro
 
           cd package_server
 
