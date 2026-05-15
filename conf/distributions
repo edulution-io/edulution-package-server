@@ -6,3 +6,11 @@ Architectures: i386 amd64 source
 Components: main
 Description: Ubuntu 24.04 (noble) stable
 SignWith: BD35E6DB4655161B
+
+Origin: package.edulution.io
+Label: package.edulution.io
+Codename: resolute
+Architectures: i386 amd64 source
+Components: main
+Description: Ubuntu 26.04 (resolute) stable
+SignWith: BD35E6DB4655161B
