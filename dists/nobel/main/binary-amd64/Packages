@@ -28,15 +28,15 @@ Description: Samba JSON Audit Event Handler for Edulution
   - Included hook script for Sophos XGS firewall integration
 
 Package: edulution-fileproxy
-Version: 1.1.6
+Version: 1.1.7
 Architecture: amd64
 Maintainer: edulution.io <info@netzint.de>
 Priority: optional
 Section: utils
-Filename: pool/main/e/edulution-fileproxy/edulution-fileproxy_1.1.6_amd64.deb
-Size: 18940276
-SHA256: 81229e4630a7473867984fa31c0eb1b97f657d2ea2c2c7bb03fc546dc65e2b7b
-SHA1: 4b2583ad345955ae5c24ff338b1a8593e98ce9ce
-MD5sum: 30bf625235acb8536f92c90ad85d729b
+Filename: pool/main/e/edulution-fileproxy/edulution-fileproxy_1.1.7_amd64.deb
+Size: 18940918
+SHA256: ee08da97284519edac423196371e6371111cf7f25d39083041629b54e9d99149
+SHA1: 37591ca1d24129296ab758aca6b87bf628418163
+MD5sum: eb57e4d7d6ee3012553b83fd01140277
 Description: Webdav-Server with SMB support and NTLM authentication
 
