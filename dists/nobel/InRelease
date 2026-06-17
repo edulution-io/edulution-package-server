@@ -4,7 +4,7 @@ Hash: SHA512
 Origin: package.edulution.io
 Label: package.edulution.io
 Codename: nobel
-Date: Wed, 17 Jun 2026 11:34:35 UTC
+Date: Wed, 17 Jun 2026 11:36:26 UTC
 Architectures: i386 amd64
 Components: main
 Description: Ubuntu 24.04 (noble) stable
@@ -40,8 +40,8 @@ SHA256:
  1edb4cc120289e399d1aedbca7d2a0d19bca42ce2a806fc4eb20b515ba64fc26 135 main/source/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQTdj26S1bjyMzRQrWm9NebbRlUWGwUCajKGSwAKCRC9NebbRlUW
-G5adAQCEC2IP+FtJSMckp1MnBJwAdR23XEZCbqEKH1YgGhVqogEAz4crD6zEUoXm
-CCh3NhS3bKSVyNUtq7NPQLfK4495egc=
-=hDvN
+iHUEARYKAB0WIQTdj26S1bjyMzRQrWm9NebbRlUWGwUCajKGugAKCRC9NebbRlUW
+G64AAP0WQWEDeZ22f2RDBmwzv4KWjqhmsYLhQAPy4Z0Kfve7KQD9EUUFF/OKB7cx
+zXf+IRgv2fRI2ymdgcIgcGAqznxaBg4=
+=+IkD
 -----END PGP SIGNATURE-----
