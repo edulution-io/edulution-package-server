@@ -182,9 +182,9 @@
         <div class="step">
             <span class="step-number">2</span>
             <strong>Repository zur Quellenliste hinzufügen</strong>
-            <p>Fügen Sie das Repository zu Ihrer APT-Konfiguration hinzu:</p>
+            <p>Fügen Sie das Repository zu Ihrer APT-Konfiguration hinzu. Der Ubuntu-Codename wird dabei automatisch erkannt, sodass der Befehl auf jeder unterstützten Ubuntu-Version funktioniert:</p>
             <div class="code-block">
-                <code>echo "deb [signed-by=/usr/share/keyrings/edulution.gpg] https://package.edulution.io/ noble main" | sudo tee /etc/apt/sources.list.d/edulution.list</code>
+                <code>echo "deb [signed-by=/usr/share/keyrings/edulution.gpg] https://package.edulution.io/ $(. /etc/os-release && echo "$VERSION_CODENAME") main" | sudo tee /etc/apt/sources.list.d/edulution.list</code>
             </div>
         </div>
 
@@ -197,6 +197,11 @@
             </div>
         </div>
 
+        <div class="note">
+            <strong>Unterstützte Ubuntu-Versionen:</strong> Ubuntu 24.04 LTS (noble) und Ubuntu 26.04 LTS (resolute).
+            Der Befehl in Schritt 2 erkennt die installierte Version automatisch über <code>/etc/os-release</code>.
+        </div>
+
         <h2>📋 Verfügbare Pakete</h2>
         <div id="package-list" style="margin-bottom: 30px;">
             <div style="background: rgba(44, 62, 80, 0.5); padding: 20px; border-radius: 10px; border: 1px solid rgba(52, 152, 219, 0.3);">
@@ -205,6 +210,7 @@
                         <tr style="border-bottom: 2px solid #3498db;">
                             <th style="text-align: left; padding: 10px; color: #3498db;">Paket</th>
                             <th style="text-align: left; padding: 10px; color: #3498db;">Version</th>
+                            <th style="text-align: left; padding: 10px; color: #3498db;">Distribution</th>
                             <th style="text-align: left; padding: 10px; color: #3498db;">Architektur</th>
                             <th style="text-align: left; padding: 10px; color: #3498db;">Größe</th>
                         </tr>
@@ -249,37 +255,47 @@
             }
         }
 
+        // Distributions to probe when packages.json is unavailable. Keep this
+        // list in sync with package_server/conf/distributions.
+        const FALLBACK_DISTS = ['noble', 'resolute'];
+
         async function loadPackagesFromFile() {
-            try {
-                const response = await fetch('/dists/noble/main/binary-amd64/Packages');
-                if (response.ok) {
-                    const text = await response.text();
-                    const packages = parsePackagesFile(text);
-                    displayPackages(packages);
-                } else {
-                    showNoPackages();
+            const allPackages = [];
+
+            for (const dist of FALLBACK_DISTS) {
+                try {
+                    const response = await fetch(`/dists/${dist}/main/binary-amd64/Packages`);
+                    if (response.ok) {
+                        const text = await response.text();
+                        allPackages.push(...parsePackagesFile(text, dist));
+                    }
+                } catch (error) {
+                    console.error(`Error loading Packages file for ${dist}:`, error);
                 }
-            } catch (error) {
-                console.error('Error loading Packages file:', error);
+            }
+
+            if (allPackages.length > 0) {
+                displayPackages(allPackages);
+            } else {
                 showNoPackages();
             }
         }
 
-        function parsePackagesFile(text) {
+        function parsePackagesFile(text, dist) {
             const packages = [];
             const entries = text.split('\n\n');
-            
+
             entries.forEach(entry => {
                 if (entry.trim()) {
-                    const pkg = {};
+                    const pkg = { dist: dist };
                     const lines = entry.split('\n');
-                    
+
                     lines.forEach(line => {
                         const colonIndex = line.indexOf(':');
                         if (colonIndex > -1) {
                             const key = line.substring(0, colonIndex).trim();
                             const value = line.substring(colonIndex + 1).trim();
-                            
+
                             if (key === 'Package') pkg.name = value;
                             if (key === 'Version') pkg.version = value;
                             if (key === 'Architecture') pkg.architecture = value;
@@ -287,13 +303,13 @@
                             if (key === 'Filename') pkg.filename = value;
                         }
                     });
-                    
+
                     if (pkg.name) {
                         packages.push(pkg);
                     }
                 }
             });
-            
+
             return packages;
         }
 
@@ -325,6 +341,7 @@
                         </a>
                     </td>
                     <td style="padding: 10px; color: #ecf0f1;">${pkg.version || '-'}</td>
+                    <td style="padding: 10px; color: #95a5a6;">${pkg.dist || '-'}</td>
                     <td style="padding: 10px; color: #95a5a6;">${pkg.architecture || '-'}</td>
                     <td style="padding: 10px; color: #95a5a6;">${pkg.size || '-'}</td>
                 `;
