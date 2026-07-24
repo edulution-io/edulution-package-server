@@ -27,9 +27,16 @@ cat > packages.json << 'EOF'
 EOF
 
 first=true
+declare -A SEEN
 emit_entry() {
     # Skip incomplete blocks (no package name).
     [ -z "$package_name" ] && return
+    # Architecture-independent packages ("Architecture: all") are listed in
+    # every binary-<arch> index of a distribution, so the same package would
+    # otherwise show up once per architecture. Emit each distinct entry once.
+    local key="$dist|$package_name|$version|$arch|$filename"
+    [ -n "${SEEN[$key]}" ] && return
+    SEEN[$key]=1
     if [ "$first" = false ]; then
         echo "    }," >> packages.json
     fi
