@@ -1,8 +1,8 @@
 Origin: package.edulution.io
 Label: package.edulution.io
 Codename: resolute
-Date: Wed, 17 Jun 2026 11:36:26 UTC
-Architectures: i386 amd64
+Date: Fri, 24 Jul 2026 13:07:41 UTC
+Architectures: i386 amd64 arm64
 Components: main
 Description: Ubuntu 26.04 (resolute) stable
 MD5Sum:
@@ -12,6 +12,9 @@ MD5Sum:
  d41d8cd98f00b204e9800998ecf8427e 0 main/binary-amd64/Packages
  7029066c27ac6f5ef18d660d5741979a 20 main/binary-amd64/Packages.gz
  03ce911945ee48e73f4e501af7857966 137 main/binary-amd64/Release
+ d41d8cd98f00b204e9800998ecf8427e 0 main/binary-arm64/Packages
+ 7029066c27ac6f5ef18d660d5741979a 20 main/binary-arm64/Packages.gz
+ 51c6b211db9694aca65756326bd18890 137 main/binary-arm64/Release
  d41d8cd98f00b204e9800998ecf8427e 0 main/source/Sources
  7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
  1e72b4b5febd887ff133d089c931de77 138 main/source/Release
@@ -22,6 +25,9 @@ SHA1:
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/binary-amd64/Packages
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/binary-amd64/Packages.gz
  65cd20f68c885550ae0da03e6081e2effb19d7d2 137 main/binary-amd64/Release
+ da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/binary-arm64/Packages
+ 46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/binary-arm64/Packages.gz
+ f90ab57e9256f0ad2b0dd0d6789782cd43079bd3 137 main/binary-arm64/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/source/Sources
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
  0f62e9db83e7bed59cbf7f3f939b23d62b1f5891 138 main/source/Release
@@ -32,6 +38,9 @@ SHA256:
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-amd64/Packages
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/binary-amd64/Packages.gz
  85b377c9efd60a52c86d8353055c8d6b4fa9720d7d51346697349a7e6f715f62 137 main/binary-amd64/Release
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-arm64/Packages
+ 59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/binary-arm64/Packages.gz
+ be71e619835100e9ad39c18d619b2062b91f8ddea0e06abb599a4162e57b805b 137 main/binary-arm64/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/source/Sources
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
  d46e949afe0f30b957c99675f302a19f2fedd8e0864a8836af1f2ffbfa8c73f1 138 main/source/Release
