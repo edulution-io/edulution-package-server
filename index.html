@@ -148,6 +148,69 @@
             text-decoration: underline;
         }
 
+        .package-group {
+            background: rgba(44, 62, 80, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .package-group h3 {
+            color: #ecf0f1;
+            font-size: 1.15em;
+            margin-bottom: 15px;
+        }
+
+        .package-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .package-table th {
+            text-align: left;
+            padding: 8px 10px;
+            color: #3498db;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid rgba(52, 152, 219, 0.4);
+        }
+
+        .package-table td {
+            padding: 10px;
+            color: #ecf0f1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .package-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .package-table .muted {
+            color: #95a5a6;
+        }
+
+        .no-packages {
+            background: rgba(44, 62, 80, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            text-align: center;
+            color: #95a5a6;
+            display: none;
+        }
+
+        #package-list {
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .package-table .optional-column {
+                display: none;
+            }
+        }
+
         .footer {
             text-align: center;
             margin-top: 40px;
@@ -203,26 +266,10 @@
         </div>
 
         <h2>📋 Verfügbare Pakete</h2>
-        <div id="package-list" style="margin-bottom: 30px;">
-            <div style="background: rgba(44, 62, 80, 0.5); padding: 20px; border-radius: 10px; border: 1px solid rgba(52, 152, 219, 0.3);">
-                <table style="width: 100%; border-collapse: collapse;">
-                    <thead>
-                        <tr style="border-bottom: 2px solid #3498db;">
-                            <th style="text-align: left; padding: 10px; color: #3498db;">Paket</th>
-                            <th style="text-align: left; padding: 10px; color: #3498db;">Version</th>
-                            <th style="text-align: left; padding: 10px; color: #3498db;">Distribution</th>
-                            <th style="text-align: left; padding: 10px; color: #3498db;">Architektur</th>
-                            <th style="text-align: left; padding: 10px; color: #3498db;">Größe</th>
-                        </tr>
-                    </thead>
-                    <tbody id="package-tbody">
-                        <!-- Packages will be inserted here by JavaScript -->
-                    </tbody>
-                </table>
-                <div id="no-packages" style="text-align: center; padding: 20px; color: #95a5a6; display: none;">
-                    <p>Aktuell sind keine Pakete verfügbar.</p>
-                </div>
-            </div>
+        <!-- One section per package, filled by JavaScript from packages.json -->
+        <div id="package-list"></div>
+        <div id="no-packages" class="no-packages">
+            <p>Aktuell sind keine Pakete verfügbar.</p>
         </div>
 
         <h2>🔍 Repository-Struktur</h2>
@@ -255,22 +302,26 @@
             }
         }
 
-        // Distributions to probe when packages.json is unavailable. Keep this
-        // list in sync with package_server/conf/distributions.
+        // Distributions and architectures to probe when packages.json is
+        // unavailable. Keep both lists in sync with
+        // package_server/conf/distributions.
         const FALLBACK_DISTS = ['noble', 'resolute'];
+        const FALLBACK_ARCHS = ['amd64', 'arm64'];
 
         async function loadPackagesFromFile() {
             const allPackages = [];
 
             for (const dist of FALLBACK_DISTS) {
-                try {
-                    const response = await fetch(`/dists/${dist}/main/binary-amd64/Packages`);
-                    if (response.ok) {
-                        const text = await response.text();
-                        allPackages.push(...parsePackagesFile(text, dist));
+                for (const arch of FALLBACK_ARCHS) {
+                    try {
+                        const response = await fetch(`/dists/${dist}/main/binary-${arch}/Packages`);
+                        if (response.ok) {
+                            const text = await response.text();
+                            allPackages.push(...parsePackagesFile(text, dist));
+                        }
+                    } catch (error) {
+                        console.error(`Error loading Packages file for ${dist}/${arch}:`, error);
                     }
-                } catch (error) {
-                    console.error(`Error loading Packages file for ${dist}:`, error);
                 }
             }
 
@@ -299,7 +350,8 @@
                             if (key === 'Package') pkg.name = value;
                             if (key === 'Version') pkg.version = value;
                             if (key === 'Architecture') pkg.architecture = value;
-                            if (key === 'Size') pkg.size = formatSize(parseInt(value));
+                            // Kept in bytes like packages.json; formatted on render.
+                            if (key === 'Size') pkg.size = value;
                             if (key === 'Filename') pkg.filename = value;
                         }
                     });
@@ -313,52 +365,103 @@
             return packages;
         }
 
-        function formatSize(bytes) {
+        function formatSize(value) {
+            const bytes = parseInt(value, 10);
+            if (!Number.isFinite(bytes)) return '-';
             if (bytes < 1024) return bytes + ' B';
             if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
             if (bytes < 1024 * 1024 * 1024) return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
             return (bytes / (1024 * 1024 * 1024)).toFixed(1) + ' GB';
         }
 
+        // Human-readable labels for the distribution column.
+        const DIST_LABELS = {
+            noble: 'Ubuntu 24.04 (noble)',
+            resolute: 'Ubuntu 26.04 (resolute)'
+        };
+
+        // Natural ordering, so "1.10.0" sorts above "1.9.0".
+        const collator = new Intl.Collator('en', { numeric: true, sensitivity: 'base' });
+
+        function escapeHtml(value) {
+            return String(value).replace(/[&<>"']/g, char => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            })[char]);
+        }
+
         function displayPackages(packages) {
-            const tbody = document.getElementById('package-tbody');
+            const list = document.getElementById('package-list');
             const noPackages = document.getElementById('no-packages');
-            const table = tbody.parentElement;
-            
-            if (packages.length === 0) {
+
+            // An "Architecture: all" package is listed in every binary-<arch>
+            // index of a distribution, so the same entry can arrive multiple
+            // times. Keep one row per distinct package/version/dist/arch.
+            const seen = new Set();
+            const unique = packages.filter(pkg => {
+                const key = [pkg.name, pkg.version, pkg.dist, pkg.architecture, pkg.filename].join('|');
+                if (seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            });
+
+            if (unique.length === 0) {
                 showNoPackages();
                 return;
             }
-            
-            tbody.innerHTML = '';
-            packages.forEach(pkg => {
-                const row = document.createElement('tr');
-                row.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
-                row.innerHTML = `
-                    <td style="padding: 10px;">
-                        <a href="${pkg.filename || '#'}" style="color: #3498db; text-decoration: none;">
-                            📦 ${pkg.name || 'Unknown'}
-                        </a>
-                    </td>
-                    <td style="padding: 10px; color: #ecf0f1;">${pkg.version || '-'}</td>
-                    <td style="padding: 10px; color: #95a5a6;">${pkg.dist || '-'}</td>
-                    <td style="padding: 10px; color: #95a5a6;">${pkg.architecture || '-'}</td>
-                    <td style="padding: 10px; color: #95a5a6;">${pkg.size || '-'}</td>
-                `;
-                tbody.appendChild(row);
+
+            // One section per package name; inside a section the newest
+            // version comes first, then distribution and architecture.
+            const groups = new Map();
+            unique.forEach(pkg => {
+                const name = pkg.name || 'Unbekannt';
+                if (!groups.has(name)) groups.set(name, []);
+                groups.get(name).push(pkg);
             });
-            
-            table.style.display = 'table';
+
+            const sortedNames = [...groups.keys()].sort(collator.compare);
+
+            list.innerHTML = sortedNames.map(name => {
+                const rows = groups.get(name).sort((a, b) =>
+                    collator.compare(b.version || '', a.version || '') ||
+                    collator.compare(a.dist || '', b.dist || '') ||
+                    collator.compare(a.architecture || '', b.architecture || '')
+                );
+
+                const body = rows.map(pkg => `
+                            <tr>
+                                <td>${escapeHtml(pkg.version || '-')}</td>
+                                <td class="muted">${escapeHtml(DIST_LABELS[pkg.dist] || pkg.dist || '-')}</td>
+                                <td class="muted">${escapeHtml(pkg.architecture || '-')}</td>
+                                <td class="muted optional-column">${escapeHtml(formatSize(pkg.size))}</td>
+                                <td>${pkg.filename ? `<a href="${escapeHtml(pkg.filename)}">Download</a>` : '-'}</td>
+                            </tr>`).join('');
+
+                return `
+                    <div class="package-group">
+                        <h3>📦 ${escapeHtml(name)}</h3>
+                        <table class="package-table">
+                            <thead>
+                                <tr>
+                                    <th>Version</th>
+                                    <th>Distribution</th>
+                                    <th>Architektur</th>
+                                    <th class="optional-column">Größe</th>
+                                    <th>Datei</th>
+                                </tr>
+                            </thead>
+                            <tbody>${body}
+                            </tbody>
+                        </table>
+                    </div>`;
+            }).join('');
+
+            list.style.display = 'block';
             noPackages.style.display = 'none';
         }
 
         function showNoPackages() {
-            const tbody = document.getElementById('package-tbody');
-            const noPackages = document.getElementById('no-packages');
-            const table = tbody.parentElement;
-            
-            table.style.display = 'none';
-            noPackages.style.display = 'block';
+            document.getElementById('package-list').style.display = 'none';
+            document.getElementById('no-packages').style.display = 'block';
         }
 
         // Load packages when page loads
