@@ -9,11 +9,11 @@
   },
   {
     "name": "edulution-fileproxy",
-    "version": "1.1.10",
+    "version": "1.2.0",
     "architecture": "amd64",
     "dist": "noble",
-    "size": "18945630",
-    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.1.10_amd64.deb"
+    "size": "18315724",
+    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.2.0_amd64.deb"
   },
   {
     "name": "edulution-eventhandler",
@@ -22,6 +22,14 @@
     "dist": "noble",
     "size": "24296",
     "filename": "/pool/main/e/edulution-eventhandler/edulution-eventhandler_1.1.3-1_all.deb"
+  },
+  {
+    "name": "edulution-fileproxy",
+    "version": "1.2.0",
+    "architecture": "arm64",
+    "dist": "noble",
+    "size": "16562174",
+    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.2.0_arm64.deb"
   },
   {
     "name": "edulution-eventhandler",
