@@ -36,10 +36,15 @@ jobs:
             echo "No packages found, skipping processincoming"
           fi
 
+          # Make every package available in all configured Ubuntu releases
+          # (packages are usually uploaded for a single codename only)
+          bash sync-distributions.sh
+
           reprepro -V export
 
-          # Create symlink so both 'nobel' (legacy typo) and 'noble' (correct) URLs work
-          ln -s nobel dists/noble
+          # Create symlink so the legacy typo URL 'nobel' keeps working for
+          # clients that still have it in their sources.list
+          ln -s noble dists/nobel
 
           # Generate package list JSON for main page
           bash generate-package-json.sh

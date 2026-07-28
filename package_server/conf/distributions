@@ -1,7 +1,7 @@
 Origin: package.edulution.io
 Label: package.edulution.io
-Codename: nobel
-AlsoAcceptFor: noble
+Codename: noble
+AlsoAcceptFor: nobel
 Architectures: i386 amd64 arm64 source
 Components: main
 Description: Ubuntu 24.04 (noble) stable
