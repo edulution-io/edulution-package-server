@@ -4,9 +4,9 @@
 #
 # All distributions under dists/ are scanned, so the package list on the
 # landing page is not tied to a single Ubuntu release. Symlinked distribution
-# directories (e.g. dists/noble -> nobel) are skipped automatically because
-# `find` does not descend into symlinked directories, which keeps the list
-# free of duplicates.
+# directories (e.g. the legacy dists/nobel -> noble) are skipped automatically
+# because `find` does not descend into symlinked directories, which keeps the
+# list free of duplicates.
 
 echo "Generating packages.json..."
 
@@ -53,9 +53,6 @@ emit_entry() {
 for pkg_file in "${PACKAGES_FILES[@]}"; do
     # dists/<codename>/<component>/binary-<arch>/Packages -> <codename>
     dist=$(echo "$pkg_file" | sed -E 's|^dists/([^/]+)/.*|\1|')
-    # Normalise the legacy typo codename for display (the real dir is "nobel",
-    # exposed to users as "noble" via AlsoAcceptFor and a symlink).
-    [ "$dist" = "nobel" ] && dist="noble"
 
     package_name="" version="" arch="" size="" filename=""
     while IFS= read -r line; do

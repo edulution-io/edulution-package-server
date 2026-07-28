@@ -40,10 +40,32 @@ sudo apt-get install edulution-fileproxy
 | 24.04 LTS        | `noble`    | active               |
 | 26.04 LTS        | `resolute` | active               |
 
-> Note: For historical reasons the `noble` distribution is internally named
-> `nobel` (a typo). Thanks to `AlsoAcceptFor: noble` and a symlink
-> (`dists/noble -> nobel`), the correct `noble` URL works regardless. New
-> distributions should be created with the correct codename right away.
+> Note: The `noble` distribution used to be named `nobel` (a typo). It is now
+> called `noble` everywhere; the old name only survives as a compatibility
+> layer – `AlsoAcceptFor: nobel` accepts old uploads and the symlink
+> `dists/nobel -> noble` keeps the old URL working for existing clients. Both
+> can be dropped once no client uses `nobel` any more.
+
+### One-time migration after the rename
+
+Clients that used the repository **before** the rename have `Codename: nobel`
+in their APT cache. Because APT refuses updates after release-information
+changes, the first `apt update` after the rename fails:
+
+```
+E: Repository 'https://package.edulution.io noble Release' changed its
+   'Codename' value from 'nobel' to 'noble'
+```
+
+`apt-get update` exits with code 100 and the package list of this repository
+is not refreshed, which also breaks unattended upgrades and any automation.
+The change has to be accepted once per machine:
+
+```bash
+sudo apt update --allow-releaseinfo-change
+```
+
+Afterwards `apt update` works as before. Newly set up machines are unaffected.
 
 ---
 
@@ -55,10 +77,11 @@ sudo apt-get install edulution-fileproxy
 │   └── <package-name>/<codename>/ # e.g. edulution-fileproxy/noble/...
 ├── package_server/               # Source of the published repository
 │   ├── conf/
-│   │   ├── distributions         # reprepro: distributions (noble/nobel, resolute)
+│   │   ├── distributions         # reprepro: distributions (noble, resolute)
 │   │   └── incoming              # reprepro: incoming configuration
 │   ├── pub.gpg                   # public signing key
 │   ├── index.html                # landing page (instructions + package list)
+│   ├── sync-distributions.sh     # copies packages into all distributions
 │   ├── generate-package-json.sh  # generates packages.json for the landing page
 │   ├── generate-indices.sh       # generates index.html for directory browsing
 │   └── media/                    # logo/background for the landing page
@@ -97,6 +120,20 @@ and imports it.
 3. Commit the change. A push to `main` builds and deploys the repository
    automatically (see below).
 
+> A package only has to be uploaded for **one** codename. During the build,
+> `sync-distributions.sh` copies it into every other distribution, so a package
+> uploaded under `noble` is also available for Ubuntu 26.04 (`resolute`).
+> If a distribution needs its own build, place it under
+> `packages/<package-name>/<codename>/` – an existing package is never
+> overwritten by a copy from another distribution.
+>
+> The check is per package **name**: as soon as a distribution contains a
+> package of that name, it is left alone completely, including all its
+> architectures and regardless of version. A distribution-specific build
+> therefore has to be maintained on its own – it does not receive the newer
+> version from another distribution. The build logs every such case as
+> `Skipping <package> for <distribution> (already present)`.
+
 > In practice, the individual package repositories (e.g.
 > `edulution-fileproxy`) push their releases via automation into an
 > `update/...` branch of this repo. The
@@ -112,7 +149,9 @@ and imports it.
 3. Add the codename to the `FALLBACK_DISTS` list in
    [`package_server/index.html`](package_server/index.html) (only relevant for
    the display when `packages.json` is unreachable).
-4. Place packages under `packages/<package-name>/<codename>/`.
+4. Optional: place distribution-specific packages under
+   `packages/<package-name>/<codename>/`. All other packages are copied into
+   the new distribution automatically during the build.
 
 The client instructions do **not** need to be changed – they detect the
 codename automatically.
@@ -129,13 +168,16 @@ directory:
    `GPG_PRIVATE_KEY` secret).
 2. Copy existing `.deb` packages from `../packages/*/*/*` into `incoming/` and
    import them with `reprepro processincoming default`.
-3. Generate the repository indices with `reprepro export`.
-4. Create the symlink `dists/noble -> nobel` (compatibility, see above).
-5. `generate-package-json.sh` generates `packages.json` (the landing page's
+3. `sync-distributions.sh` copies every package into all distributions
+   configured in `conf/distributions`, unless the distribution already
+   contains a package of that name.
+4. Generate the repository indices with `reprepro export`.
+5. Create the symlink `dists/nobel -> noble` (legacy URL, see above).
+6. `generate-package-json.sh` generates `packages.json` (the landing page's
    package list, across **all** distributions).
-6. `generate-indices.sh` generates `index.html` files for browsing the
+7. `generate-indices.sh` generates `index.html` files for browsing the
    `dists/` and `pool/` directories.
-7. **Deploy** (only on `main`): the contents of `package_server/` are published
+8. **Deploy** (only on `main`): the contents of `package_server/` are published
    to GitHub Pages (branch `package_server`).
 
 ### Required secrets
@@ -157,6 +199,7 @@ is installed:
 
 ```bash
 cd package_server
+bash sync-distributions.sh         # copy packages into all distributions
 reprepro -V export                 # generate indices (uses conf/ + pool/)
 bash generate-package-json.sh      # build packages.json
 bash generate-indices.sh           # build directory indices
