@@ -265,6 +265,17 @@
             Der Befehl in Schritt 2 erkennt die installierte Version automatisch über <code>/etc/os-release</code>.
         </div>
 
+        <div class="note">
+            <strong>Einmalige Meldung nach der Umbenennung:</strong> Die Distribution hieß intern früher
+            <code>nobel</code> und heißt jetzt korrekt <code>noble</code>. Auf Systemen, die das Repository
+            vorher schon eingebunden hatten, bricht <code>apt update</code> deshalb einmalig mit
+            <em>„… changed its 'Codename' value from 'nobel' to 'noble'“</em> ab. Einmal bestätigen genügt:
+            <div class="code-block">
+                <code>sudo apt update --allow-releaseinfo-change</code>
+            </div>
+            Danach funktioniert <code>apt update</code> wieder wie gewohnt. Neu eingerichtete Systeme sind nicht betroffen.
+        </div>
+
         <h2>📋 Verfügbare Pakete</h2>
         <!-- One section per package, filled by JavaScript from packages.json -->
         <div id="package-list"></div>

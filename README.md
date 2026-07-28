@@ -46,6 +46,27 @@ sudo apt-get install edulution-fileproxy
 > `dists/nobel -> noble` keeps the old URL working for existing clients. Both
 > can be dropped once no client uses `nobel` any more.
 
+### One-time migration after the rename
+
+Clients that used the repository **before** the rename have `Codename: nobel`
+in their APT cache. Because APT refuses updates after release-information
+changes, the first `apt update` after the rename fails:
+
+```
+E: Repository 'https://package.edulution.io noble Release' changed its
+   'Codename' value from 'nobel' to 'noble'
+```
+
+`apt-get update` exits with code 100 and the package list of this repository
+is not refreshed, which also breaks unattended upgrades and any automation.
+The change has to be accepted once per machine:
+
+```bash
+sudo apt update --allow-releaseinfo-change
+```
+
+Afterwards `apt update` works as before. Newly set up machines are unaffected.
+
 ---
 
 ## Repository layout
@@ -105,6 +126,13 @@ and imports it.
 > If a distribution needs its own build, place it under
 > `packages/<package-name>/<codename>/` – an existing package is never
 > overwritten by a copy from another distribution.
+>
+> The check is per package **name**: as soon as a distribution contains a
+> package of that name, it is left alone completely, including all its
+> architectures and regardless of version. A distribution-specific build
+> therefore has to be maintained on its own – it does not receive the newer
+> version from another distribution. The build logs every such case as
+> `Skipping <package> for <distribution> (already present)`.
 
 > In practice, the individual package repositories (e.g.
 > `edulution-fileproxy`) push their releases via automation into an

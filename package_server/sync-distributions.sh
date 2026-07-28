@@ -12,7 +12,10 @@
 # A distribution-specific build always wins: if a package name already exists
 # in a distribution, it is never overwritten by a copy from another one.
 
-set -e
+# pipefail matters here: packages_in() pipes reprepro into sort, and without it
+# a failing "reprepro list" would look like an empty distribution instead of
+# aborting the build.
+set -eo pipefail
 
 CODENAMES=$(awk '/^Codename:/ {print $2}' conf/distributions)
 
