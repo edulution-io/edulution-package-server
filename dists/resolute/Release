@@ -1,7 +1,7 @@
 Origin: package.edulution.io
 Label: package.edulution.io
 Codename: resolute
-Date: Fri, 07 Aug 2026 13:27:09 UTC
+Date: Fri, 07 Aug 2026 13:31:41 UTC
 Architectures: i386 amd64 arm64
 Components: main
 Description: Ubuntu 26.04 (resolute) stable
@@ -9,11 +9,11 @@ MD5Sum:
  48ced474e870a80679c38dad0eb44445 1288 main/binary-i386/Packages
  80a435ea94b877409dc2cda66dcb1a7f 725 main/binary-i386/Packages.gz
  3154d769270fe37e25c7e644afff64aa 136 main/binary-i386/Release
- 0d1600f69d18068f1161c669f2caa9d7 1752 main/binary-amd64/Packages
- cc6d941e5ea6b3573af35f8436b6c6fe 924 main/binary-amd64/Packages.gz
+ 507e2b8926a76ba809aa492557240588 1752 main/binary-amd64/Packages
+ 26bfdb330c8a0ece97307cc20fe62719 922 main/binary-amd64/Packages.gz
  03ce911945ee48e73f4e501af7857966 137 main/binary-amd64/Release
- b2304c1c57010f29e3da31a6b9930c8a 1752 main/binary-arm64/Packages
- c8fadbe9923e0f7a40188047875a1b99 925 main/binary-arm64/Packages.gz
+ 3b9acc11a53f68e74d31c7756f426842 1752 main/binary-arm64/Packages
+ fb49071d8d9c2a2fc781827125496fe1 924 main/binary-arm64/Packages.gz
  51c6b211db9694aca65756326bd18890 137 main/binary-arm64/Release
  d41d8cd98f00b204e9800998ecf8427e 0 main/source/Sources
  7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
@@ -22,11 +22,11 @@ SHA1:
  1fadf6bfed5a32c16121163b2aa80fc3e18a75af 1288 main/binary-i386/Packages
  9477381ab5518b7a745c98607f0bcda412dcc71e 725 main/binary-i386/Packages.gz
  c8ad46b440794932c6ff198cd5a08ad08d7d49d9 136 main/binary-i386/Release
- 4fa026dbbfaf0edf80e4a0b922a3dfa5005a6c00 1752 main/binary-amd64/Packages
- cd8a1b643fbebbbd30492ad2d686f8eecc5c7fdd 924 main/binary-amd64/Packages.gz
+ d41f2e3272e3ce53714f3169fe1108cd09ccd83c 1752 main/binary-amd64/Packages
+ 68bd37f2c86d6127966423c29a860538fca8e307 922 main/binary-amd64/Packages.gz
  65cd20f68c885550ae0da03e6081e2effb19d7d2 137 main/binary-amd64/Release
- 5602a6941bbcfdc8c1af11ea16995f0138478654 1752 main/binary-arm64/Packages
- a100e8467e79dc43f12d892c8c57f91167004851 925 main/binary-arm64/Packages.gz
+ 648fc10bc27d325acf75e55bcfbd8acf8481cf24 1752 main/binary-arm64/Packages
+ 9eed74bb888737fc8ac0e1689ec769c05228b4ef 924 main/binary-arm64/Packages.gz
  f90ab57e9256f0ad2b0dd0d6789782cd43079bd3 137 main/binary-arm64/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/source/Sources
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
@@ -35,11 +35,11 @@ SHA256:
  664e9eb4544795eed055d64a13a588b77ef4652effb5867354b0c12a922f9ed1 1288 main/binary-i386/Packages
  87395d6181c68e735e30bf3305fb8a143227d5a9c3dfd8a6e56f1e3effafa9ad 725 main/binary-i386/Packages.gz
  9f259a957ceeca633bc2d937b3b1961ddf47beb14f1d21229a9f7e3481b27af3 136 main/binary-i386/Release
- 9dd757e2c2369be8c21008f10eb9b89c64b1b2cb69faf905755f5e050eccd5c5 1752 main/binary-amd64/Packages
- c128891c92d7de7d1a568147b3cf4f64ea35162c4a9ad64e686befc93e6384d4 924 main/binary-amd64/Packages.gz
+ 49cfaae060f7d6e2cbd0475954fb30bfb53242328721db3ad02a8635ba664b5e 1752 main/binary-amd64/Packages
+ c7e4c2dba5544b507b347d2f72ba4449e9c52f43225d36691c81cb31e56b93ac 922 main/binary-amd64/Packages.gz
  85b377c9efd60a52c86d8353055c8d6b4fa9720d7d51346697349a7e6f715f62 137 main/binary-amd64/Release
- e0c0f463cb6179c02d9d38a5776c8bdac6aa58ca3d4bdf602587c2f779e9f061 1752 main/binary-arm64/Packages
- c202140c0b81760f0baf2ec1fcdc4a473daf41095522b7761d4ae530b35073ef 925 main/binary-arm64/Packages.gz
+ 0faac9d2df90cbac27782388f7bd74a66ebc5252075bf9935aef84cab011ffe2 1752 main/binary-arm64/Packages
+ a0bd3ca50d7c17c43d456b566137465d14b96b04b01fc18bdf57204a805b0211 924 main/binary-arm64/Packages.gz
  be71e619835100e9ad39c18d619b2062b91f8ddea0e06abb599a4162e57b805b 137 main/binary-arm64/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/source/Sources
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
