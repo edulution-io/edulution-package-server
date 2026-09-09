@@ -1,0 +1,9 @@
+# Lintian tags that validate-incoming.sh does not fail the build on.
+#
+# Keep this list short and justify every entry. A tag either describes
+# something we accept for good or a known defect that has to be removed again
+# once it is fixed.
+
+# The edulution binaries are pure Go, built with CGO_ENABLED=0 so they
+# cross-compile without a toolchain. Static linking is the intended result.
+statically-linked-binary
