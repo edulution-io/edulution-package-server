@@ -19,7 +19,7 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
-          sudo apt update && sudo apt install reprepro
+          sudo apt update && sudo apt install -y reprepro lintian
 
           cd package_server
 
@@ -31,6 +31,13 @@ jobs:
 
           if [ -n "$(find ../packages -type f -name '*.deb' 2>/dev/null)" ]; then
             cp ../packages/*/*/* incoming/
+
+            # Refuse to publish packages whose checksums do not match or that
+            # lintian rejects. This runs on every branch, so a bad package
+            # fails the bot's update/* pull request instead of reaching
+            # clients.
+            bash validate-incoming.sh
+
             reprepro -V processincoming default
           else
             echo "No packages found, skipping processincoming"
