@@ -1,0 +1,28 @@
+Format: 1.8
+Date: Tue, 06 Oct 2026 15:22:54 +0200
+Source: edulution-fileproxy
+Binary: edulution-fileproxy
+Built-For-Profiles: noudeb
+Architecture: amd64
+Version: 1.4.1
+Distribution: noble
+Urgency: high
+Maintainer: edulution.io <info@netzint.de>
+Changed-By: edulution.io <info@netzint.de>
+Description:
+ edulution-fileproxy - WebDAV server with SMB backend and NTLM authentication
+Changes:
+ edulution-fileproxy (1.4.1) noble; urgency=high
+ .
+   * Security release, unchanged from 1.4.1~rc2. That candidate was verified by
+     an upgrade from 1.4.0 on a live installation. The entries for 1.4.1~rc2
+     and 1.4.1~rc1 below list everything that changed since 1.4.0.
+Checksums-Sha1:
+ b628d38c05b750cd8414a2a03450b9db131265d6 7307 edulution-fileproxy_1.4.1_amd64.buildinfo
+ 1f07a4b8eb7474e96e67f055f5b8a55b39258c95 11602842 edulution-fileproxy_1.4.1_amd64.deb
+Checksums-Sha256:
+ 53672d01f0df8bd172b2d2469880259b67b90dd04d1626a5720891865530ba8e 7307 edulution-fileproxy_1.4.1_amd64.buildinfo
+ 0add2f218f071c1066c1aeb4e54672e4253cd07819b441ea5868451c211e6f95 11602842 edulution-fileproxy_1.4.1_amd64.deb
+Files:
+ 9440bab22f3871af180370ec428c22c0 7307 utils optional edulution-fileproxy_1.4.1_amd64.buildinfo
+ 53f8f4dab7328f1afd23ca4b43d8bf6b 11602842 utils optional edulution-fileproxy_1.4.1_amd64.deb
