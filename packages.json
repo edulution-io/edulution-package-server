@@ -1,34 +1,34 @@
 [
   {
     "name": "edulution-fileproxy",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "architecture": "amd64",
     "dist": "noble",
-    "size": "18457060",
-    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.4.0_amd64.deb"
+    "size": "11602842",
+    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.4.1_amd64.deb"
   },
   {
     "name": "edulution-fileproxy",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "architecture": "arm64",
     "dist": "noble",
-    "size": "16693010",
-    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.4.0_arm64.deb"
+    "size": "10365356",
+    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.4.1_arm64.deb"
   },
   {
     "name": "edulution-fileproxy",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "architecture": "amd64",
     "dist": "resolute",
-    "size": "18457060",
-    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.4.0_amd64.deb"
+    "size": "11602842",
+    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.4.1_amd64.deb"
   },
   {
     "name": "edulution-fileproxy",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "architecture": "arm64",
     "dist": "resolute",
-    "size": "16693010",
-    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.4.0_arm64.deb"
+    "size": "10365356",
+    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.4.1_arm64.deb"
   }
 ]

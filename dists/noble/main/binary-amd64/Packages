@@ -1,13 +1,30 @@
 Package: edulution-fileproxy
-Version: 1.4.0
+Version: 1.4.1
 Architecture: amd64
 Maintainer: edulution.io <info@netzint.de>
+Installed-Size: 51486
+Depends: openssl, poppler-utils
+Homepage: https://github.com/edulution-io/edulution-fileproxy
 Priority: optional
 Section: utils
-Filename: pool/main/e/edulution-fileproxy/edulution-fileproxy_1.4.0_amd64.deb
-Size: 18457060
-SHA256: 6421b152bd90a61d1807ce073576f9054c895b282823954e2177a882acd9975f
-SHA1: abe1b0a4459ea164e28b72d145c6da2f4b0b78d7
-MD5sum: a141a63f656c3c38ecbf3d72f9a6794f
-Description: Webdav-Server with SMB support and NTLM authentication
+Filename: pool/main/e/edulution-fileproxy/edulution-fileproxy_1.4.1_amd64.deb
+Size: 11602842
+SHA256: 0add2f218f071c1066c1aeb4e54672e4253cd07819b441ea5868451c211e6f95
+SHA1: 1f07a4b8eb7474e96e67f055f5b8a55b39258c95
+MD5sum: 53f8f4dab7328f1afd23ca4b43d8bf6b
+Description: WebDAV server with SMB backend and NTLM authentication
+ edulution-fileproxy exposes the shares of a Samba/Active Directory file server
+ over WebDAV, so that desktop clients and the edulution web UI reach the same
+ files through a single HTTPS endpoint. Callers authenticate against the domain
+ controller, and every request is served over an SMB session belonging to that
+ caller, which leaves the file server's own ACLs as the authority on what a user
+ may read or write.
+ .
+ The package also installs edulution-fileproxy-reindex, an offline CLI that
+ rebuilds the Elasticsearch index behind the wiki search endpoints, and the
+ compose file for the Elasticsearch sidecar that the indexer expects on
+ localhost. The wiki indexer is enabled in the shipped example configuration
+ and needs the bring-up described in
+ /usr/share/doc/edulution-fileproxy/README.Debian; the service is therefore
+ installed neither enabled nor started.
 
