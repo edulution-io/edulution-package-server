@@ -1,0 +1,13 @@
+# Lintian tags that validate-incoming.sh does not fail the build on.
+#
+# Keep this list short and justify every entry. A tag either describes
+# something we accept for good (statically-linked-binary) or a known defect
+# that has to be removed again once upstream fixes it (aliased-location).
+
+# The edulution binaries are pure Go, built with CGO_ENABLED=0 so they
+# cross-compile without a toolchain. Static linking is the intended result.
+statically-linked-binary
+
+# TODO(edulution-eventhandler): ships its systemd unit in /lib/systemd/system
+# instead of /usr/lib/systemd/system. Drop this entry once that is fixed.
+aliased-location
