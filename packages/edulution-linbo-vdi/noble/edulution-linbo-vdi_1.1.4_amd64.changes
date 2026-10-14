@@ -1,0 +1,29 @@
+Format: 1.8
+Date: Wed, 14 Oct 2026 21:38:18 +0200
+Source: edulution-linbo-vdi
+Binary: edulution-linbo-vdi
+Built-For-Profiles: noudeb
+Architecture: all
+Version: 1.1.4
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@netzint.de>
+Changed-By: Lukas Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ edulution-linbo-vdi - VDI service for linuxmuster.net on Proxmox
+Changes:
+ edulution-linbo-vdi (1.1.4) noble; urgency=medium
+ .
+   * Resume interrupted builds after a service restart: a master or clone
+     left in 'building' with a running VM gets its health check finished
+     (and the master its template conversion) instead of being replaced
+     after the stuck timeout (closes #10).
+Checksums-Sha1:
+ 3a69abe93847796490590daadaf9a40bdf4ef7a9 66446 edulution-linbo-vdi_1.1.4_all.deb
+ 46125df5bf3f5f3fe58723ff6a633124ff3e9262 9003 edulution-linbo-vdi_1.1.4_amd64.buildinfo
+Checksums-Sha256:
+ e0d44ae8016ee64236e7c81c281ac47174733b1f07c5285598d9c848dc80ffa9 66446 edulution-linbo-vdi_1.1.4_all.deb
+ d7f9f1774ac829f1864c5d546c3df981c117839dac33a6e0cf434d78daccc760 9003 edulution-linbo-vdi_1.1.4_amd64.buildinfo
+Files:
+ ba2fd7c87906d2e25d08fc95477c28ae 66446 admin optional edulution-linbo-vdi_1.1.4_all.deb
+ 5fb644fc37073125f2dca36e16a5ef37 9003 admin optional edulution-linbo-vdi_1.1.4_amd64.buildinfo
