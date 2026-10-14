@@ -1,0 +1,65 @@
+Format: 1.8
+Date: Wed, 14 Oct 2026 12:00:00 +0200
+Source: edulution-linbo-vdi
+Binary: edulution-linbo-vdi
+Built-For-Profiles: noudeb
+Architecture: all
+Version: 1.1.0
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@netzint.de>
+Changed-By: Lukas Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ edulution-linbo-vdi - VDI service for linuxmuster.net on Proxmox
+Changes:
+ edulution-linbo-vdi (1.1.0) noble; urgency=medium
+ .
+   * Security: support Proxmox API tokens and TLS verification against the
+     cluster CA (verifySsl); vdi-setup fetches and pins the CA by default and
+     documents a least-privilege role instead of root@pam.
+   * Security: config directory 0700 and vdiConfig.json 0600 (postinst fixes
+     existing installs); SPICE .vv files move from /tmp/vdi to a root-only
+     /run/edulution-linbo-vdi, are created O_EXCL with mode 0600, and their
+     content is returned to the API caller.
+   * Security: SSH connections verify host keys (RejectPolicy by default);
+     linbo-remote and smbstatus run as argv lists with validated hostnames.
+   * Security: .vdi group configs are validated (allow-list) before any value
+     reaches the Proxmox API; VMs in a VDI VMID range without a VDI
+     description are never touched.
+   * Security: used clones are destroyed and rebuilt after the session ends
+     (recycleUsedClones, default on) so no user data reaches the next user.
+   * Fix: assignment timeouts compared YYYYMMDDHHmmSS numbers, which broke at
+     every hour and day rollover and could hand an in-use VM to another user.
+   * Fix: smbstatus was called with a shell pipe but without a shell, so user
+     detection never worked locally; the parser now uses smbstatus -j with a
+     regex fallback, and the QEMU guest agent is used as a second signal.
+   * Fix: stopped clones (e.g. after a hypervisor reboot) were counted as
+     available; they are now powered on, and the broker only hands out
+     running clones.
+   * Fix: failed clones were never removed; clone/VM creation now waits for
+     the Proxmox task to finish; a master that ignored ACPI shutdown is
+     force-stopped and verified to be a template before clones are built.
+   * Fix: group lookups in devices.csv used substring matches; VMIDs are
+     normalised to strings; rsplit for image names with dots.
+   * Fix: duplicate master/clone builds within one cycle are prevented;
+     the service survives errors in a single group and stops cleanly on
+     SIGTERM.
+   * Replace nmap/python-nmap with a TCP connect check; honour healthPorts.
+   * vdi-setup: group-specific hostnames, collision check against
+     devices.csv, no USB redirection / folder sharing by default, no dead
+     lmn-api-secret.
+   * Packaging: build with debhelper 13 + pybuild into the version-independent
+     Debian layout (works on Ubuntu 24.04 and 26.04), hardened systemd unit
+     that stays idle until configured, postrm purge, debian/copyright (AGPL).
+   * CI: lint, tests, bandit, package build + install test on noble and
+     resolute; release workflow checks tag vs changelog and publishes SBOM
+     and checksums.
+Checksums-Sha1:
+ c107a537218bf4cb57dc48bd886977902930a047 62428 edulution-linbo-vdi_1.1.0_all.deb
+ ff5d58af4d8d8adf55438470bbb7cc00b77d4a93 9002 edulution-linbo-vdi_1.1.0_amd64.buildinfo
+Checksums-Sha256:
+ 42243d21faaa24cb2ffbee00b49ffb9d73491fa1225d08581d1342e8a9e90390 62428 edulution-linbo-vdi_1.1.0_all.deb
+ a7d20e9bdc81729f0e10943ea5be59fdd65ac7e7c00e5fbb7fa4e956b823fb74 9002 edulution-linbo-vdi_1.1.0_amd64.buildinfo
+Files:
+ 548f4ddc8eb18c93e30beab39da47baa 62428 admin optional edulution-linbo-vdi_1.1.0_all.deb
+ 7540d1dd20b7db66177da43051e93633 9002 admin optional edulution-linbo-vdi_1.1.0_amd64.buildinfo
