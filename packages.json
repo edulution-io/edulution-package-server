@@ -8,6 +8,14 @@
     "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.4.1_amd64.deb"
   },
   {
+    "name": "edulution-linbo-vdi",
+    "version": "1.1.0",
+    "architecture": "all",
+    "dist": "noble",
+    "size": "62428",
+    "filename": "/pool/main/e/edulution-linbo-vdi/edulution-linbo-vdi_1.1.0_all.deb"
+  },
+  {
     "name": "edulution-fileproxy",
     "version": "1.4.1",
     "architecture": "arm64",
@@ -22,6 +30,14 @@
     "dist": "resolute",
     "size": "11602842",
     "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.4.1_amd64.deb"
+  },
+  {
+    "name": "edulution-linbo-vdi",
+    "version": "1.1.0",
+    "architecture": "all",
+    "dist": "resolute",
+    "size": "62428",
+    "filename": "/pool/main/e/edulution-linbo-vdi/edulution-linbo-vdi_1.1.0_all.deb"
   },
   {
     "name": "edulution-fileproxy",
