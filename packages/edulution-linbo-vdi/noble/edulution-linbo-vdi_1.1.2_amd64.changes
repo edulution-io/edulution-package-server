@@ -1,0 +1,37 @@
+Format: 1.8
+Date: Wed, 14 Oct 2026 13:21:38 +0200
+Source: edulution-linbo-vdi
+Binary: edulution-linbo-vdi
+Built-For-Profiles: noudeb
+Architecture: all
+Version: 1.1.2
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@netzint.de>
+Changed-By: Lukas Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ edulution-linbo-vdi - VDI service for linuxmuster.net on Proxmox
+Changes:
+ edulution-linbo-vdi (1.1.2) noble; urgency=medium
+ .
+   * preinst removes a symlink at /usr/lib/python3/dist-packages/edulution_linbo_vdi
+     left by manual 1.0.x workarounds, so the upgrade does not install through it.
+   * Fix: TLS pinning against pve-root-ca.pem failed on Python 3.13+ (strict
+     X.509 mode rejects the CA's missing keyUsage); a pinned CA now verifies the
+     chain and hostname without the strict extension check.
+   * Fix: the systemd sandbox blocked netlink, so 'net conf list' and
+     smbstatus failed inside the service (user detection broken); allow
+     AF_NETLINK.
+   * The documented Proxmox role no longer lists VM.GuestAgent.Audit, which
+     Proxmox VE 8 rejects; PVE 9 users add it themselves.
+   * New masters get the QEMU guest agent option enabled (agent=enabled=1,
+     overridable per group), so logged-in users are detected without SMB.
+Checksums-Sha1:
+ e8d7f7a50ca2640b81e874142db6ab4d074309d3 65072 edulution-linbo-vdi_1.1.2_all.deb
+ f77e3fe8df73c07bf77abd3bce47a8de3da24d8b 9002 edulution-linbo-vdi_1.1.2_amd64.buildinfo
+Checksums-Sha256:
+ dce995afd383c2805768f5120c95155e312af1b8b3052a317767a4efe1120f8b 65072 edulution-linbo-vdi_1.1.2_all.deb
+ bbb8029a37eb2780ce93e32ba1539863360e13c1cbfedaefe8a07fcb01d286d3 9002 edulution-linbo-vdi_1.1.2_amd64.buildinfo
+Files:
+ 57786fa6cf9adc1287d453dd100de83b 65072 admin optional edulution-linbo-vdi_1.1.2_all.deb
+ 1451a6229e6050cbb595500625c9e260 9002 admin optional edulution-linbo-vdi_1.1.2_amd64.buildinfo
