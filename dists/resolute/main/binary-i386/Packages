@@ -1,19 +1,19 @@
 Package: edulution-linbo-vdi
-Version: 1.1.1
+Version: 1.1.2
 Architecture: all
 Maintainer: edulution.io <info@netzint.de>
-Installed-Size: 232
+Installed-Size: 238
 Depends: python3-paramiko, python3-proxmoxer, python3-requests, python3:any, samba-common-bin
 Recommends: linuxmuster-linbo7
 Suggests: linuxmuster-api7
 Homepage: https://github.com/edulution-io/edulution-linbo-vdi
 Priority: optional
 Section: admin
-Filename: pool/main/e/edulution-linbo-vdi/edulution-linbo-vdi_1.1.1_all.deb
-Size: 63498
-SHA256: ed920848ca73e980766965c0b8a6e4479c219782236c2dfb78516b46ce55aa92
-SHA1: a7cf1b2e83162a31c7a42f92f8faad129c9bc5df
-MD5sum: bf6aa37a05eb6edf3c051aff4eb84f80
+Filename: pool/main/e/edulution-linbo-vdi/edulution-linbo-vdi_1.1.2_all.deb
+Size: 65072
+SHA256: dce995afd383c2805768f5120c95155e312af1b8b3052a317767a4efe1120f8b
+SHA1: e8d7f7a50ca2640b81e874142db6ab4d074309d3
+MD5sum: 57786fa6cf9adc1287d453dd100de83b
 Description: VDI service for linuxmuster.net on Proxmox
  edulution-linbo-vdi manages a pool of virtual desktops on a Proxmox VE node
  for a linuxmuster.net server. It builds a master VM from a LINBO image,
