@@ -2,13 +2,11 @@ name: Pull Request on update Branch Push
 
 on:
   push:
-    branches-ignore:
-      - main
-      - package_server
+    branches:
+      - "update/**"
 
 permissions:
   contents: read
-  pull-requests: write
 
 jobs:
   auto-pull-request:
@@ -18,9 +16,18 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - name: pull-request-action
-        uses: vsoch/pull-request-action@77b3eea5c721545c56f775e1ed4ff9c9c1386148 # master, 2025-04-23
+      # The branch name comes from whoever pushed it, so it reaches the script
+      # through env, never through an expression in the script itself.
+      - name: Open a pull request unless one is open
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_PREFIX: "update/"
-          PULL_REQUEST_BRANCH: "main"
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          if [ -n "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
+            echo "A pull request for $BRANCH is already open."
+            exit 0
+          fi
+          gh pr create --head "$BRANCH" --base main \
+            --title "Update from $BRANCH" \
+            --body "This is an automated pull request to update from branch $BRANCH"
