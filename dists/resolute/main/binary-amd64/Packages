@@ -1,17 +1,18 @@
 Package: edulution-fileproxy
-Version: 1.4.1
+Version: 1.5.0
 Architecture: amd64
 Maintainer: edulution.io <info@netzint.de>
-Installed-Size: 51486
-Depends: openssl, poppler-utils
+Installed-Size: 33125
+Depends: openssl
+Recommends: logrotate
 Homepage: https://github.com/edulution-io/edulution-fileproxy
 Priority: optional
 Section: utils
-Filename: pool/main/e/edulution-fileproxy/edulution-fileproxy_1.4.1_amd64.deb
-Size: 11602842
-SHA256: 0add2f218f071c1066c1aeb4e54672e4253cd07819b441ea5868451c211e6f95
-SHA1: 1f07a4b8eb7474e96e67f055f5b8a55b39258c95
-MD5sum: 53f8f4dab7328f1afd23ca4b43d8bf6b
+Filename: pool/main/e/edulution-fileproxy/edulution-fileproxy_1.5.0_amd64.deb
+Size: 8930252
+SHA256: 95e2d6a012d02893f0bfb253effb208fb4e12e02787d38b00dc1c39f4e13455c
+SHA1: 1d9f199cf6972951d842d4d3fa596ba6a02501f5
+MD5sum: 86d4ca2b0fcd4d2b64bb6a9df0cb7bf6
 Description: WebDAV server with SMB backend and NTLM authentication
  edulution-fileproxy exposes the shares of a Samba/Active Directory file server
  over WebDAV, so that desktop clients and the edulution web UI reach the same
