@@ -1,0 +1,36 @@
+Format: 1.8
+Date: Thu, 15 Oct 2026 15:27:23 +0200
+Source: edulution-fileproxy
+Binary: edulution-fileproxy
+Built-For-Profiles: noudeb
+Architecture: amd64
+Version: 1.5.0
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@netzint.de>
+Changed-By: edulution.io <info@netzint.de>
+Description:
+ edulution-fileproxy - WebDAV server with SMB backend and NTLM authentication
+Changes:
+ edulution-fileproxy (1.5.0) noble; urgency=medium
+ .
+   * Release of 1.5.0~rc2, which was tested on an existing installation, with
+     one fix found there: the logrotate config named only webdav-server.log,
+     so a log.file such as server.log was never rotated. It now rotates every
+     *.log in /var/log/edulution-fileproxy, and postinst names any other
+     logrotate file that also rotates there, since logrotate refuses a log
+     that two files name.
+   * README.Debian and the runbook say how to keep an Elasticsearch outside the
+     sidecar current: on 8.x, at least at the pinned version, and restarted
+     after its own upgrade.
+   * The entry for 1.5.0~rc2 below lists everything else that changed since
+     1.4.1.
+Checksums-Sha1:
+ 9beec12f62f239557e2548e985848c2524ccf76f 5761 edulution-fileproxy_1.5.0_amd64.buildinfo
+ 1d9f199cf6972951d842d4d3fa596ba6a02501f5 8930252 edulution-fileproxy_1.5.0_amd64.deb
+Checksums-Sha256:
+ de6335c2e049068bfbc9f46e7321f2e970047f19e0c38605af26717c7773cb56 5761 edulution-fileproxy_1.5.0_amd64.buildinfo
+ 95e2d6a012d02893f0bfb253effb208fb4e12e02787d38b00dc1c39f4e13455c 8930252 edulution-fileproxy_1.5.0_amd64.deb
+Files:
+ 5c0d18c9657c2a6ea4723246479046b8 5761 utils optional edulution-fileproxy_1.5.0_amd64.buildinfo
+ 86d4ca2b0fcd4d2b64bb6a9df0cb7bf6 8930252 utils optional edulution-fileproxy_1.5.0_amd64.deb
