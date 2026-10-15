@@ -1,67 +1,63 @@
 name: Build and Deploy
 
-on: 
+on:
   push:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  build-and-deploy:
+  # Runs on every branch, so a bad package fails the bot's update/* pull
+  # request. It builds the repository unsigned and never sees the signing key.
+  validate:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v5
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           lfs: true
+          persist-credentials: false
 
-      - name: Install and Build 🔧
+      - name: Build the repository unsigned
+        working-directory: package_server
         run: |
-          sudo apt update && sudo apt install -y reprepro lintian
+          sudo apt-get update && sudo apt-get install -y reprepro lintian
+          sed -i '/^SignWith:/d' conf/distributions
+          bash build-repository.sh
 
-          cd package_server
+  build-and-deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    # The environment admits main only and holds the signing key, so a run on
+    # any other branch cannot read it.
+    environment: repository-signing
+    permissions:
+      contents: write
 
-          # import keys
-          gpg2 --import pub.gpg
-          echo -e "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --import --no-tty --batch --yes
-          
-          mkdir incoming
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          lfs: true
+          persist-credentials: false
 
-          if [ -n "$(find ../packages -type f -name '*.deb' 2>/dev/null)" ]; then
-            cp ../packages/*/*/* incoming/
+      - name: Build and sign the repository
+        working-directory: package_server
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        run: |
+          sudo apt-get update && sudo apt-get install -y reprepro lintian
+          gpg --import pub.gpg
+          # %b expands backslash escapes as the earlier echo -e did, in case
+          # the secret stores its line breaks as \n.
+          printf '%b\n' "$GPG_PRIVATE_KEY" | gpg --import --no-tty --batch --yes
+          bash build-repository.sh
 
-            # Refuse to publish packages whose checksums do not match or that
-            # lintian rejects. This runs on every branch, so a bad package
-            # fails the bot's update/* pull request instead of reaching
-            # clients.
-            bash validate-incoming.sh
-
-            reprepro -V processincoming default
-          else
-            echo "No packages found, skipping processincoming"
-          fi
-
-          # Make every package available in all configured Ubuntu releases
-          # (packages are usually uploaded for a single codename only)
-          bash sync-distributions.sh
-
-          reprepro -V export
-
-          # Create symlink so the legacy typo URL 'nobel' keeps working for
-          # clients that still have it in their sources.list
-          ln -s noble dists/nobel
-
-          # Generate package list JSON for main page
-          bash generate-package-json.sh
-          
-          # Generate directory index files for browsing
-          bash generate-indices.sh
-
-      - name: Deploy 🚀
-        if: ${{ github.ref == 'refs/heads/main' }}
-        uses: JamesIves/github-pages-deploy-action@4.1.3
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # v4.9.0
         with:
           branch: package_server
           folder: package_server

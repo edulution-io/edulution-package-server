@@ -19,7 +19,7 @@ jobs:
       pull-requests: write
     steps:
       - name: pull-request-action
-        uses: vsoch/pull-request-action@master
+        uses: vsoch/pull-request-action@77b3eea5c721545c56f775e1ed4ff9c9c1386148 # master, 2025-04-23
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH_PREFIX: "update/"
