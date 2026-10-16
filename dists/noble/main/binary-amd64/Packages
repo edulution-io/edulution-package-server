@@ -30,21 +30,21 @@ Description: WebDAV server with SMB backend and NTLM authentication
  installed neither enabled nor started.
 
 Package: edulution-linbo-vdi
-Version: 1.1.6
+Version: 1.1.7
 Architecture: all
 Maintainer: edulution.io <info@netzint.de>
-Installed-Size: 250
+Installed-Size: 252
 Depends: python3-paramiko, python3-proxmoxer, python3-requests, python3:any, samba-common-bin
 Recommends: linuxmuster-linbo7
 Suggests: linuxmuster-api7
 Homepage: https://github.com/edulution-io/edulution-linbo-vdi
 Priority: optional
 Section: admin
-Filename: pool/main/e/edulution-linbo-vdi/edulution-linbo-vdi_1.1.6_all.deb
-Size: 67760
-SHA256: ea75cf1a06e5993d5953020ae152c2291f3c14804507d0c7048d9b252a3cdb94
-SHA1: 2da97a157d75715e21a80b19a3a803b10e12d4d5
-MD5sum: 8b53045239ec05b617124a1c96f09d17
+Filename: pool/main/e/edulution-linbo-vdi/edulution-linbo-vdi_1.1.7_all.deb
+Size: 69760
+SHA256: 5ccbe6bc6a3c902f95bc8dc045b47354474f14c3f2458bd0c3f95f3c95921433
+SHA1: ba479076699f90ca022f87678d30799b86640cbb
+MD5sum: 6c59def356145f5e09052af093c1fd02
 Description: VDI service for linuxmuster.net on Proxmox
  edulution-linbo-vdi manages a pool of virtual desktops on a Proxmox VE node
  for a linuxmuster.net server. It builds a master VM from a LINBO image,
