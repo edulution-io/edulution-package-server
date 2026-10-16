@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Fri, 16 Oct 2026 12:00:00 +0200
+Source: edulution-linbo-vdi
+Binary: edulution-linbo-vdi
+Built-For-Profiles: noudeb
+Architecture: all
+Version: 1.1.6
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@netzint.de>
+Changed-By: Tom Lehmann <tom.lehmann@netzint.de>
+Description:
+ edulution-linbo-vdi - VDI service for linuxmuster.net on Proxmox
+Changes:
+ edulution-linbo-vdi (1.1.6) noble; urgency=medium
+ .
+   * vdi-setup no longer crashes with KeyError: 'group' at the VDI group
+     prompt; every OS preset carries its default group name.
+   * The Proxmox role no longer lists VM.Monitor for Proxmox VE 9, which
+     removed it. The wizard and the docs give the PVE 8 and PVE 9 privilege
+     lists separately.
+   * A failed connection test tells 401 (check user, token name, token value)
+     apart from 403 (missing privileges).
+Checksums-Sha1:
+ 2da97a157d75715e21a80b19a3a803b10e12d4d5 67760 edulution-linbo-vdi_1.1.6_all.deb
+ bee759f8c70be0c6ec48d6d57cc08208eca96a64 9003 edulution-linbo-vdi_1.1.6_amd64.buildinfo
+Checksums-Sha256:
+ ea75cf1a06e5993d5953020ae152c2291f3c14804507d0c7048d9b252a3cdb94 67760 edulution-linbo-vdi_1.1.6_all.deb
+ 9b50118e9a53b7a59ec21e418518f544ee92f771ae49133386496135c89a6e74 9003 edulution-linbo-vdi_1.1.6_amd64.buildinfo
+Files:
+ 8b53045239ec05b617124a1c96f09d17 67760 admin optional edulution-linbo-vdi_1.1.6_all.deb
+ 8e1970155158f8c0088cb60897019266 9003 admin optional edulution-linbo-vdi_1.1.6_amd64.buildinfo
