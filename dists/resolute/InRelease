@@ -4,7 +4,7 @@ Hash: SHA512
 Origin: package.edulution.io
 Label: package.edulution.io
 Codename: resolute
-Date: Thu, 15 Oct 2026 16:20:13 UTC
+Date: Fri, 16 Oct 2026 08:18:13 UTC
 Architectures: i386 amd64 arm64
 Components: main
 Description: Ubuntu 26.04 (resolute) stable
@@ -49,8 +49,8 @@ SHA256:
  d46e949afe0f30b957c99675f302a19f2fedd8e0864a8836af1f2ffbfa8c73f1 138 main/source/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQTdj26S1bjyMzRQrWm9NebbRlUWGwUCatD9PQAKCRC9NebbRlUW
-G8liAP47F1VrtpN72dWFSYx49P6EQotV9Enhzt8YgN4FjONe1QD+MYZKKqDKshgt
-yE2gxwvcJtY1X/Xx9qXuvvv0wfTIeg4=
-=a00+
+iHUEARYKAB0WIQTdj26S1bjyMzRQrWm9NebbRlUWGwUCatHdxQAKCRC9NebbRlUW
+G/RbAQDTJUAFSnVd56xBbpbpSmHpC+dOfQS9MckE8bnK53+APQD/exHlWP4CcNHD
+P0qE1i5rSJGj2T3S+1eU5B0hN6Bb3w4=
+=FxE8
 -----END PGP SIGNATURE-----
