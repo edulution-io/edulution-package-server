@@ -1,0 +1,39 @@
+Format: 1.8
+Date: Fri, 30 Oct 2026 12:11:23 +0100
+Source: edulution-linbo-vdi
+Binary: edulution-linbo-vdi
+Built-For-Profiles: noudeb
+Architecture: all
+Version: 1.1.8
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@netzint.de>
+Changed-By: Lukas Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ edulution-linbo-vdi - VDI service for linuxmuster.net on Proxmox
+Changes:
+ edulution-linbo-vdi (1.1.8) noble; urgency=medium
+ .
+   * New optional hvHostname: the Proxmox certificate is checked against this
+     DNS name while connecting to hvIp, for hosts reached by IP whose
+     certificate carries no IP (closes #22). vdi-setup offers it after an IP
+     mismatch and restarts an already running service so a changed
+     configuration takes effect.
+   * The service logs once per VM when the QEMU guest agent does not answer,
+     naming the VM option and the token privilege (closes #23). The image
+     docs explain the agent's virtio-serial dependency and how to enable the
+     option on templates built before 1.1.2.
+   * vdi-setup writes two master VMIDs and rejects duplicates, overlaps with
+     the clone range, IDs of other VDI groups and IDs already used as clone
+     VMIDs in devices.csv; a one-ID group config is loaded with a warning
+     (closes #27).
+   * certifi 2026.10.19 in the development lock file (PYSEC-2026-4320).
+Checksums-Sha1:
+ 5f21d85cfd3fb9a51e5e44c42427d412f07aa020 72968 edulution-linbo-vdi_1.1.8_all.deb
+ 0126f8788a889bb8c5ab58ddb4e93e965cea3531 9010 edulution-linbo-vdi_1.1.8_amd64.buildinfo
+Checksums-Sha256:
+ 2df0f366bbec3dab4b6e92489f70476541a640f01cf1144490bfc81a2861da21 72968 edulution-linbo-vdi_1.1.8_all.deb
+ f2ce541ff3afd1c6cda6069ce88e8b72abb652df6724f7ad51811dcbe67a7d2a 9010 edulution-linbo-vdi_1.1.8_amd64.buildinfo
+Files:
+ 47256c40d1691a1cf7583790ebf7b32c 72968 admin optional edulution-linbo-vdi_1.1.8_all.deb
+ 7fc9ff3ae32a7b9b0ed131816eae94d2 9010 admin optional edulution-linbo-vdi_1.1.8_amd64.buildinfo
