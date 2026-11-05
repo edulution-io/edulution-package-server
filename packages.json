@@ -9,11 +9,11 @@
   },
   {
     "name": "edulution-linbo-vdi",
-    "version": "1.1.9",
+    "version": "1.1.10",
     "architecture": "all",
     "dist": "noble",
-    "size": "78150",
-    "filename": "/pool/main/e/edulution-linbo-vdi/edulution-linbo-vdi_1.1.9_all.deb"
+    "size": "78374",
+    "filename": "/pool/main/e/edulution-linbo-vdi/edulution-linbo-vdi_1.1.10_all.deb"
   },
   {
     "name": "edulution-fileproxy",
@@ -33,11 +33,11 @@
   },
   {
     "name": "edulution-linbo-vdi",
-    "version": "1.1.9",
+    "version": "1.1.10",
     "architecture": "all",
     "dist": "resolute",
-    "size": "78150",
-    "filename": "/pool/main/e/edulution-linbo-vdi/edulution-linbo-vdi_1.1.9_all.deb"
+    "size": "78374",
+    "filename": "/pool/main/e/edulution-linbo-vdi/edulution-linbo-vdi_1.1.10_all.deb"
   },
   {
     "name": "edulution-fileproxy",
