@@ -2,16 +2,16 @@ Format: 1.0
 Source: edulution-linbo-vdi
 Binary: edulution-linbo-vdi
 Architecture: all
-Version: 1.1.9
+Version: 1.1.10
 Checksums-Md5:
- 59f2daed5b67cfc04ec38bca6c12702a 78150 edulution-linbo-vdi_1.1.9_all.deb
+ b3acaedc0e32eda668b082825b1f7fd7 78374 edulution-linbo-vdi_1.1.10_all.deb
 Checksums-Sha1:
- c3f61b725abe3012312412601420bcc04dc44065 78150 edulution-linbo-vdi_1.1.9_all.deb
+ de5f3862f0cb61fb038d2f683c14cbb93b224b98 78374 edulution-linbo-vdi_1.1.10_all.deb
 Checksums-Sha256:
- ffce87a7d96a4a5cc0f73b328b771fc63d59f3b95f4eeac551f81ba8503f6b62 78150 edulution-linbo-vdi_1.1.9_all.deb
+ 6846ac27b15e95c5a7ad3b194eaf25ea71b67c91c1f1cd9f331e8396d1f50eba 78374 edulution-linbo-vdi_1.1.10_all.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Thu, 05 Nov 2026 10:39:28 +0000
+Build-Date: Thu, 05 Nov 2026 11:36:15 +0000
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-includes
@@ -252,4 +252,4 @@ Environment:
  DEB_BUILD_OPTIONS="parallel=2"
  DEB_BUILD_PROFILES="noudeb"
  LANG="C.UTF-8"
- SOURCE_DATE_EPOCH="1793872844"
+ SOURCE_DATE_EPOCH="1793877382"
