@@ -1,0 +1,62 @@
+Format: 1.8
+Date: Fri, 13 Nov 2026 12:00:00 +0100
+Source: linuxmuster-tools7
+Binary: linuxmuster-tools7
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 1:7.4.20~edu
+Distribution: lmn74
+Urgency: medium
+Maintainer: Arnaud Kientz <arnaud@linuxmuster.net>
+Changed-By: Lukas Lukic-Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ linuxmuster-tools7 - Tools for the linuxmuster.net 7 server.
+Changes:
+ linuxmuster-tools7 (1:7.4.20~edu) lmn74; urgency=medium
+ .
+   * edulution fork. The package keeps its upstream name, so the epoch 1: is
+     what makes it win against the same package from deb.linuxmuster.net.
+   * The version carries the suffix ~edu on top of the epoch, so apt policy,
+     dpkg -l and the motd show at a glance that this is the edulution build
+     and not the upstream package. "~" sorts before the empty string, so
+     1:7.4.20~edu stays below a hypothetical 1:7.4.20 while still outranking
+     every upstream 7.x, which carries no epoch at all. The versioned
+     dependencies on the fork's own packages therefore clamp on "(>=
+     1:x.y.z~)", the Debian idiom that also accepts a tilde suffix.
+   * Depend on sophomorix-samba (>= 1:7.4.7~), so the fork cannot be mixed
+     with the upstream package.
+   * The LDAP settings move from /etc/linuxmuster/webui/config.yml to
+     /etc/linuxmuster/tools/ldap.yml, next to password_constraints.yml. The
+     old file was created by linuxmuster-webui7 alone, so tools7, cli7 and
+     api7 needed the webui installed to reach LDAP at all. The new file uses
+     a flat schema and is written by linuxmuster-base7's setup.
+   * postinst migrates an existing webui config once
+     (install-scripts/migrate_ldap_config.py).
+   * ALLOWED_PATHS of lmnfile drops the two webui paths and gains the new
+     one.
+   * postinst no longer names linuxmuster-webui7, which this fork does not
+     install.
+   * docs_src/conf.py splits the apt-cache output on the first colon only.
+     The epoch adds a second one, so the documented version read as plain
+     "1".
+   * The github-release job asks for contents: write. The repository's
+     default GITHUB_TOKEN permission is read, so creating the release would
+     have failed with a 403 on the first tag. Granting it on the job keeps
+     the default untouched for every other workflow.
+   * Release workflow publishes to edulution-io/edulution-package-server
+     instead of linuxmuster/deb, into the Ubuntu codename resolute.
+Checksums-Sha1:
+ 83faa37ce7a97fbb6c8b1c3f807fb8b4e843ef4d 601 linuxmuster-tools7_7.4.20~edu.dsc
+ a4213c731f9fd2dc2063094b8f97ef78821e2a0c 351128 linuxmuster-tools7_7.4.20~edu.tar.gz
+ e689792d6e844a196a17a09852eb0a9fa5ebd707 263714 linuxmuster-tools7_7.4.20~edu_all.deb
+ bf642533eb8c197263de61cf4b391387086563e6 7787 linuxmuster-tools7_7.4.20~edu_amd64.buildinfo
+Checksums-Sha256:
+ 600a67010b080de98af5ab44843ed97a8940a94b72a96b9ce6069355d3012476 601 linuxmuster-tools7_7.4.20~edu.dsc
+ ec41dc8dbba094e977fe8d03f4334c48c1f32121091ff3850724dafa3eb48db6 351128 linuxmuster-tools7_7.4.20~edu.tar.gz
+ 441bbd94caec6844df09e3e7faaaa6644169d2135037113750c110f9d09640c5 263714 linuxmuster-tools7_7.4.20~edu_all.deb
+ 5f7252672a034194b313152b6e1af310f15f62b60deff7e3cb85c16c26c8507b 7787 linuxmuster-tools7_7.4.20~edu_amd64.buildinfo
+Files:
+ 328a49a1454ccb337d73497e7afaf07c 601 linuxmuster optional linuxmuster-tools7_7.4.20~edu.dsc
+ 8d8daa8cb7bb256fc8e522f88c360010 351128 linuxmuster optional linuxmuster-tools7_7.4.20~edu.tar.gz
+ 70af4360c77d78a4fb7a389fc1360ea4 263714 linuxmuster optional linuxmuster-tools7_7.4.20~edu_all.deb
+ 90cd5835f4028a34066091697a910f11 7787 linuxmuster optional linuxmuster-tools7_7.4.20~edu_amd64.buildinfo
