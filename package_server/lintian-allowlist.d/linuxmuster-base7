@@ -1,0 +1,8 @@
+# lintian errors accepted for linuxmuster-base7 on top of ../lintian-allowlist.
+#
+# The package comes from linuxmuster.net and is forked as it is. These
+# tags were present when it moved to package.edulution.io (lintian of
+# Ubuntu 24.04, 2026-11-13). Fix them in the package and drop them here;
+# do not add a tag without a reason.
+
+depends-on-essential-package-without-using-version

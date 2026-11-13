@@ -1,0 +1,12 @@
+# lintian errors accepted for sophomorix4 on top of ../lintian-allowlist.
+#
+# The package comes from linuxmuster.net and is forked as it is. These
+# tags were present when it moved to package.edulution.io (lintian of
+# Ubuntu 24.04, 2026-11-13). Fix them in the package and drop them here;
+# do not add a tag without a reason.
+
+bogus-mail-host-in-debian-changelog
+extended-description-is-empty
+python-package-missing-depends-on-python
+python3-script-but-no-python3-dep
+script-uses-unversioned-python-in-shebang

@@ -132,8 +132,9 @@ version:
   a plain version; they get the suffix on their next release.
 
 Both characters are refused by git in a refname, so the release workflows spell
-them out: the tag of `1:7.4.24~edu` is `7.4.24-edu` and the branch it opens
-here is `update/<package>-<codename>-1-7.4.24-edu`.
+them out: `1:7.4.24~edu` is released by pushing the tag `v7.4.24-edu` (the build
+checks it against `debian/changelog`), and the branch it opens here is
+`update/<package>-<codename>-1-7.4.24-edu`.
 
 [policy]: https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-version
 
@@ -203,6 +204,18 @@ build does not look at the `Distribution:` field of the `.changes`.
 > `update/...` branch of this repo. The
 > [`automatic-pull-request.yml`](.github/workflows/automatic-pull-request.yml)
 > workflow then automatically opens a pull request to `main`.
+
+### Lintian
+
+Every `.deb` has to pass `lintian --fail-on error`. Tags accepted for all
+packages are in [`package_server/lintian-allowlist`](package_server/lintian-allowlist).
+Tags accepted for one package only are in
+`package_server/lintian-allowlist.d/<package-name>`, e.g. the `/srv/linbo`
+files of `linuxmuster-linbo7`. The forked linuxmuster.net packages carry the
+errors they had upstream; each of their lists records them as they were when
+the package moved here, so a new error still fails the build. Like
+`conf/also-in`, the lists live in this repository: a package repository
+cannot allowlist its own errors, a change to a list goes through review here.
 
 ### Supporting a new Ubuntu version (distribution)
 

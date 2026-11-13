@@ -13,6 +13,11 @@
 # conf/also-in. There is deliberately no automatic copy into every
 # distribution any more: linuxmuster-linbo7 builds kernel and initrd from the
 # release it was built on, so a resolute build must never end up in noble.
+#
+# lintian-allowlist.d/<package-name> lists lintian tags accepted for that one
+# package on top of lintian-allowlist. It lives here for the same reason as
+# conf/also-in, and so that a package repository cannot allowlist its own
+# errors.
 
 set -eo pipefail
 
@@ -105,7 +110,9 @@ for dir in ../packages/*/*/; do
 
     # Refuse to publish packages whose checksums do not match or that lintian
     # rejects.
-    bash validate-incoming.sh "$dir"
+    allowlist=""
+    [ -f "lintian-allowlist.d/$package" ] && allowlist="lintian-allowlist.d/$package"
+    bash validate-incoming.sh "$dir" lintian-allowlist "$allowlist"
 
     [ ${#debs[@]} -eq 0 ] || reprepro -V includedeb "$codename" "${debs[@]}"
     for dsc in "${dscs[@]}"; do
