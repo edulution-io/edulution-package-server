@@ -56,6 +56,14 @@
     "filename": "/pool/main/e/edulution-linbo-vdi/edulution-linbo-vdi_1.1.10_all.deb"
   },
   {
+    "name": "linuxmuster-cli7",
+    "version": "1:7.4.12~edu",
+    "architecture": "all",
+    "dist": "resolute",
+    "size": "50138",
+    "filename": "/pool/main/l/linuxmuster-cli7/linuxmuster-cli7_7.4.12~edu_all.deb"
+  },
+  {
     "name": "linuxmuster-common",
     "version": "1:7.4.5~edu",
     "architecture": "all",
