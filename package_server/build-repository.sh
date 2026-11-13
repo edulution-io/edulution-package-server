@@ -9,18 +9,65 @@
 #
 #     packages/<package-name>/<codename>/
 #
-# A package that is valid for more than one Ubuntu release says so itself, in
-# an "also-in" file next to the .deb. There is deliberately no automatic copy
-# into every distribution any more: linuxmuster-linbo7 builds kernel and
-# initrd from the release it was built on, so a resolute build must never end
-# up in noble.
+# A build that is valid for more than one Ubuntu release is listed in
+# conf/also-in. There is deliberately no automatic copy into every
+# distribution any more: linuxmuster-linbo7 builds kernel and initrd from the
+# release it was built on, so a resolute build must never end up in noble.
 
 set -eo pipefail
 
 CODENAMES="$(awk '/^Codename:/ {print $2}' conf/distributions)"
+ALSO_IN=conf/also-in
 
 known_codename() {
     grep -qxF "$1" <<< "$CODENAMES"
+}
+
+# conf/also-in without comments and blank lines.
+also_in_entries() {
+    grep -v -e '^[[:space:]]*#' -e '^[[:space:]]*$' "$ALSO_IN"
+}
+
+# The codenames conf/also-in lists for one build, e.g. "edulution-fileproxy/noble".
+also_in() {
+    also_in_entries | awk -v build="$1" '$1 == build { for (i = 2; i <= NF; i++) print $i }'
+}
+
+# Fails on entries the import loop could not apply cleanly. A build that is not
+# under packages/ only warns, so a package can be listed before its first
+# upload has been merged.
+check_also_in() {
+    local build targets target failed=0
+
+    while read -r build targets; do
+        if [[ "$build" != */* ]] || [ -z "$targets" ]; then
+            echo "::error::$ALSO_IN: malformed entry '$build${targets:+ $targets}'" >&2
+            failed=1
+            continue
+        fi
+        if ! known_codename "${build#*/}"; then
+            echo "::error::$ALSO_IN: $build names unknown codename '${build#*/}'" >&2
+            failed=1
+        fi
+        if [ ! -d "../packages/$build" ]; then
+            echo "::warning::$ALSO_IN: $build is not under packages/, entry unused"
+        fi
+        for target in $targets; do
+            if ! known_codename "$target"; then
+                echo "::error::$ALSO_IN: $build lists unknown codename '$target'" >&2
+                failed=1
+            elif [ "$target" = "${build#*/}" ]; then
+                echo "::error::$ALSO_IN: $build lists its own codename" >&2
+                failed=1
+            elif [ -d "../packages/${build%/*}/$target" ]; then
+                # The copy and the separate build would replace each other.
+                echo "::error::$ALSO_IN: $build lists $target, which has its own build under packages/" >&2
+                failed=1
+            fi
+        done
+    done < <(also_in_entries)
+
+    return $failed
 }
 
 # All binary package names a set of .deb files carries. A "copy" works on the
@@ -34,6 +81,8 @@ package_names() {
 }
 
 shopt -s nullglob
+
+check_also_in || exit 1
 
 found=0
 for dir in ../packages/*/*/; do
@@ -63,18 +112,12 @@ for dir in ../packages/*/*/; do
         reprepro -V includedsc "$codename" "$dsc"
     done
 
-    [ -f "$dir/also-in" ] || continue
-
-    while read -r target; do
-        if ! known_codename "$target"; then
-            echo "::error::$package/$codename/also-in names unknown codename '$target'" >&2
-            exit 1
-        fi
+    for target in $(also_in "$package/$codename"); do
         for name in $(package_names "${debs[@]}"); do
             echo "Copying $name from $codename to $target"
             reprepro -V copy "$target" "$codename" "$name"
         done
-    done < <(grep -v -e '^[[:space:]]*#' -e '^[[:space:]]*$' "$dir/also-in")
+    done
 done
 
 [ "$found" = 1 ] || echo "No packages found, nothing imported"

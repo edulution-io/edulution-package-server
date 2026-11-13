@@ -1,6 +1,0 @@
-# Ubuntu releases this build is additionally published to.
-# One codename per line; it has to exist in package_server/conf/distributions.
-#
-# edulution-linbo-vdi does not depend on the Ubuntu release it was built on,
-# so the noble build also serves 26.04 clients.
-resolute

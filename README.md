@@ -77,7 +77,8 @@ Afterwards `apt update` works as before. Newly set up machines are unaffected.
 │   └── <package-name>/<codename>/ # e.g. edulution-fileproxy/noble/...
 ├── package_server/               # Source of the published repository
 │   ├── conf/
-│   │   └── distributions         # reprepro: distributions (noble, resolute)
+│   │   ├── distributions         # reprepro: distributions (noble, resolute)
+│   │   └── also-in               # builds that are also published to other distributions
 │   ├── pub.gpg                   # public signing key
 │   ├── index.html                # landing page (instructions + package list)
 │   ├── generate-package-json.sh  # generates packages.json for the landing page
@@ -166,24 +167,36 @@ build does not look at the `Distribution:` field of the `.changes`.
 
 > **Every package repository publishes into every codename it supports.**
 > There is no automatic copy into all distributions any more. A package that
-> is genuinely release-independent can say so itself with an `also-in` file
-> next to the `.deb`:
+> is genuinely release-independent is listed in
+> [`package_server/conf/also-in`](package_server/conf/also-in):
 >
 > ```
-> packages/edulution-fileproxy/noble/also-in
+> edulution-fileproxy/noble        resolute
 > ```
 >
-> containing one codename per line (`#` comments and blank lines are ignored).
-> After importing the build copies the package into each of them with
-> `reprepro copy`, which saves committing the same binary twice.
+> The left column is the build's directory under `packages/`, followed by the
+> codenames it is additionally published to. After importing, the build copies
+> the package into each of them with `reprepro copy`, which saves committing
+> the same binary twice. A package that is not listed stays in the codename it
+> was uploaded to.
+>
+> The list lives here and not next to the `.deb` because the release workflows
+> replace `packages/<package-name>/<codename>/` on every upload – a file placed
+> there would vanish with the next release, and the package with it from every
+> other distribution. It also means that widening where a package is published
+> is a change to this repository's configuration, not part of an update pull
+> request.
+>
+> The build fails on an entry naming an unknown codename, and on an entry
+> whose target has its own build under `packages/` – the copy and that build
+> would replace each other. An entry whose directory does not exist yet only
+> warns, so a package can be listed before its first upload is merged.
 >
 > The former `sync-distributions.sh` copied every package into every
 > distribution unless one of that **name** was already there. That is wrong
 > for packages that are bound to the release they were built on:
 > `linuxmuster-linbo7` builds kernel and initrd from it, so a `resolute` build
-> must never end up in `noble`. Which releases a build is valid for is a
-> decision only the uploading repository can make, so it is written down next
-> to the package.
+> must never end up in `noble`.
 
 > In practice, the individual package repositories (e.g.
 > `edulution-fileproxy`) push their releases via automation into an
@@ -200,8 +213,8 @@ build does not look at the `Distribution:` field of the `.changes`.
    the display when `packages.json` is unreachable).
 3. Have each package repository publish into the new codename – either with
    its own build under `packages/<package-name>/<codename>/`, or by adding the
-   codename to the `also-in` file of an existing build. Nothing arrives there
-   by itself.
+   codename to the build's line in `conf/also-in`. Nothing arrives there by
+   itself.
 
 The client instructions do **not** need to be changed – they detect the
 codename automatically.
@@ -220,8 +233,8 @@ directory:
    checksums of its `.changes` and run `lintian` over its `.deb` files
    (`validate-incoming.sh`), then import them into `<codename>` with
    `reprepro includedeb`.
-3. If that directory holds an `also-in` file, copy the package into each
-   codename listed there with `reprepro copy`.
+3. If `conf/also-in` lists that directory, copy the package into each
+   codename named there with `reprepro copy`.
 4. Generate the repository indices with `reprepro export`.
 5. Create the symlink `dists/nobel -> noble` (legacy URL, see above).
 6. `generate-package-json.sh` generates `packages.json` (the landing page's
