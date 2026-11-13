@@ -76,3 +76,18 @@ Description: VDI service for linuxmuster.net on Proxmox
  as a library. The systemd unit is only started once /etc/edulution/linbo-vdi/
  vdiConfig.json exists; run vdi-setup to create it.
 
+Package: linuxmuster-common
+Version: 1:7.4.5~edu
+Architecture: all
+Maintainer: Thomas Schmitt <thomas@linuxmuster.net>
+Installed-Size: 24
+Depends: edulution-archive-keyring
+Priority: optional
+Section: linuxmuster
+Filename: pool/main/l/linuxmuster-common/linuxmuster-common_7.4.5~edu_all.deb
+Size: 6510
+SHA256: ac1f807b9e48fff451acd2dd5e57763a9870c5865ae50d1689a59f22ec7f0ca1
+SHA1: 09acdc0a32e139405a45c7ac4e4efd5a2d2a242e
+MD5sum: f2035710fc52f3c0d037924881d02468
+Description: linuxmuster.net common files
+

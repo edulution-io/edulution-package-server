@@ -56,6 +56,14 @@
     "filename": "/pool/main/e/edulution-linbo-vdi/edulution-linbo-vdi_1.1.10_all.deb"
   },
   {
+    "name": "linuxmuster-common",
+    "version": "1:7.4.5~edu",
+    "architecture": "all",
+    "dist": "resolute",
+    "size": "6510",
+    "filename": "/pool/main/l/linuxmuster-common/linuxmuster-common_7.4.5~edu_all.deb"
+  },
+  {
     "name": "edulution-fileproxy",
     "version": "1.5.0",
     "architecture": "arm64",
