@@ -1,0 +1,48 @@
+Format: 1.8
+Date: Fri, 13 Nov 2026 12:00:00 +0100
+Source: linuxmuster-api7
+Binary: linuxmuster-api7
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 1:7.4.16~edu
+Distribution: lmn74
+Urgency: medium
+Maintainer: Arnaud Kientz <arnaud@linuxmuster.net>
+Changed-By: Lukas Lukic-Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ linuxmuster-api7 - Api for the linuxmuster.net 7 server.
+Changes:
+ linuxmuster-api7 (1:7.4.16~edu) lmn74; urgency=medium
+ .
+   * edulution fork. The package keeps its upstream name, so the epoch 1: is
+     what makes it win against the same package from deb.linuxmuster.net.
+   * The version carries the suffix ~edu on top of the epoch, so apt policy,
+     dpkg -l and the motd show at a glance that this is the edulution build
+     and not the upstream package. "~" sorts before the empty string, so
+     1:7.4.16~edu stays below a hypothetical 1:7.4.16 while still outranking
+     every upstream 7.x, which carries no epoch at all. The versioned
+     dependencies on the fork's own packages therefore clamp on "(>=
+     1:x.y.z~)", the Debian idiom that also accepts a tilde suffix.
+   * Depend on linuxmuster-tools7 (>= 1:7.4.20~), so the fork cannot be mixed
+     with the upstream package.
+   * The github-release job asks for contents: write. The repository's
+     default GITHUB_TOKEN permission is read, so creating the release would
+     have failed with a 403 on the first tag. Granting it on the job keeps
+     the default untouched for every other workflow.
+   * Release workflow publishes to edulution-io/edulution-package-server
+     instead of linuxmuster/deb, into the Ubuntu codename resolute.
+Checksums-Sha1:
+ 60bf7aed5a466417741f606a47a5080f6949994d 589 linuxmuster-api7_7.4.16~edu.dsc
+ 8dd635ab835cd8edce3f4d81e28977d72f8a556e 158941 linuxmuster-api7_7.4.16~edu.tar.gz
+ d94a096bc2aeb9f23edd441a8124651d5f380265 118226 linuxmuster-api7_7.4.16~edu_all.deb
+ 4b4783124904e22404fd0023d120fd24fc74e20a 7771 linuxmuster-api7_7.4.16~edu_amd64.buildinfo
+Checksums-Sha256:
+ eeef3cacdc6834aec11f6d7855ac5cb5928ca673c6b7a388da747624e4b001ab 589 linuxmuster-api7_7.4.16~edu.dsc
+ 8d69351d7d8235caae8b8185aa0ffe1f8814502fefd4533924876a4e07c5833d 158941 linuxmuster-api7_7.4.16~edu.tar.gz
+ 93e4248c1329d619e12ab75f5780f19a260998e4e7241878559f5cf0772d0eb3 118226 linuxmuster-api7_7.4.16~edu_all.deb
+ 8b7896b64b5d5d02b871105860c516ee1f61d7eb874d20f67905055a8df0424a 7771 linuxmuster-api7_7.4.16~edu_amd64.buildinfo
+Files:
+ bb0d432571235ade3d29a6f9fde71fd3 589 linuxmuster optional linuxmuster-api7_7.4.16~edu.dsc
+ f1f82bab568f577b788a152668899ce5 158941 linuxmuster optional linuxmuster-api7_7.4.16~edu.tar.gz
+ f2793518848aa8b9944994771861f5e9 118226 linuxmuster optional linuxmuster-api7_7.4.16~edu_all.deb
+ 82bd1c183686fe63b1f6fde6d35795a7 7771 linuxmuster optional linuxmuster-api7_7.4.16~edu_amd64.buildinfo
