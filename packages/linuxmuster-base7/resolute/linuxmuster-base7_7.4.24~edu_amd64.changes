@@ -1,0 +1,72 @@
+Format: 1.8
+Date: Fri, 13 Nov 2026 12:00:00 +0100
+Source: linuxmuster-base7
+Binary: linuxmuster-base7
+Built-For-Profiles: derivative.ubuntu noudeb
+Architecture: source all
+Version: 1:7.4.24~edu
+Distribution: lmn74
+Urgency: low
+Maintainer: Thomas Schmitt <thomas@linuxmuster.net>
+Changed-By: Lukas Lukic-Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ linuxmuster-base7 - linuxmuster.net configuration scripts
+Changes:
+ linuxmuster-base7 (1:7.4.24~edu) lmn74; urgency=low
+ .
+   * edulution fork. The package keeps its upstream name, so the epoch 1: is
+     what makes it win against the same package from deb.linuxmuster.net.
+   * The version carries the suffix ~edu on top of the epoch, so apt policy,
+     dpkg -l and the motd show at a glance that this is the edulution build
+     and not the upstream package. "~" sorts before the empty string, so
+     1:7.4.24~edu stays below a hypothetical 1:7.4.24 while still outranking
+     every upstream 7.x, which carries no epoch at all. The versioned
+     dependencies on the fork's own packages therefore clamp on "(>=
+     1:x.y.z~)", the Debian idiom that also accepts a tilde suffix.
+   * Drop the hard dependency on linuxmuster-webui7 and depend on
+     linuxmuster-api7 instead, which so far was only pulled in by the webui.
+   * New setup step kz_ldap-config writes /etc/linuxmuster/tools/ldap.yml,
+     the LDAP configuration linuxmuster-tools7 reads. Upstream those settings
+     sat in /etc/linuxmuster/webui/config.yml, which only linuxmuster-webui7
+     created. The schema belongs to tools7; this step only fills in the base
+     DN, the server name and the global-binduser password that k_samba-users
+     creates one step earlier.
+   * z_final restarts linuxmuster-api instead of linuxmuster-webui.
+   * The motd (etc/profile.d/Z99-linuxmuster.sh) makes the origin of the
+     packages visible. Every version is printed with its ~edu suffix in
+     edulution blue, so a half-migrated server stands out, and a framed note
+     at the bottom names where the updates come from - or warns when ~edu
+     packages are installed without the repository, because then nothing
+     updates them any more. The epoch is dropped from the display: it is a
+     packaging detail, and it would have turned the title into
+     "LINUXMUSTER.NET 1:7". A server without a single edulution package shows
+     neither the note nor a suffix and keeps the banner upstream has.
+   * The "e" of edulution is set in italics, the way Euler's number is set in
+     mathematics. Not with U+212F or U+2147, the codepoints meant for it:
+     DejaVu Sans Mono, Liberation Mono and Ubuntu Mono carry neither, so most
+     terminals would draw a replacement box and the fallback to a
+     proportional font would shift the frame below.
+   * The motd reads the versions with dpkg-query and prints "not installed"
+     for what is missing. It queried linuxmuster-webui7, which this fork does
+     not install, and edulution-linbo-gui7, which is not a dependency of this
+     package either - both wrote a dpkg error across the banner on every
+     login.
+   * Pre-Depends on linuxmuster-common (>= 1:7.4.5~), so the fork cannot be
+     mixed with the upstream package.
+   * Release workflow publishes to edulution-io/edulution-package-server
+     instead of linuxmuster/deb, into the Ubuntu codename resolute.
+Checksums-Sha1:
+ d9220c757c2ebaf8bc253d654e9aec70dde41847 914 linuxmuster-base7_7.4.24~edu.dsc
+ 711b7bc763c4e30205673e4076d01aa932f9b2f0 726333 linuxmuster-base7_7.4.24~edu.tar.gz
+ 6eb2a5887e211bd910ee2ecaae4e2ab47edc058e 125418 linuxmuster-base7_7.4.24~edu_all.deb
+ cbc8abac6052cb74f7d3300d5000bd56ba05d773 9827 linuxmuster-base7_7.4.24~edu_amd64.buildinfo
+Checksums-Sha256:
+ b62eb0659a0d933531c0ddba50955e092f48a73611eadb3389c96dd2cfb35edd 914 linuxmuster-base7_7.4.24~edu.dsc
+ 9ed2319739fd299ebf7ee4b900b56cd19d7b0d6940050b5850858cf87db0df50 726333 linuxmuster-base7_7.4.24~edu.tar.gz
+ 43b76e73f685a718c61ad5fac8dea2a0e42364d029e6ff00a0c60ef6095437d6 125418 linuxmuster-base7_7.4.24~edu_all.deb
+ 2584e6270597aceb49a8dbb39a6bd22818643249080fa2883f1c72fffbdd044a 9827 linuxmuster-base7_7.4.24~edu_amd64.buildinfo
+Files:
+ ce8039375f89d7d187278735a74cfaf7 914 linuxmuster optional linuxmuster-base7_7.4.24~edu.dsc
+ 1dea0ed43d57fd1339793a77ea59920e 726333 linuxmuster optional linuxmuster-base7_7.4.24~edu.tar.gz
+ a9664f60ab033d56d0b6a532f7ea9ef9 125418 linuxmuster optional linuxmuster-base7_7.4.24~edu_all.deb
+ a003b28a094cfa8e856e232133b77a26 9827 linuxmuster optional linuxmuster-base7_7.4.24~edu_amd64.buildinfo
