@@ -1,0 +1,49 @@
+Format: 1.8
+Date: Fri, 13 Nov 2026 12:00:00 +0100
+Source: linuxmuster-fileserver
+Binary: linuxmuster-fileserver
+Built-For-Profiles: derivative.ubuntu noudeb
+Architecture: source all
+Version: 1:7.4.0-0~edu
+Distribution: lmn74
+Urgency: low
+Maintainer: Lukas Spitznagel <lukas.spitznagel@netzint.de>
+Changed-By: Lukas Lukic-Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ linuxmuster-fileserver - Linuxmuster Fileserver
+Changes:
+ linuxmuster-fileserver (1:7.4.0-0~edu) lmn74; urgency=low
+ .
+   * edulution fork. The package keeps its upstream name, so the epoch 1: is
+     what makes it win against the same package from deb.linuxmuster.net.
+     The package has no linuxmuster dependencies, so nothing else changes.
+   * The version carries the suffix ~edu on top of the epoch, so apt policy,
+     dpkg -l and the motd show at a glance that this is the edulution build
+     and not the upstream package. "~" sorts before the empty string, so
+     1:7.4.0-0~edu stays below a hypothetical 1:7.4.0-0 while still
+     outranking every upstream 7.x, which carries no epoch at all.
+   * The github-release job asks for contents: write. The repository's
+     default GITHUB_TOKEN permission is read, so creating the release would
+     have failed with a 403 on the first tag. Granting it on the job keeps
+     the default untouched for every other workflow.
+   * Release workflow publishes to edulution-io/edulution-package-server
+     instead of linuxmuster/deb, into the Ubuntu codename resolute.
+   * Depend on edulution-archive-keyring, which owns
+     /usr/share/keyrings/edulution.gpg, the keyring the sources entry for
+     package.edulution.io names. New or rotated signing keys then reach the
+     host with a regular upgrade.
+Checksums-Sha1:
+ 3a452068b1d87ebc71883fb9686d65d298d91a33 650 linuxmuster-fileserver_7.4.0-0~edu.dsc
+ ce846cc06bc696665502924ab9f879f8fce52932 11320 linuxmuster-fileserver_7.4.0-0~edu.tar.xz
+ 55167d7752c42ecf9fdbf5ccf3fc3d7877743d79 7338 linuxmuster-fileserver_7.4.0-0~edu_all.deb
+ 2b32c435dec838aae41ff8fd9e53534620f1a63d 7450 linuxmuster-fileserver_7.4.0-0~edu_amd64.buildinfo
+Checksums-Sha256:
+ 60118b0f0ee07b76eb13f19d84b5dbd7434d1003d2854814b8eae57ffb06d926 650 linuxmuster-fileserver_7.4.0-0~edu.dsc
+ 1afc7991ce688f944c3df772eba875f4513f47ce4e271bd56ac7474dfd71a3cf 11320 linuxmuster-fileserver_7.4.0-0~edu.tar.xz
+ c1ab5d6e5e8f8e3efb6a5de47db331c58e5a6a2af2eb7b0676d49dd98d2d7e48 7338 linuxmuster-fileserver_7.4.0-0~edu_all.deb
+ 462f09b96663f4bad02f8b9e270cf3cf4d5b4b941733c60fb3d0692f52115d13 7450 linuxmuster-fileserver_7.4.0-0~edu_amd64.buildinfo
+Files:
+ 4409691a646bddad513cb2a345fba95d 650 admin optional linuxmuster-fileserver_7.4.0-0~edu.dsc
+ e811636c0ab5aa7fa2fd8c755ecbca8e 11320 admin optional linuxmuster-fileserver_7.4.0-0~edu.tar.xz
+ 6230b7dc1a02fbe41f2fcf5d07efa308 7338 admin optional linuxmuster-fileserver_7.4.0-0~edu_all.deb
+ 6a8b0408eecb8e64fc2f00bde5e831d5 7450 admin optional linuxmuster-fileserver_7.4.0-0~edu_amd64.buildinfo

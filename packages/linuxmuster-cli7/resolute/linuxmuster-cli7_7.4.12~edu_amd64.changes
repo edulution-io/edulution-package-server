@@ -1,0 +1,48 @@
+Format: 1.8
+Date: Fri, 13 Nov 2026 12:00:00 +0100
+Source: linuxmuster-cli7
+Binary: linuxmuster-cli7
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 1:7.4.12~edu
+Distribution: lmn74
+Urgency: medium
+Maintainer: Arnaud Kientz <arnaud@linuxmuster.net>
+Changed-By: Lukas Lukic-Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ linuxmuster-cli7 - Tools and CLI for the linuxmuster.net 7 server.
+Changes:
+ linuxmuster-cli7 (1:7.4.12~edu) lmn74; urgency=medium
+ .
+   * edulution fork. The package keeps its upstream name, so the epoch 1: is
+     what makes it win against the same package from deb.linuxmuster.net.
+   * The version carries the suffix ~edu on top of the epoch, so apt policy,
+     dpkg -l and the motd show at a glance that this is the edulution build
+     and not the upstream package. "~" sorts before the empty string, so
+     1:7.4.12~edu stays below a hypothetical 1:7.4.12 while still outranking
+     every upstream 7.x, which carries no epoch at all. The versioned
+     dependencies on the fork's own packages therefore clamp on "(>=
+     1:x.y.z~)", the Debian idiom that also accepts a tilde suffix.
+   * Depend on linuxmuster-tools7 (>= 1:7.4.20~), so the fork cannot be mixed
+     with the upstream package.
+   * The github-release job asks for contents: write. The repository's
+     default GITHUB_TOKEN permission is read, so creating the release would
+     have failed with a 403 on the first tag. Granting it on the job keeps
+     the default untouched for every other workflow.
+   * Release workflow publishes to edulution-io/edulution-package-server
+     instead of linuxmuster/deb, into the Ubuntu codename resolute.
+Checksums-Sha1:
+ 80036901c102431447e54d5dea67112cf3e4dbf2 586 linuxmuster-cli7_7.4.12~edu.dsc
+ 71dc203b5b6e67021f14fb5fe9c9a9e4880afcd6 72156 linuxmuster-cli7_7.4.12~edu.tar.gz
+ 521ec4cce8b06133350ade7e588410a3538bc9d0 50138 linuxmuster-cli7_7.4.12~edu_all.deb
+ 0e349ddea802e9d6f6e0208d8cfd81fd480eb0eb 7768 linuxmuster-cli7_7.4.12~edu_amd64.buildinfo
+Checksums-Sha256:
+ d0e0acdddc6053e36cd28cec78880fde35af7e6a5ff73bbf493470401d9d42d2 586 linuxmuster-cli7_7.4.12~edu.dsc
+ fa5e26b9095e096698cacf64a7993eead77f7e1a5916026c5ff9247ff21ed735 72156 linuxmuster-cli7_7.4.12~edu.tar.gz
+ 9494a0b6db99bd6481c2fc130477aeca7fb4985aa87c9862c3fec1d7345ad926 50138 linuxmuster-cli7_7.4.12~edu_all.deb
+ a83a0b596a68d28e949efef644d4ddc1447bd5004878cd3ce6c21be9035c2132 7768 linuxmuster-cli7_7.4.12~edu_amd64.buildinfo
+Files:
+ 7800e6dc505b6e5b7fe1f792d946e737 586 linuxmuster optional linuxmuster-cli7_7.4.12~edu.dsc
+ efe2a09b546960471cd5efc23761782b 72156 linuxmuster optional linuxmuster-cli7_7.4.12~edu.tar.gz
+ 8eb4ff15dad1c74ba3d1c2f63f380bf6 50138 linuxmuster optional linuxmuster-cli7_7.4.12~edu_all.deb
+ 0ff18fe9a2887b2d01946c1a54b83dbf 7768 linuxmuster optional linuxmuster-cli7_7.4.12~edu_amd64.buildinfo

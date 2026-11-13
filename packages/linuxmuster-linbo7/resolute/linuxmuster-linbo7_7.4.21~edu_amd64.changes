@@ -1,0 +1,45 @@
+Format: 1.8
+Date: Fri, 13 Nov 2026 12:00:00 +0100
+Source: linuxmuster-linbo7
+Binary: linuxmuster-linbo7
+Built-For-Profiles: derivative.ubuntu noudeb
+Architecture: source all
+Version: 1:7.4.21~edu
+Distribution: lmn74
+Urgency: low
+Maintainer: Thomas Schmitt <thomas@linuxmuster.net>
+Changed-By: Lukas Lukic-Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ linuxmuster-linbo7 - linuxmuster-linbo7
+Changes:
+ linuxmuster-linbo7 (1:7.4.21~edu) lmn74; urgency=low
+ .
+   * edulution fork. The package keeps its upstream name, so the epoch 1: is
+     what makes it win against the same package from deb.linuxmuster.net.
+   * The version carries the suffix ~edu on top of the epoch, so apt policy,
+     dpkg -l and the motd show at a glance that this is the edulution build
+     and not the upstream package. "~" sorts before the empty string, so
+     1:7.4.21~edu stays below a hypothetical 1:7.4.21 while still outranking
+     every upstream 7.x, which carries no epoch at all.
+   * build/config/build.env strips the epoch from LINBOVERSION before it is
+     written to /etc/linbo-version, where a colon separates version and
+     release name. This keeps all three parsers of that file working. The
+     ~edu suffix is kept, so LINBO clients show "LINBO 7.4.21~edu" on the
+     splash screen and in linbo_version.
+   * Release workflow publishes to edulution-io/edulution-package-server
+     instead of linuxmuster/deb, into the Ubuntu codename resolute.
+Checksums-Sha1:
+ 42db8d589faf122ec0d81110203803f4de1f49d7 1235 linuxmuster-linbo7_7.4.21~edu.dsc
+ fe47b9f476cd49fd814f5e8e12ddf7ab8277b2df 2046238 linuxmuster-linbo7_7.4.21~edu.tar.gz
+ df234ab942ae1ae5850341614b5d9d30ce0327e5 101854770 linuxmuster-linbo7_7.4.21~edu_all.deb
+ 7d5ea7d64d68401deed7171d36370c48e21b956d 15271 linuxmuster-linbo7_7.4.21~edu_amd64.buildinfo
+Checksums-Sha256:
+ 194b9f397b27176da003a9d9433b59fa6072733c32f036ad76f9e62748756902 1235 linuxmuster-linbo7_7.4.21~edu.dsc
+ cabbd4bb90a9a92e76f1558069ccb91c75f6ce18e634d236f5042ac1d6bc3399 2046238 linuxmuster-linbo7_7.4.21~edu.tar.gz
+ 688ff4ac926f67dc151a1c1b68ddffbcbe5e3331172269403e59dd9ddad0865e 101854770 linuxmuster-linbo7_7.4.21~edu_all.deb
+ 78b18abdaf0a991db7fffc2f5f0a517071850184d12df8c0335d24727b6b235f 15271 linuxmuster-linbo7_7.4.21~edu_amd64.buildinfo
+Files:
+ fff886607a15bbbf831f0f471e592543 1235 admin extra linuxmuster-linbo7_7.4.21~edu.dsc
+ c1d3bcbe9e6de38eb1a69aefc1aa4104 2046238 admin extra linuxmuster-linbo7_7.4.21~edu.tar.gz
+ 58a6c0c219b5a3e1832ca9ffa91f9f27 101854770 admin extra linuxmuster-linbo7_7.4.21~edu_all.deb
+ bc1ae8562e6e16ed46877a1959b282e4 15271 admin extra linuxmuster-linbo7_7.4.21~edu_amd64.buildinfo

@@ -1,0 +1,54 @@
+Format: 1.8
+Date: Fri, 13 Nov 2026 12:00:00 +0100
+Source: linuxmuster-prepare
+Binary: linuxmuster-prepare
+Built-For-Profiles: derivative.ubuntu noudeb
+Architecture: source all
+Version: 1:7.4.2~edu
+Distribution: lmn74
+Urgency: low
+Maintainer: Thomas Schmitt <thomas@linuxmuster.net>
+Changed-By: Lukas Lukic-Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ linuxmuster-prepare - linuxmuster.net pre setup configuration scripts
+Changes:
+ linuxmuster-prepare (1:7.4.2~edu) lmn74; urgency=low
+ .
+   * edulution fork. The package keeps its upstream name, so the epoch 1: is
+     what makes it win against the same package from deb.linuxmuster.net.
+   * The version carries the suffix ~edu on top of the epoch, so apt policy,
+     dpkg -l and the motd show at a glance that this is the edulution build
+     and not the upstream package. "~" sorts before the empty string, so
+     1:7.4.2~edu stays below a hypothetical 1:7.4.2 while still outranking
+     every upstream 7.x, which carries no epoch at all.
+   * lmn-appliance installs the edulution repository instead of
+     deb.linuxmuster.net: package.edulution.io, keyring
+     /usr/share/keyrings/edulution.gpg, suite resolute. Ubuntu 26.04 is the
+     only supported release, so the 24.04/lmn73 branch is gone.
+   * lmn-prepare installs tools7, cli7, api7 and edulution-linbo-gui7 and no
+     longer the webui or the upstream LINBO GUI.
+   * lmn-prepare tests the internet connection against package.edulution.io,
+     the host the packages actually come from.
+   * linuxmuster-distupgrade also reinforces edulution-* packages, otherwise
+     edulution-linbo-gui7 is left behind.
+   * Release workflow publishes to edulution-io/edulution-package-server
+     instead of linuxmuster/deb, into the Ubuntu codename resolute.
+   * Depend on edulution-archive-keyring, which owns
+     /usr/share/keyrings/edulution.gpg, the keyring the sources entry for
+     package.edulution.io names. New or rotated signing keys then reach the
+     host with a regular upgrade.
+Checksums-Sha1:
+ b0cb5e3a02f3e1bf7782182d74fa06f6951e7f99 618 linuxmuster-prepare_7.4.2~edu.dsc
+ dd13aa68cca7f8731b6acdc5ea040068e2c90852 33496 linuxmuster-prepare_7.4.2~edu.tar.xz
+ d8ef3446fa08d374ada01075e4c998f03b178827 17204 linuxmuster-prepare_7.4.2~edu_all.deb
+ fadbb467a7cfd5e90a36eb188f8e5f9906ef6966 6503 linuxmuster-prepare_7.4.2~edu_amd64.buildinfo
+Checksums-Sha256:
+ f6acc237e84f84644dbd9539be968e297cbf611c0c68f4c2619fcd0d8bf380bf 618 linuxmuster-prepare_7.4.2~edu.dsc
+ 035e7486fc6baee8e976dfad74a84baf9ee55b54101a9d4c10d960a50c8c6f4e 33496 linuxmuster-prepare_7.4.2~edu.tar.xz
+ 5c1f1a9887bd306af173221f0c4e25978363c2280c1086794f52b7f701086f4e 17204 linuxmuster-prepare_7.4.2~edu_all.deb
+ 97c4b77cb564376a17924a0e5d212fcab05bb00a360ddb03fc7317c22b566706 6503 linuxmuster-prepare_7.4.2~edu_amd64.buildinfo
+Files:
+ 53d850a424283851c0c285acc460714c 618 utils optional linuxmuster-prepare_7.4.2~edu.dsc
+ bbd56fd1a6acadb60ef9bb3953d2ba0f 33496 utils optional linuxmuster-prepare_7.4.2~edu.tar.xz
+ fd1d950b8bdd66d02aa6512ee5bb88df 17204 utils optional linuxmuster-prepare_7.4.2~edu_all.deb
+ 39dc093a72739b5f6ad359d46f8721c6 6503 utils optional linuxmuster-prepare_7.4.2~edu_amd64.buildinfo
