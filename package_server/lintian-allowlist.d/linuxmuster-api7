@@ -7,3 +7,10 @@
 
 extended-description-is-empty
 wrong-path-for-interpreter
+
+# The package ships lib/systemd/system/linuxmuster-api.service. Moving it to
+# usr/lib in an upgrade from the upstream package risks the DEP17 file loss on
+# usrmerged systems (dpkg removes the old, aliased path after unpacking the
+# new one), which would leave linuxmuster-api without its unit. Not flagged
+# by the lintian of Ubuntu 24.04, so it was missing from the first list.
+aliased-location
