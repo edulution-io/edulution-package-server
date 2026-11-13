@@ -1,0 +1,27 @@
+Format: 1.8
+Date: Fri, 13 Nov 2026 12:00:00 +0100
+Source: edulution-archive-keyring
+Binary: edulution-archive-keyring
+Built-For-Profiles: noudeb
+Architecture: all
+Version: 2026.11.13
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@netzint.de>
+Changed-By: Michael Dold <michael.dold@netzint.de>
+Description:
+ edulution-archive-keyring - OpenPGP keys of the edulution.io package repository
+Changes:
+ edulution-archive-keyring (2026.11.13) noble; urgency=medium
+ .
+   * Initial release with the current repository signing key
+     DD8F6E92D5B8F2333450AD69BD35E6DB4655161B (expires 2027-09-17).
+Checksums-Sha1:
+ 9aa8b64898d06a591bf836e904da9973429a4cb8 2048 edulution-archive-keyring_2026.11.13_all.deb
+ ac601e8233ab02944f9c0fe65fbe4997395d3a90 7697 edulution-archive-keyring_2026.11.13_amd64.buildinfo
+Checksums-Sha256:
+ 8b2399b7a920d4e4d685c0b3abe926b33ee779f10d04f6b9c3340e9e491f78be 2048 edulution-archive-keyring_2026.11.13_all.deb
+ 4e0d3858b2c5877618f68d64c34fd813a20f7f7dea91b8b79a6476f46ea173bf 7697 edulution-archive-keyring_2026.11.13_amd64.buildinfo
+Files:
+ 81a1a3ddcfa39f2f49e6c0b230006d84 2048 misc optional edulution-archive-keyring_2026.11.13_all.deb
+ 9b49c41d554a92bd1f3111c8b2685a58 7697 misc optional edulution-archive-keyring_2026.11.13_amd64.buildinfo
