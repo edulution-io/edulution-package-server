@@ -88,6 +88,22 @@
     "filename": "/pool/main/l/linuxmuster-common/linuxmuster-common_7.4.5~edu_all.deb"
   },
   {
+    "name": "linuxmuster-fileserver",
+    "version": "1:7.4.0-0~edu",
+    "architecture": "all",
+    "dist": "resolute",
+    "size": "7338",
+    "filename": "/pool/main/l/linuxmuster-fileserver/linuxmuster-fileserver_7.4.0-0~edu_all.deb"
+  },
+  {
+    "name": "linuxmuster-linbo7",
+    "version": "1:7.4.21~edu",
+    "architecture": "all",
+    "dist": "resolute",
+    "size": "101854770",
+    "filename": "/pool/main/l/linuxmuster-linbo7/linuxmuster-linbo7_7.4.21~edu_all.deb"
+  },
+  {
     "name": "linuxmuster-prepare",
     "version": "1:7.4.2~edu",
     "architecture": "all",

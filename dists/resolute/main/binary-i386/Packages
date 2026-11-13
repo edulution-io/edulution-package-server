@@ -114,6 +114,44 @@ SHA1: 09acdc0a32e139405a45c7ac4e4efd5a2d2a242e
 MD5sum: f2035710fc52f3c0d037924881d02468
 Description: linuxmuster.net common files
 
+Package: linuxmuster-fileserver
+Version: 1:7.4.0-0~edu
+Architecture: all
+Maintainer: Lukas Spitznagel <lukas.spitznagel@netzint.de>
+Installed-Size: 30
+Depends: python3, samba, krb5-user, krb5-config, winbind, libpam-winbind, libnss-winbind, libnss-systemd, chrony | ntpsec | systemd-timesyncd, acl, quota, edulution-archive-keyring
+Homepage: www.netzint.de
+Priority: optional
+Section: admin
+Filename: pool/main/l/linuxmuster-fileserver/linuxmuster-fileserver_7.4.0-0~edu_all.deb
+Size: 7338
+SHA256: c1ab5d6e5e8f8e3efb6a5de47db331c58e5a6a2af2eb7b0676d49dd98d2d7e48
+SHA1: 55167d7752c42ecf9fdbf5ccf3fc3d7877743d79
+MD5sum: 6230b7dc1a02fbe41f2fcf5d07efa308
+Description: Linuxmuster Fileserver
+
+Package: linuxmuster-linbo7
+Version: 1:7.4.21~edu
+Architecture: all
+Maintainer: Thomas Schmitt <thomas@linuxmuster.net>
+Installed-Size: 102167
+Pre-Depends: linuxmuster-common
+Depends: argon2, aria2, btcheck, buildtorrent, busybox, coreutils, cpio, dosfstools, dropbear-bin, grub-common, grub-efi-amd64-bin, grub-ipxe, grub-pc-bin, isolinux, linux-firmware, linuxmuster-cli7, linuxmuster-linbo-gui7, logrotate, mbr, opentracker, python3, pv, qemu-utils, rsync, sed, ssh, syslinux-common, syslinux-utils, tftpd-hpa, tmux, udpcast, wakeonlan, xorriso, xz-utils, zip, zlib1g, zstd
+Recommends: linuxmuster-base7
+Suggests: isc-dhcp-server | dhcp3-server
+Conflicts: atftpd, bittorrent, linuxmuster-linbo, linuxmuster-linbo-common, linuxmuster-linbo-common7
+Breaks: linuxmuster-linbo-common7
+Priority: extra
+Section: admin
+Filename: pool/main/l/linuxmuster-linbo7/linuxmuster-linbo7_7.4.21~edu_all.deb
+Size: 101854770
+SHA256: 688ff4ac926f67dc151a1c1b68ddffbcbe5e3331172269403e59dd9ddad0865e
+SHA1: df234ab942ae1ae5850341614b5d9d30ce0327e5
+MD5sum: 58a6c0c219b5a3e1832ca9ffa91f9f27
+Description: linuxmuster-linbo7
+  This package contains kernel, initrd, scripts and pxe boot configuration for
+  the Linux-based Network Boot (LINBO) boot/install/repair system.
+
 Package: linuxmuster-prepare
 Version: 1:7.4.2~edu
 Architecture: all
