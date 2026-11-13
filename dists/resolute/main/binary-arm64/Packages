@@ -97,6 +97,21 @@ Description: VDI service for linuxmuster.net on Proxmox
  as a library. The systemd unit is only started once /etc/edulution/linbo-vdi/
  vdiConfig.json exists; run vdi-setup to create it.
 
+Package: linuxmuster-api7
+Version: 1:7.4.16~edu
+Architecture: all
+Maintainer: Arnaud Kientz <arnaud@linuxmuster.net>
+Installed-Size: 628
+Depends: openssl, linuxmuster-tools7 (>= 1:7.4.20~), python3
+Priority: optional
+Section: linuxmuster
+Filename: pool/main/l/linuxmuster-api7/linuxmuster-api7_7.4.16~edu_all.deb
+Size: 118226
+SHA256: 93e4248c1329d619e12ab75f5780f19a260998e4e7241878559f5cf0772d0eb3
+SHA1: d94a096bc2aeb9f23edd441a8124651d5f380265
+MD5sum: f2793518848aa8b9944994771861f5e9
+Description: Api for the linuxmuster.net 7 server.
+
 Package: linuxmuster-base7
 Version: 1:7.4.24~edu
 Architecture: all
