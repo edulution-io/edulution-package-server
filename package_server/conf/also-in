@@ -1,0 +1,13 @@
+# Distributions a build is additionally published to, copied with
+# "reprepro copy" after the import:
+#
+#   <package-name>/<codename>  <codename> [<codename> ...]
+#
+# The left column is the directory under packages/ that holds the build. This
+# lives here rather than next to the .deb because the release workflows
+# replace that directory on every upload.
+
+# Not tied to the Ubuntu release they are built on.
+edulution-archive-keyring/noble  resolute
+edulution-fileproxy/noble        resolute
+edulution-linbo-vdi/noble        resolute

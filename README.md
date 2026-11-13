@@ -78,10 +78,9 @@ Afterwards `apt update` works as before. Newly set up machines are unaffected.
 ├── package_server/               # Source of the published repository
 │   ├── conf/
 │   │   ├── distributions         # reprepro: distributions (noble, resolute)
-│   │   └── incoming              # reprepro: incoming configuration
+│   │   └── also-in               # builds that are also published to other distributions
 │   ├── pub.gpg                   # public signing key
 │   ├── index.html                # landing page (instructions + package list)
-│   ├── sync-distributions.sh     # copies packages into all distributions
 │   ├── generate-package-json.sh  # generates packages.json for the landing page
 │   ├── generate-indices.sh       # generates index.html for directory browsing
 │   └── media/                    # logo/background for the landing page
@@ -97,14 +96,58 @@ deployed to GitHub Pages.
 
 ---
 
+## Version scheme of the forked linuxmuster packages
+
+The linuxmuster.net server packages are forked under their **upstream names**
+(`linuxmuster-base7`, `sophomorix-samba`, …), so nothing on a server has to be
+renamed to move from one build to the other. What tells them apart is the
+version:
+
+```
+1:7.4.24~edu
+│ │      └─── suffix: this is the edulution build
+│ └────────── the upstream version it was forked from
+└──────────── Debian epoch 1
+```
+
+* The **epoch `1:`** decides precedence. A version without an epoch counts as
+  `0` ([Policy 5.6.12][policy]), so `1:7.4.24~edu` wins against every `7.x`
+  from `deb.linuxmuster.net`. No apt pin is needed, and the precedence travels
+  inside the package instead of sitting in a `/etc/apt/preferences.d` file
+  that gets cleaned away while someone debugs an unrelated problem.
+* The **`~edu` suffix** makes the fork visible – in `apt policy`, in
+  `dpkg -l`, on the landing page of this repository and in the server's motd,
+  which highlights it. `~` sorts before the empty string, so `1:7.4.24~edu`
+  ranks below a hypothetical `1:7.4.24` while still outranking every upstream
+  version.
+* Versioned dependencies between the forked packages therefore clamp with a
+  trailing tilde: `linuxmuster-common (>= 1:7.4.5~)`. Without it `1:7.4.5~edu`
+  would not satisfy the clamp, precisely because `~` sorts below the plain
+  version.
+* Packages edulution owns outright carry **no epoch**: there is no upstream
+  namesake to outrank. They do carry the `~edu` suffix, because the suffix
+  says who built a package and that is just as true for them —
+  `edulution-linbo-gui7` is at `1.1.4~edu`. `edulution-fileproxy` and
+  `edulution-linbo-vdi` are built outside this set of changes and still have
+  a plain version; they get the suffix on their next release.
+
+Both characters are refused by git in a refname, so the release workflows spell
+them out: `1:7.4.24~edu` is released by pushing the tag `v7.4.24-edu` (the build
+checks it against `debian/changelog`), and the branch it opens here is
+`update/<package>-<codename>-1-7.4.24-edu`.
+
+[policy]: https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-version
+
+---
+
 ## Publishing a new package
 
-Packages are added by placing the built artifacts under `packages/`. The build
-copies everything from `packages/*/*/*` into the reprepro `incoming/` directory
-and imports it.
+Packages are added by placing the built artifacts under `packages/`. **The
+directory a package sits in names the distribution it is published to** – the
+build does not look at the `Distribution:` field of the `.changes`.
 
 1. Place the built files under `packages/<package-name>/<codename>/`. At least
-   the `.deb` file, ideally together with the signed `.changes` file (and
+   the `.deb` file, ideally together with the `.changes` file (and
    `.buildinfo`), e.g.:
 
    ```
@@ -112,27 +155,49 @@ and imports it.
    packages/edulution-fileproxy/noble/edulution-fileproxy_1.1.5_amd64.changes
    ```
 
+   The `.changes` is not imported, but its checksums are verified before the
+   `.deb` is – see `validate-incoming.sh`.
+
 2. Make sure the target codename is listed in
-   [`package_server/conf/distributions`](package_server/conf/distributions)
-   and in [`package_server/conf/incoming`](package_server/conf/incoming)
-   (the `Allow:` line).
+   [`package_server/conf/distributions`](package_server/conf/distributions).
+   A directory named after a codename that is not listed there fails the
+   build rather than being skipped.
 
 3. Commit the change. A push to `main` builds and deploys the repository
    automatically (see below).
 
-> A package only has to be uploaded for **one** codename. During the build,
-> `sync-distributions.sh` copies it into every other distribution, so a package
-> uploaded under `noble` is also available for Ubuntu 26.04 (`resolute`).
-> If a distribution needs its own build, place it under
-> `packages/<package-name>/<codename>/` – an existing package is never
-> overwritten by a copy from another distribution.
+> **Every package repository publishes into every codename it supports.**
+> There is no automatic copy into all distributions any more. A package that
+> is genuinely release-independent is listed in
+> [`package_server/conf/also-in`](package_server/conf/also-in):
 >
-> The check is per package **name**: as soon as a distribution contains a
-> package of that name, it is left alone completely, including all its
-> architectures and regardless of version. A distribution-specific build
-> therefore has to be maintained on its own – it does not receive the newer
-> version from another distribution. The build logs every such case as
-> `Skipping <package> for <distribution> (already present)`.
+> ```
+> edulution-fileproxy/noble        resolute
+> ```
+>
+> The left column is the build's directory under `packages/`, followed by the
+> codenames it is additionally published to. After importing, the build copies
+> the package into each of them with `reprepro copy`, which saves committing
+> the same binary twice. A package that is not listed stays in the codename it
+> was uploaded to.
+>
+> The list lives here and not next to the `.deb` because the release workflows
+> replace `packages/<package-name>/<codename>/` on every upload – a file placed
+> there would vanish with the next release, and the package with it from every
+> other distribution. It also means that widening where a package is published
+> is a change to this repository's configuration, not part of an update pull
+> request.
+>
+> The build fails on an entry naming an unknown codename, and on an entry
+> whose target has its own build under `packages/` – the copy and that build
+> would replace each other. An entry whose directory does not exist yet only
+> warns, so a package can be listed before its first upload is merged.
+>
+> The former `sync-distributions.sh` copied every package into every
+> distribution unless one of that **name** was already there. That is wrong
+> for packages that are bound to the release they were built on:
+> `linuxmuster-linbo7` builds kernel and initrd from it, so a `resolute` build
+> must never end up in `noble`.
 
 > In practice, the individual package repositories (e.g.
 > `edulution-fileproxy`) push their releases via automation into an
@@ -140,18 +205,29 @@ and imports it.
 > [`automatic-pull-request.yml`](.github/workflows/automatic-pull-request.yml)
 > workflow then automatically opens a pull request to `main`.
 
+### Lintian
+
+Every `.deb` has to pass `lintian --fail-on error`. Tags accepted for all
+packages are in [`package_server/lintian-allowlist`](package_server/lintian-allowlist).
+Tags accepted for one package only are in
+`package_server/lintian-allowlist.d/<package-name>`, e.g. the `/srv/linbo`
+files of `linuxmuster-linbo7`. The forked linuxmuster.net packages carry the
+errors they had upstream; each of their lists records them as they were when
+the package moved here, so a new error still fails the build. Like
+`conf/also-in`, the lists live in this repository: a package repository
+cannot allowlist its own errors, a change to a list goes through review here.
+
 ### Supporting a new Ubuntu version (distribution)
 
 1. Add a new block in [`package_server/conf/distributions`](package_server/conf/distributions)
    with the correct `Codename`.
-2. Add the codename to the `Allow:` line in
-   [`package_server/conf/incoming`](package_server/conf/incoming).
-3. Add the codename to the `FALLBACK_DISTS` list in
+2. Add the codename to the `FALLBACK_DISTS` list in
    [`package_server/index.html`](package_server/index.html) (only relevant for
    the display when `packages.json` is unreachable).
-4. Optional: place distribution-specific packages under
-   `packages/<package-name>/<codename>/`. All other packages are copied into
-   the new distribution automatically during the build.
+3. Have each package repository publish into the new codename – either with
+   its own build under `packages/<package-name>/<codename>/`, or by adding the
+   codename to the build's line in `conf/also-in`. Nothing arrives there by
+   itself.
 
 The client instructions do **not** need to be changed – they detect the
 codename automatically.
@@ -166,11 +242,12 @@ directory:
 
 1. Install `reprepro` and import the GPG signing key (private key from the
    `GPG_PRIVATE_KEY` secret).
-2. Copy existing `.deb` packages from `../packages/*/*/*` into `incoming/` and
-   import them with `reprepro processincoming default`.
-3. `sync-distributions.sh` copies every package into all distributions
-   configured in `conf/distributions`, unless the distribution already
-   contains a package of that name.
+2. For every `packages/<package-name>/<codename>/` directory: verify the
+   checksums of its `.changes` and run `lintian` over its `.deb` files
+   (`validate-incoming.sh`), then import them into `<codename>` with
+   `reprepro includedeb`.
+3. If `conf/also-in` lists that directory, copy the package into each
+   codename named there with `reprepro copy`.
 4. Generate the repository indices with `reprepro export`.
 5. Create the symlink `dists/nobel -> noble` (legacy URL, see above).
 6. `generate-package-json.sh` generates `packages.json` (the landing page's
@@ -199,11 +276,11 @@ is installed:
 
 ```bash
 cd package_server
-bash sync-distributions.sh         # copy packages into all distributions
-reprepro -V export                 # generate indices (uses conf/ + pool/)
-bash generate-package-json.sh      # build packages.json
-bash generate-indices.sh           # build directory indices
+bash build-repository.sh           # validate, import, export, build indices
 ```
+
+For an unsigned build, drop the `SignWith:` lines from `conf/distributions`
+first – otherwise `reprepro` asks for the private key.
 
 Afterwards the folder can be served locally, e.g. with
 `python3 -m http.server`, and inspected in the browser.
