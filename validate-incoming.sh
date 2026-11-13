@@ -11,6 +11,9 @@ set -eo pipefail
 
 INCOMING="${1:-incoming}"
 ALLOWLIST="${2:-lintian-allowlist}"
+# Tags accepted for this one package only (lintian-allowlist.d/<package>),
+# on top of the global list. Optional.
+PACKAGE_ALLOWLIST="${3:-}"
 
 # Prints the continuation lines of a deb822 multi-line field, e.g. the file
 # entries under "Checksums-Sha256:".
@@ -87,14 +90,19 @@ for changes in "${changes_files[@]}"; do
     fi
 done
 
+SUPPRESS="$(mktemp)"
+trap 'rm -f "$SUPPRESS"' EXIT
+grep -h -v -e '^[[:space:]]*#' -e '^[[:space:]]*$' "$ALLOWLIST" ${PACKAGE_ALLOWLIST:+"$PACKAGE_ALLOWLIST"} \
+    | sed 's/[[:space:]]*#.*$//' | grep -v '^$' | sort -u > "$SUPPRESS"
+
 echo
 echo "Running lintian, ignoring these allowlisted tags:"
-grep -v -e '^[[:space:]]*#' -e '^[[:space:]]*$' "$ALLOWLIST" | sed 's/^/  /'
+sed 's/^/  /' "$SUPPRESS"
 echo
 
 for deb in "${deb_files[@]}"; do
     if lintian --tag-display-limit 0 --fail-on error \
-        --suppress-tags-from-file "$ALLOWLIST" "$deb"; then
+        --suppress-tags-from-file "$SUPPRESS" "$deb"; then
         echo "  OK  $(basename "$deb")"
     else
         echo "::error::$(basename "$deb") failed lintian" >&2
