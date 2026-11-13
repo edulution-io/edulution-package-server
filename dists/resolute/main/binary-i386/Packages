@@ -45,24 +45,6 @@ Description: VDI service for linuxmuster.net on Proxmox
  as a library. The systemd unit is only started once /etc/edulution/linbo-vdi/
  vdiConfig.json exists; run vdi-setup to create it.
 
-Package: linuxmuster-base7
-Version: 1:7.4.24~edu
-Architecture: all
-Maintainer: Thomas Schmitt <thomas@linuxmuster.net>
-Installed-Size: 529
-Pre-Depends: python3, linuxmuster-common (>= 1:7.4.5~)
-Depends: python3-apt, python3-bcrypt, python3-bs4, python3-dialog, python3-ipy, python3-ldap3, python3-lxml, python3-netaddr, python3-netifaces, python3-paramiko, python3-requests, python3-urllib3, python3:any, coreutils, cups, dracut, printer-driver-cups-pdf, isc-dhcp-server, python3-setproctitle, openssl, samba, samba-ad-dc, samba-dsdb-modules, smbclient, ldb-tools, krb5-user, linuxmuster-prepare, linuxmuster-linbo7, linuxmuster-api7, ntpsec, sophomorix-samba, tmux
-Conflicts: dnsmasq-base
-Priority: optional
-Section: linuxmuster
-Filename: pool/main/l/linuxmuster-base7/linuxmuster-base7_7.4.24~edu_all.deb
-Size: 125418
-SHA256: 43b76e73f685a718c61ad5fac8dea2a0e42364d029e6ff00a0c60ef6095437d6
-SHA1: 6eb2a5887e211bd910ee2ecaae4e2ab47edc058e
-MD5sum: a9664f60ab033d56d0b6a532f7ea9ef9
-Description: linuxmuster.net configuration scripts
- This package provides configuration scripts for linuxmuster.net
-
 Package: linuxmuster-cli7
 Version: 1:7.4.12~edu
 Architecture: all
