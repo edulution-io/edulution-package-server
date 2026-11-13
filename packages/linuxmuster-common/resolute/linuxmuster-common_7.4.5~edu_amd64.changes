@@ -1,0 +1,46 @@
+Format: 1.8
+Date: Fri, 13 Nov 2026 12:00:00 +0100
+Source: linuxmuster-common
+Binary: linuxmuster-common
+Built-For-Profiles: derivative.ubuntu noudeb
+Architecture: source all
+Version: 1:7.4.5~edu
+Distribution: lmn74
+Urgency: low
+Maintainer: Thomas Schmitt <thomas@linuxmuster.net>
+Changed-By: Lukas Lukic-Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ linuxmuster-common - linuxmuster.net common files
+Changes:
+ linuxmuster-common (1:7.4.5~edu) lmn74; urgency=low
+ .
+   * edulution fork. The package keeps its upstream name, so the epoch 1: is
+     what makes it win against the same package from deb.linuxmuster.net.
+     A missing epoch counts as 0, so every existing versioned dependency on
+     linuxmuster-common stays satisfied.
+   * The version carries the suffix ~edu on top of the epoch, so apt policy,
+     dpkg -l and the motd show at a glance that this is the edulution build
+     and not the upstream package. "~" sorts before the empty string, so
+     1:7.4.5~edu stays below a hypothetical 1:7.4.5 while still outranking
+     every upstream 7.x, which carries no epoch at all.
+   * Release workflow publishes to edulution-io/edulution-package-server
+     instead of linuxmuster/deb, into the Ubuntu codename resolute.
+   * Depend on edulution-archive-keyring, which owns
+     /usr/share/keyrings/edulution.gpg, the keyring the sources entry for
+     package.edulution.io names. New or rotated signing keys then reach the
+     host with a regular upgrade.
+Checksums-Sha1:
+ c75e40a67e63da2898757a38eba5dfbb22799c01 598 linuxmuster-common_7.4.5~edu.dsc
+ fd3dd26bc80e7aafd2e132ac64d903898077238a 19809 linuxmuster-common_7.4.5~edu.tar.gz
+ 09acdc0a32e139405a45c7ac4e4efd5a2d2a242e 6510 linuxmuster-common_7.4.5~edu_all.deb
+ 1643f01b1dc611446421def202c0e4fcde322c1a 5915 linuxmuster-common_7.4.5~edu_amd64.buildinfo
+Checksums-Sha256:
+ a7b97fde90b66d649dcb3237cc5b4fcbb396747d371e6755b8e9e39f444fb89c 598 linuxmuster-common_7.4.5~edu.dsc
+ b208583da1bfdad48659eef5dd50da8c774c17231e648e9e254b497a8ec05c92 19809 linuxmuster-common_7.4.5~edu.tar.gz
+ ac1f807b9e48fff451acd2dd5e57763a9870c5865ae50d1689a59f22ec7f0ca1 6510 linuxmuster-common_7.4.5~edu_all.deb
+ 7052ae297ec6495a008cebe2dfcff0dd189bfbeb520c6bf8175592d53b721a0c 5915 linuxmuster-common_7.4.5~edu_amd64.buildinfo
+Files:
+ 807ae4f976b834747fef9e7cad0f6429 598 linuxmuster optional linuxmuster-common_7.4.5~edu.dsc
+ a8fcc3cbb5c401a1f27bb85ace3d217a 19809 linuxmuster optional linuxmuster-common_7.4.5~edu.tar.gz
+ f2035710fc52f3c0d037924881d02468 6510 linuxmuster optional linuxmuster-common_7.4.5~edu_all.deb
+ ae34385b0656a912a67b9fa87810eda0 5915 linuxmuster optional linuxmuster-common_7.4.5~edu_amd64.buildinfo
