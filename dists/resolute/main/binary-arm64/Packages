@@ -50,6 +50,27 @@ Description: WebDAV server with SMB backend and NTLM authentication
  /usr/share/doc/edulution-fileproxy/README.Debian; the service is therefore
  installed neither enabled nor started.
 
+Package: edulution-linbo-gui7
+Version: 1.1.4~edu
+Architecture: all
+Maintainer: Edulution <info@edulution.io>
+Installed-Size: 10214
+Depends: linuxmuster-linbo7 (>= 4.3.0) | linuxmuster-cachingserver-linbo7
+Conflicts: linuxmuster-linbo-gui7
+Replaces: linuxmuster-linbo-gui7
+Provides: linuxmuster-linbo-gui7
+Homepage: https://github.com/edulution-io/edulution-linbo-gui
+Priority: optional
+Section: admin
+Filename: pool/main/e/edulution-linbo-gui7/edulution-linbo-gui7_1.1.4~edu_all.deb
+Size: 10392100
+SHA256: eabe5453df5cb174d669f4e81c6f24c486fb5fbe73ca1ca11be6ce06c93de4b6
+SHA1: d31f3d186785ce19e04f37d199616af715a9ad6c
+MD5sum: 2ddca987aae0ddd2ea2892a6833dc2dd
+Description: Edulution LINBO GUI - Enhanced Boot Interface
+ Drop-in replacement for linuxmuster-linbo-gui7 with modernized
+ glassmorphism design, dark theme, and additional OS icons.
+
 Package: edulution-linbo-vdi
 Version: 1.1.10
 Architecture: all

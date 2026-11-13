@@ -48,6 +48,14 @@
     "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.5.0_amd64.deb"
   },
   {
+    "name": "edulution-linbo-gui7",
+    "version": "1.1.4~edu",
+    "architecture": "all",
+    "dist": "resolute",
+    "size": "10392100",
+    "filename": "/pool/main/e/edulution-linbo-gui7/edulution-linbo-gui7_1.1.4~edu_all.deb"
+  },
+  {
     "name": "edulution-linbo-vdi",
     "version": "1.1.10",
     "architecture": "all",
