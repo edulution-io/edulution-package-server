@@ -1,3 +1,24 @@
+Package: edulution-archive-keyring
+Version: 2026.11.13
+Architecture: all
+Maintainer: edulution.io <info@netzint.de>
+Installed-Size: 10
+Multi-Arch: foreign
+Homepage: https://package.edulution.io
+Priority: optional
+Section: misc
+Filename: pool/main/e/edulution-archive-keyring/edulution-archive-keyring_2026.11.13_all.deb
+Size: 2048
+SHA256: 8b2399b7a920d4e4d685c0b3abe926b33ee779f10d04f6b9c3340e9e491f78be
+SHA1: 9aa8b64898d06a591bf836e904da9973429a4cb8
+MD5sum: 81a1a3ddcfa39f2f49e6c0b230006d84
+Description: OpenPGP keys of the edulution.io package repository
+ APT uses these keys to verify the package repository at
+ package.edulution.io. The package installs them as
+ /usr/share/keyrings/edulution.gpg, the keyring the repository's sources
+ entry names in signed-by, so new or rotated keys reach every host with a
+ regular upgrade.
+
 Package: edulution-fileproxy
 Version: 1.5.0
 Architecture: arm64

@@ -1,5 +1,13 @@
 [
   {
+    "name": "edulution-archive-keyring",
+    "version": "2026.11.13",
+    "architecture": "all",
+    "dist": "noble",
+    "size": "2048",
+    "filename": "/pool/main/e/edulution-archive-keyring/edulution-archive-keyring_2026.11.13_all.deb"
+  },
+  {
     "name": "edulution-fileproxy",
     "version": "1.5.0",
     "architecture": "amd64",
@@ -22,6 +30,14 @@
     "dist": "noble",
     "size": "7840184",
     "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.5.0_arm64.deb"
+  },
+  {
+    "name": "edulution-archive-keyring",
+    "version": "2026.11.13",
+    "architecture": "all",
+    "dist": "resolute",
+    "size": "2048",
+    "filename": "/pool/main/e/edulution-archive-keyring/edulution-archive-keyring_2026.11.13_all.deb"
   },
   {
     "name": "edulution-fileproxy",
