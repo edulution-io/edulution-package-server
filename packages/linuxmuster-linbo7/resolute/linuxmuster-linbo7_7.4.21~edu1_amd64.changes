@@ -1,0 +1,37 @@
+Format: 1.8
+Date: Mon, 16 Nov 2026 14:30:00 +0100
+Source: linuxmuster-linbo7
+Binary: linuxmuster-linbo7
+Built-For-Profiles: derivative.ubuntu noudeb
+Architecture: source all
+Version: 1:7.4.21~edu1
+Distribution: lmn74
+Urgency: medium
+Maintainer: Thomas Schmitt <thomas@linuxmuster.net>
+Changed-By: Lukas Lukic-Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ linuxmuster-linbo7 - linuxmuster-linbo7
+Changes:
+ linuxmuster-linbo7 (1:7.4.21~edu1) lmn74; urgency=medium
+ .
+   * Depend on edulution-linbo-gui7 instead of the virtual
+     linuxmuster-linbo-gui7. A server upgraded from deb.linuxmuster.net kept
+     the upstream linuxmuster-linbo-gui7, which satisfied the virtual
+     dependency, so the edulution GUI never arrived there. apt now installs
+     edulution-linbo-gui7 and, through its Conflicts/Replaces, removes the
+     upstream GUI in the same run.
+Checksums-Sha1:
+ 822d8b061c258c5fb61bd56dc6403b5aa6574429 1239 linuxmuster-linbo7_7.4.21~edu1.dsc
+ 3524ec923696173bd363f6f19b32f082141275a0 2045810 linuxmuster-linbo7_7.4.21~edu1.tar.gz
+ 1e92b3e1a181ea441d149db41f348098d8248271 101911590 linuxmuster-linbo7_7.4.21~edu1_all.deb
+ 0a933c0032a545397ed4f0f5887306496f8020a1 15290 linuxmuster-linbo7_7.4.21~edu1_amd64.buildinfo
+Checksums-Sha256:
+ f628adc2d0572ffebf017e0cc9c56c38245040c7f10508160d5a1977b821851d 1239 linuxmuster-linbo7_7.4.21~edu1.dsc
+ 7825e63d36eb55a535490934c98c34e7257a6833a858da873684dab5f1dbf70b 2045810 linuxmuster-linbo7_7.4.21~edu1.tar.gz
+ 67fcb91a47c76de3c00440e2ab6a3a6bff97d28903e5634890ff496fb8682b66 101911590 linuxmuster-linbo7_7.4.21~edu1_all.deb
+ 11b8f3cae3979e1fa336a53a21a89ccd2aa4d2076402437d766504af375a70f6 15290 linuxmuster-linbo7_7.4.21~edu1_amd64.buildinfo
+Files:
+ d5ac7e29f96cdd9172788dd83fa6ce6c 1239 admin extra linuxmuster-linbo7_7.4.21~edu1.dsc
+ e9039a9be5aee58443587f6545376112 2045810 admin extra linuxmuster-linbo7_7.4.21~edu1.tar.gz
+ ec81d7894cb1d9926db2357d974a2aea 101911590 admin extra linuxmuster-linbo7_7.4.21~edu1_all.deb
+ 59585e89c1368431c684f857ad90fe42 15290 admin extra linuxmuster-linbo7_7.4.21~edu1_amd64.buildinfo
