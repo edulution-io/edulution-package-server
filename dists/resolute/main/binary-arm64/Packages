@@ -216,18 +216,18 @@ Description: linuxmuster.net pre setup configuration scripts
  linuxmuster.net server installation.
 
 Package: linuxmuster-tools7
-Version: 1:7.4.20~edu
+Version: 1:7.4.20~edu1
 Architecture: all
 Maintainer: Arnaud Kientz <arnaud@linuxmuster.net>
-Installed-Size: 1466
+Installed-Size: 1468
 Depends: python3, python3-pip, python3-venv, python3-configobj, python3-jinja2, python3-ldap, python3-magic, python3-pexpect, python3-yaml, nmap, sophomorix-samba (>= 1:7.4.7~)
 Priority: optional
 Section: linuxmuster
-Filename: pool/main/l/linuxmuster-tools7/linuxmuster-tools7_7.4.20~edu_all.deb
-Size: 263714
-SHA256: 441bbd94caec6844df09e3e7faaaa6644169d2135037113750c110f9d09640c5
-SHA1: e689792d6e844a196a17a09852eb0a9fa5ebd707
-MD5sum: 70af4360c77d78a4fb7a389fc1360ea4
+Filename: pool/main/l/linuxmuster-tools7/linuxmuster-tools7_7.4.20~edu1_all.deb
+Size: 263924
+SHA256: ea898a5d43345fb2098990998a83289a8973e7cbf8176bb92dbd47e56191268e
+SHA1: f5f92bfdc7f1b61efb7fc3e113c6e0b5273b16f4
+MD5sum: d43e817addd1a6df683c305aab8e34dc
 Description: Tools for the linuxmuster.net 7 server.
 
 Package: sophomorix-belwue-mail

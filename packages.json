@@ -121,11 +121,11 @@
   },
   {
     "name": "linuxmuster-tools7",
-    "version": "1:7.4.20~edu",
+    "version": "1:7.4.20~edu1",
     "architecture": "all",
     "dist": "resolute",
-    "size": "263714",
-    "filename": "/pool/main/l/linuxmuster-tools7/linuxmuster-tools7_7.4.20~edu_all.deb"
+    "size": "263924",
+    "filename": "/pool/main/l/linuxmuster-tools7/linuxmuster-tools7_7.4.20~edu1_all.deb"
   },
   {
     "name": "sophomorix-belwue-mail",
