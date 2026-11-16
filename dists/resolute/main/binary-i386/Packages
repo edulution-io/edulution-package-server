@@ -20,22 +20,22 @@ Description: OpenPGP keys of the edulution.io package repository
  regular upgrade.
 
 Package: edulution-linbo-gui7
-Version: 1.1.4~edu
+Version: 1.1.5~edu
 Architecture: all
 Maintainer: Edulution <info@edulution.io>
 Installed-Size: 10214
 Depends: linuxmuster-linbo7 (>= 4.3.0) | linuxmuster-cachingserver-linbo7
-Conflicts: linuxmuster-linbo-gui7
-Replaces: linuxmuster-linbo-gui7
+Breaks: linuxmuster-linbo-gui7 (<< 1:1~)
+Replaces: linuxmuster-linbo-gui7 (<< 1:1~)
 Provides: linuxmuster-linbo-gui7
 Homepage: https://github.com/edulution-io/edulution-linbo-gui
 Priority: optional
 Section: admin
-Filename: pool/main/e/edulution-linbo-gui7/edulution-linbo-gui7_1.1.4~edu_all.deb
-Size: 10392100
-SHA256: eabe5453df5cb174d669f4e81c6f24c486fb5fbe73ca1ca11be6ce06c93de4b6
-SHA1: d31f3d186785ce19e04f37d199616af715a9ad6c
-MD5sum: 2ddca987aae0ddd2ea2892a6833dc2dd
+Filename: pool/main/e/edulution-linbo-gui7/edulution-linbo-gui7_1.1.5~edu_all.deb
+Size: 10393184
+SHA256: 05c7ff35da09803468ea2a4821bc07246499b9f6d742ee50284296d18feccd73
+SHA1: 81c31074500bdb58f9889a887aabbe35ad73d7c1
+MD5sum: 5535cc569a286b035b479b57fbb657c3
 Description: Edulution LINBO GUI - Enhanced Boot Interface
  Drop-in replacement for linuxmuster-linbo-gui7 with modernized
  glassmorphism design, dark theme, and additional OS icons.
@@ -144,6 +144,26 @@ SHA256: c1ab5d6e5e8f8e3efb6a5de47db331c58e5a6a2af2eb7b0676d49dd98d2d7e48
 SHA1: 55167d7752c42ecf9fdbf5ccf3fc3d7877743d79
 MD5sum: 6230b7dc1a02fbe41f2fcf5d07efa308
 Description: Linuxmuster Fileserver
+
+Package: linuxmuster-linbo-gui7
+Source: edulution-linbo-gui7 (1.1.5~edu)
+Version: 1:1.1.5~edu
+Architecture: all
+Maintainer: Edulution <info@edulution.io>
+Installed-Size: 42
+Depends: edulution-linbo-gui7 (>= 1.1.5~edu)
+Homepage: https://github.com/edulution-io/edulution-linbo-gui
+Priority: optional
+Section: oldlibs
+Filename: pool/main/e/edulution-linbo-gui7/linuxmuster-linbo-gui7_1.1.5~edu_all.deb
+Size: 13954
+SHA256: df314e485ea0e4390cd9947a09e7b45136ff65f4d43153636727bd3b7023d4b0
+SHA1: 1151adee62c24e86f024beda78922d126b39733a
+MD5sum: 21c31313f356385b6aba33cad8964af2
+Description: transitional package for edulution-linbo-gui7
+ Moves a server from the linuxmuster.net LINBO GUI to edulution-linbo-gui7
+ with a regular upgrade. The package is empty and can be removed once
+ edulution-linbo-gui7 is installed.
 
 Package: linuxmuster-linbo7
 Version: 1:7.4.21~edu1
