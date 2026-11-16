@@ -105,11 +105,11 @@
   },
   {
     "name": "linuxmuster-linbo7",
-    "version": "1:7.4.21~edu",
+    "version": "1:7.4.21~edu1",
     "architecture": "all",
     "dist": "resolute",
-    "size": "101854770",
-    "filename": "/pool/main/l/linuxmuster-linbo7/linuxmuster-linbo7_7.4.21~edu_all.deb"
+    "size": "101911590",
+    "filename": "/pool/main/l/linuxmuster-linbo7/linuxmuster-linbo7_7.4.21~edu1_all.deb"
   },
   {
     "name": "linuxmuster-prepare",

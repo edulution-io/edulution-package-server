@@ -177,23 +177,23 @@ MD5sum: 6230b7dc1a02fbe41f2fcf5d07efa308
 Description: Linuxmuster Fileserver
 
 Package: linuxmuster-linbo7
-Version: 1:7.4.21~edu
+Version: 1:7.4.21~edu1
 Architecture: all
 Maintainer: Thomas Schmitt <thomas@linuxmuster.net>
-Installed-Size: 102167
+Installed-Size: 102215
 Pre-Depends: linuxmuster-common
-Depends: argon2, aria2, btcheck, buildtorrent, busybox, coreutils, cpio, dosfstools, dropbear-bin, grub-common, grub-efi-amd64-bin, grub-ipxe, grub-pc-bin, isolinux, linux-firmware, linuxmuster-cli7, linuxmuster-linbo-gui7, logrotate, mbr, opentracker, python3, pv, qemu-utils, rsync, sed, ssh, syslinux-common, syslinux-utils, tftpd-hpa, tmux, udpcast, wakeonlan, xorriso, xz-utils, zip, zlib1g, zstd
+Depends: argon2, aria2, btcheck, buildtorrent, busybox, coreutils, cpio, dosfstools, dropbear-bin, grub-common, grub-efi-amd64-bin, grub-ipxe, grub-pc-bin, isolinux, linux-firmware, linuxmuster-cli7, edulution-linbo-gui7, logrotate, mbr, opentracker, python3, pv, qemu-utils, rsync, sed, ssh, syslinux-common, syslinux-utils, tftpd-hpa, tmux, udpcast, wakeonlan, xorriso, xz-utils, zip, zlib1g, zstd
 Recommends: linuxmuster-base7
 Suggests: isc-dhcp-server | dhcp3-server
 Conflicts: atftpd, bittorrent, linuxmuster-linbo, linuxmuster-linbo-common, linuxmuster-linbo-common7
 Breaks: linuxmuster-linbo-common7
 Priority: extra
 Section: admin
-Filename: pool/main/l/linuxmuster-linbo7/linuxmuster-linbo7_7.4.21~edu_all.deb
-Size: 101854770
-SHA256: 688ff4ac926f67dc151a1c1b68ddffbcbe5e3331172269403e59dd9ddad0865e
-SHA1: df234ab942ae1ae5850341614b5d9d30ce0327e5
-MD5sum: 58a6c0c219b5a3e1832ca9ffa91f9f27
+Filename: pool/main/l/linuxmuster-linbo7/linuxmuster-linbo7_7.4.21~edu1_all.deb
+Size: 101911590
+SHA256: 67fcb91a47c76de3c00440e2ab6a3a6bff97d28903e5634890ff496fb8682b66
+SHA1: 1e92b3e1a181ea441d149db41f348098d8248271
+MD5sum: ec81d7894cb1d9926db2357d974a2aea
 Description: linuxmuster-linbo7
   This package contains kernel, initrd, scripts and pxe boot configuration for
   the Linux-based Network Boot (LINBO) boot/install/repair system.
