@@ -1,0 +1,45 @@
+Format: 1.8
+Date: Tue, 18 Nov 2026 14:00:00 +0100
+Source: linuxmuster-tools7
+Binary: linuxmuster-tools7
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 1:7.4.21~edu
+Distribution: lmn74
+Urgency: high
+Maintainer: Arnaud Kientz <arnaud@linuxmuster.net>
+Changed-By: Lukas Lukic-Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ linuxmuster-tools7 - Tools for the linuxmuster.net 7 server.
+Changes:
+ linuxmuster-tools7 (1:7.4.21~edu) lmn74; urgency=high
+ .
+   * Merge upstream 7.4.21 (security release). Upstream notes:
+   * [security] [ldapconnector] The value of /search is escaped in the
+     LDAP filter.
+   * [passwords] Random first passwords use PWD_LENGTH of school.conf,
+     and a diceware passphrase with RANDOM_PWD = dice.
+   * [print] All LaTeX special characters are escaped, and the school is
+     forwarded when printing a schoolclass list.
+   * [samba] smbstatus is read from its json output, with the school
+     prefix and the users of a room.
+   * Minor fixes: expired certificates, malformed sophomorix log lines,
+     drives without properties, custom fields imported from the webui,
+     gzipped logs, hostname and room of machines.
+   * edulution fork: this build keeps the LMNFile change of 1:7.4.20~edu1,
+     which still allows the webui paths until the webui is removed.
+Checksums-Sha1:
+ 7964ddf84c5ae049b7806592c7e276d22db8ab38 601 linuxmuster-tools7_7.4.21~edu.dsc
+ 1c9f26ded2f0040d98a363b951942303c6d73d75 351980 linuxmuster-tools7_7.4.21~edu.tar.gz
+ 309cf38be468e0e0155597eaedb01255f6262e4f 264240 linuxmuster-tools7_7.4.21~edu_all.deb
+ 3e03ecf9269a21180ddd1a9fa1359d6b1713d086 7787 linuxmuster-tools7_7.4.21~edu_amd64.buildinfo
+Checksums-Sha256:
+ 9bf3bb87ad68e25037874245abe21bfc2d6959848749041f7d095867e961c640 601 linuxmuster-tools7_7.4.21~edu.dsc
+ fc37b7e50484cfbab9f84a019d513a75c0ebbfb1e68957b93fb05de6132da49d 351980 linuxmuster-tools7_7.4.21~edu.tar.gz
+ 078a8bd5004790fd7745bfa8d157d4f0deee2dcd4d385acc2cb09ba6524bece2 264240 linuxmuster-tools7_7.4.21~edu_all.deb
+ 2d9cc07ace332c060f76dee3d73001f9dc1c8c9298a5e5c389a3c4e0276cff70 7787 linuxmuster-tools7_7.4.21~edu_amd64.buildinfo
+Files:
+ 8c218fd1499a9158ccbd477805230fc4 601 linuxmuster optional linuxmuster-tools7_7.4.21~edu.dsc
+ f352f291b97fbb53377bc05f2c6f01b0 351980 linuxmuster optional linuxmuster-tools7_7.4.21~edu.tar.gz
+ 582ed6805f11a35ad1246d15e2bf0ecc 264240 linuxmuster optional linuxmuster-tools7_7.4.21~edu_all.deb
+ e060a3d2b5179b531a01932e4cd35375 7787 linuxmuster optional linuxmuster-tools7_7.4.21~edu_amd64.buildinfo
