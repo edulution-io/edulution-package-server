@@ -1,0 +1,54 @@
+Format: 1.8
+Date: Tue, 18 Nov 2026 14:00:00 +0100
+Source: sophomorix4
+Binary: sophomorix-belwue-mail sophomorix-developer sophomorix-dump sophomorix-samba sophomorix-vampire
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 1:7.4.8~edu
+Distribution: lmn74
+Urgency: high
+Maintainer: Rüdiger Beck <jeffbeck@web.de>
+Changed-By: Lukas Lukic-Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ sophomorix-belwue-mail - Reading external Mail data at Belwue and suggest actions
+ sophomorix-developer - Test suite for sophomorix-samba
+ sophomorix-dump - Migration dump script
+ sophomorix-samba - Sophomorix for Samba 4
+ sophomorix-vampire - Migration vampire script
+Changes:
+ sophomorix4 (1:7.4.8~edu) lmn74; urgency=high
+ .
+   * Merge upstream 7.4.8 (security release). Upstream notes:
+   * [security] [sophomorix-exam-mode] --subdir is validated, and the
+     commands are run without shell.
+   * [sophomorix-passwd] --random is refused for users of a file with
+     dice passwords.
+   * edulution fork: this build keeps the read_ui change of 1:7.4.7~edu,
+     which skips the webui permissions when their file is missing.
+Checksums-Sha1:
+ 7dda442e8d6a3f74441c5689125c8387ad8aa4e5 851 sophomorix4_7.4.8~edu.dsc
+ 3a7e9d01106951c59262c7967fe05320c48002c6 759164 sophomorix4_7.4.8~edu.tar.xz
+ 599d3f9f67f89948f014e60078e622b58db38b14 17448 sophomorix-belwue-mail_7.4.8~edu_all.deb
+ 45a7a330806bc44009fc71b73d5fa92fb6f07324 83160 sophomorix-developer_7.4.8~edu_all.deb
+ 9248387e3d3a707eea1ce973ff8182eef92324eb 10386 sophomorix-dump_7.4.8~edu_all.deb
+ ffff95b21661a52660ec1243ccfaef0135a5fbba 259012 sophomorix-samba_7.4.8~edu_all.deb
+ 2d48ceb1fafe0bca3743b807e280468ad53a377a 19784 sophomorix-vampire_7.4.8~edu_all.deb
+ 2cb56168111ec3ca40bf8d68612e0760eb7d8491 11945 sophomorix4_7.4.8~edu_amd64.buildinfo
+Checksums-Sha256:
+ bb6d7489fc68f3b4bb3ee92419056201e93515bec4d46ee32c8e589e4a9e9fa3 851 sophomorix4_7.4.8~edu.dsc
+ 797ca5c0aefe2892631aa264bf06d33e067fa5acb8f3e05a8db4f42eb31c6f10 759164 sophomorix4_7.4.8~edu.tar.xz
+ 6d1e622a307c8676bed8b723497c17daa92db4562bdfb4685e607e1a8d393789 17448 sophomorix-belwue-mail_7.4.8~edu_all.deb
+ 3e4349e142b99be905e1cffa0137cdfe0fcae2116313b21cffb0925b9619f5f9 83160 sophomorix-developer_7.4.8~edu_all.deb
+ 1bddf5d6846ef48edb870b844828a6ad9ddaa26375729cd62d5bc08deb15dba0 10386 sophomorix-dump_7.4.8~edu_all.deb
+ afaafdbfbe3f896c4b19971e5ac71ae7e1922179955bbbcd13a3f651109e1050 259012 sophomorix-samba_7.4.8~edu_all.deb
+ 72462f3a7b2102a7a5dbbd8338c8c1872e7cd05c858803acddcb9a6bee2ccbd5 19784 sophomorix-vampire_7.4.8~edu_all.deb
+ 0d45bf88946af069b023e2906edf065b60c98f5861862c4a00d97b42b31881d6 11945 sophomorix4_7.4.8~edu_amd64.buildinfo
+Files:
+ e212944278b8214421ac02ebbbbdb1d0 851 admin optional sophomorix4_7.4.8~edu.dsc
+ 2be9cbd2946c5169b99d307852f7e077 759164 admin optional sophomorix4_7.4.8~edu.tar.xz
+ c2ef1161a1497290ac407c12380ef0ad 17448 admin optional sophomorix-belwue-mail_7.4.8~edu_all.deb
+ 22e4013f65e3f80964d85e8318debb0f 83160 admin optional sophomorix-developer_7.4.8~edu_all.deb
+ 2acb1bb60207607fe7c3607a3426c59d 10386 admin optional sophomorix-dump_7.4.8~edu_all.deb
+ 8d6307e1a67c26e22ab50af9d7877edd 259012 admin optional sophomorix-samba_7.4.8~edu_all.deb
+ 4b0ac33f8dce18aecbbd2db5a40d606c 19784 admin optional sophomorix-vampire_7.4.8~edu_all.deb
+ 84338ec25db312128e8250127b172738 11945 admin optional sophomorix4_7.4.8~edu_amd64.buildinfo
