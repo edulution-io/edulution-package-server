@@ -67,18 +67,18 @@ Description: VDI service for linuxmuster.net on Proxmox
  vdiConfig.json exists; run vdi-setup to create it.
 
 Package: linuxmuster-api7
-Version: 1:7.4.16~edu
+Version: 1:7.4.17~edu
 Architecture: all
 Maintainer: Arnaud Kientz <arnaud@linuxmuster.net>
-Installed-Size: 628
-Depends: openssl, linuxmuster-tools7 (>= 1:7.4.20~), python3
+Installed-Size: 652
+Depends: openssl, linuxmuster-tools7 (>= 1:7.4.21~), python3
 Priority: optional
 Section: linuxmuster
-Filename: pool/main/l/linuxmuster-api7/linuxmuster-api7_7.4.16~edu_all.deb
-Size: 118226
-SHA256: 93e4248c1329d619e12ab75f5780f19a260998e4e7241878559f5cf0772d0eb3
-SHA1: d94a096bc2aeb9f23edd441a8124651d5f380265
-MD5sum: f2793518848aa8b9944994771861f5e9
+Filename: pool/main/l/linuxmuster-api7/linuxmuster-api7_7.4.17~edu_all.deb
+Size: 122136
+SHA256: 4c5be4cd513c8e25ed08fc3e9879e09b6d04548dc435e1ebcaf026008cba6d7e
+SHA1: 1bd13fbcf16d0167a67d565df9507b40ea7e9b7d
+MD5sum: 6058b780805810842f4c11c74cc4781e
 Description: Api for the linuxmuster.net 7 server.
 
 Package: linuxmuster-base7
