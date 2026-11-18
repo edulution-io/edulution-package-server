@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Wed, 18 Nov 2026 13:30:19 +0100
+Source: edulution-fileproxy
+Binary: edulution-fileproxy
+Built-For-Profiles: noudeb
+Architecture: amd64
+Version: 1.6.0
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@edulution.io>
+Changed-By: edulution.io <info@edulution.io>
+Description:
+ edulution-fileproxy - WebDAV server with SMB backend and NTLM authentication
+Changes:
+ edulution-fileproxy (1.6.0) noble; urgency=medium
+ .
+   * Release of 1.6.0~rc2, which was tested on an existing installation.
+   * Depend on edulution-archive-keyring 2026.11.18 or later, which holds the
+     next repository signing key next to the current one, so a host that
+     already has an earlier keyring also gets it with this upgrade.
+   * The entries for 1.6.0~rc2 and 1.6.0~rc1 below list everything else that
+     changed since 1.5.0.
+Checksums-Sha1:
+ 9cc24dcc2a83fbd58b5e3f80009aaedbb90bf2e6 5763 edulution-fileproxy_1.6.0_amd64.buildinfo
+ bbd8b6390679aefddad4f0e798a8a86de66d8133 9100914 edulution-fileproxy_1.6.0_amd64.deb
+Checksums-Sha256:
+ 520a38464eac62e41bfe526c64d081172833321451ec59cbc161115001a873f0 5763 edulution-fileproxy_1.6.0_amd64.buildinfo
+ 0634af4c1ce551f06f8077c7ff9e0385ea85e92e04fa9ae1d6f6fe63bc29cc34 9100914 edulution-fileproxy_1.6.0_amd64.deb
+Files:
+ ab8f98cabaa56311fbd9d432d5c670a0 5763 utils optional edulution-fileproxy_1.6.0_amd64.buildinfo
+ 4b21d53c6b6e2186f3c2058da3dbbb49 9100914 utils optional edulution-fileproxy_1.6.0_amd64.deb
