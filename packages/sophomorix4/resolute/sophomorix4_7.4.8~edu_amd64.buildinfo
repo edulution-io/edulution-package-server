@@ -2,31 +2,31 @@ Format: 1.0
 Source: sophomorix4
 Binary: sophomorix-belwue-mail sophomorix-developer sophomorix-dump sophomorix-samba sophomorix-vampire
 Architecture: all source
-Version: 1:7.4.7~edu
+Version: 1:7.4.8~edu
 Checksums-Md5:
- 9172ca37e4997efa376738cc2d94f7e2 851 sophomorix4_7.4.7~edu.dsc
- 885b755828aef9b033735dcd1bb1383e 17248 sophomorix-belwue-mail_7.4.7~edu_all.deb
- 95a8265c49412c73c1c8a6e60ccbc227 83020 sophomorix-developer_7.4.7~edu_all.deb
- 66928949b32eaae510773dc33823dd2f 10196 sophomorix-dump_7.4.7~edu_all.deb
- f5755d5cee4d3a68f241ddf0a7a6477b 258498 sophomorix-samba_7.4.7~edu_all.deb
- daf854aab1e089596d66fad89354e65c 19604 sophomorix-vampire_7.4.7~edu_all.deb
+ e212944278b8214421ac02ebbbbdb1d0 851 sophomorix4_7.4.8~edu.dsc
+ c2ef1161a1497290ac407c12380ef0ad 17448 sophomorix-belwue-mail_7.4.8~edu_all.deb
+ 22e4013f65e3f80964d85e8318debb0f 83160 sophomorix-developer_7.4.8~edu_all.deb
+ 2acb1bb60207607fe7c3607a3426c59d 10386 sophomorix-dump_7.4.8~edu_all.deb
+ 8d6307e1a67c26e22ab50af9d7877edd 259012 sophomorix-samba_7.4.8~edu_all.deb
+ 4b0ac33f8dce18aecbbd2db5a40d606c 19784 sophomorix-vampire_7.4.8~edu_all.deb
 Checksums-Sha1:
- 402fb251349308254d6e3a0778c9bada280c29df 851 sophomorix4_7.4.7~edu.dsc
- 292335849b36ddcc38647c1e822b638a81353e38 17248 sophomorix-belwue-mail_7.4.7~edu_all.deb
- e9cf7f45b019d7a278024ea32f9aed099094f934 83020 sophomorix-developer_7.4.7~edu_all.deb
- 2286d55ab0a5b612f336bd7e78dbe51c3a77ed79 10196 sophomorix-dump_7.4.7~edu_all.deb
- bbe44e0bbddf761c9654951d927299f56459b199 258498 sophomorix-samba_7.4.7~edu_all.deb
- 16000af6c64abe517c437f5bd6d50e71a088cbce 19604 sophomorix-vampire_7.4.7~edu_all.deb
+ 7dda442e8d6a3f74441c5689125c8387ad8aa4e5 851 sophomorix4_7.4.8~edu.dsc
+ 599d3f9f67f89948f014e60078e622b58db38b14 17448 sophomorix-belwue-mail_7.4.8~edu_all.deb
+ 45a7a330806bc44009fc71b73d5fa92fb6f07324 83160 sophomorix-developer_7.4.8~edu_all.deb
+ 9248387e3d3a707eea1ce973ff8182eef92324eb 10386 sophomorix-dump_7.4.8~edu_all.deb
+ ffff95b21661a52660ec1243ccfaef0135a5fbba 259012 sophomorix-samba_7.4.8~edu_all.deb
+ 2d48ceb1fafe0bca3743b807e280468ad53a377a 19784 sophomorix-vampire_7.4.8~edu_all.deb
 Checksums-Sha256:
- ac85cf7c912b52857a9b09254bcd90510483b3b97b7864953eb40afbf5846be1 851 sophomorix4_7.4.7~edu.dsc
- 6ecde2adf7ef8e18534856f47c2b2b129d03d04eaee30b5194115a0dcd41031c 17248 sophomorix-belwue-mail_7.4.7~edu_all.deb
- 1d9c632d7e8b5a8abe1db7853e93cc4e09f711f05f9ccfd72189669a3e247202 83020 sophomorix-developer_7.4.7~edu_all.deb
- 741366341f88c484ad32e543ac5f65b419a7cf6da5f058cd17ed96673309ceb9 10196 sophomorix-dump_7.4.7~edu_all.deb
- df0a88441b667b02d58e36bad0d1c846a2e2c5e43851d967b3426f6ce3cb7b30 258498 sophomorix-samba_7.4.7~edu_all.deb
- 51b66b56e5bcc17891954c0764ae259cef9090e671bf184934c18dab3bf62ee8 19604 sophomorix-vampire_7.4.7~edu_all.deb
+ bb6d7489fc68f3b4bb3ee92419056201e93515bec4d46ee32c8e589e4a9e9fa3 851 sophomorix4_7.4.8~edu.dsc
+ 6d1e622a307c8676bed8b723497c17daa92db4562bdfb4685e607e1a8d393789 17448 sophomorix-belwue-mail_7.4.8~edu_all.deb
+ 3e4349e142b99be905e1cffa0137cdfe0fcae2116313b21cffb0925b9619f5f9 83160 sophomorix-developer_7.4.8~edu_all.deb
+ 1bddf5d6846ef48edb870b844828a6ad9ddaa26375729cd62d5bc08deb15dba0 10386 sophomorix-dump_7.4.8~edu_all.deb
+ afaafdbfbe3f896c4b19971e5ac71ae7e1922179955bbbcd13a3f651109e1050 259012 sophomorix-samba_7.4.8~edu_all.deb
+ 72462f3a7b2102a7a5dbbd8338c8c1872e7cd05c858803acddcb9a6bee2ccbd5 19784 sophomorix-vampire_7.4.8~edu_all.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Fri, 13 Nov 2026 19:48:29 +0000
+Build-Date: Wed, 18 Nov 2026 10:26:52 +0000
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-includes
@@ -311,4 +311,4 @@ Environment:
  DEB_BUILD_PROFILES="noudeb"
  LANG="C.UTF-8"
  MAKEFLAGS=""
- SOURCE_DATE_EPOCH="1794567600"
+ SOURCE_DATE_EPOCH="1795006800"
