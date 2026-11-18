@@ -1,0 +1,36 @@
+Format: 1.8
+Date: Tue, 18 Nov 2026 14:00:00 +0100
+Source: linuxmuster-cli7
+Binary: linuxmuster-cli7
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 1:7.4.13~edu
+Distribution: lmn74
+Urgency: medium
+Maintainer: Arnaud Kientz <arnaud@linuxmuster.net>
+Changed-By: Lukas Lukic-Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ linuxmuster-cli7 - Tools and CLI for the linuxmuster.net 7 server.
+Changes:
+ linuxmuster-cli7 (1:7.4.13~edu) lmn74; urgency=medium
+ .
+   * Merge upstream 7.4.13. Upstream notes:
+   * [samba] "lmncli samba status" lists every connection of each user,
+     with the date of login.
+   * edulution fork: the dependency on linuxmuster-tools7 is clamped to
+     (>= 1:7.4.21~), the security release that carries the LDAP escaping.
+Checksums-Sha1:
+ 249634d6fc9ca7e43743f0d3d1b4b2487e252fbc 586 linuxmuster-cli7_7.4.13~edu.dsc
+ d27d55c5299af651339f572daacd6d370e36115f 72053 linuxmuster-cli7_7.4.13~edu.tar.gz
+ be454ba789c5fc9c3b8a8da6dbd689579b702711 50208 linuxmuster-cli7_7.4.13~edu_all.deb
+ 62b9a5085446b9f8c0d418bc12f0b638cdaf48d0 7768 linuxmuster-cli7_7.4.13~edu_amd64.buildinfo
+Checksums-Sha256:
+ 81f4973ece7c767a79b4b04e8cf2c3787c8accba243f49734ba5522f763db218 586 linuxmuster-cli7_7.4.13~edu.dsc
+ 7f0c5d570bcb7f4ce421e0d8800a63db5733c435e8a959c55229bb64c6fc4877 72053 linuxmuster-cli7_7.4.13~edu.tar.gz
+ 16fc362abf4722a84388230b01bb4a70a7b32c1fc9df4829694a6ff4f57fb343 50208 linuxmuster-cli7_7.4.13~edu_all.deb
+ 40f9ea3c04d0eee54cd11713b0b9c487238e41095a737045156c77c5ba148081 7768 linuxmuster-cli7_7.4.13~edu_amd64.buildinfo
+Files:
+ 9d96a35108203c421470eef38edf0013 586 linuxmuster optional linuxmuster-cli7_7.4.13~edu.dsc
+ 4bf556a98d8933d3c3e3807be0d8ccea 72053 linuxmuster optional linuxmuster-cli7_7.4.13~edu.tar.gz
+ d5942e07be141f312e94375d85a2bc66 50208 linuxmuster optional linuxmuster-cli7_7.4.13~edu_all.deb
+ 643e14b233045056e1f628c61be9c337 7768 linuxmuster optional linuxmuster-cli7_7.4.13~edu_amd64.buildinfo

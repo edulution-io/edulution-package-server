@@ -2,19 +2,19 @@ Format: 1.0
 Source: linuxmuster-cli7
 Binary: linuxmuster-cli7
 Architecture: all source
-Version: 1:7.4.12~edu
+Version: 1:7.4.13~edu
 Checksums-Md5:
- 7800e6dc505b6e5b7fe1f792d946e737 586 linuxmuster-cli7_7.4.12~edu.dsc
- 8eb4ff15dad1c74ba3d1c2f63f380bf6 50138 linuxmuster-cli7_7.4.12~edu_all.deb
+ 9d96a35108203c421470eef38edf0013 586 linuxmuster-cli7_7.4.13~edu.dsc
+ d5942e07be141f312e94375d85a2bc66 50208 linuxmuster-cli7_7.4.13~edu_all.deb
 Checksums-Sha1:
- 80036901c102431447e54d5dea67112cf3e4dbf2 586 linuxmuster-cli7_7.4.12~edu.dsc
- 521ec4cce8b06133350ade7e588410a3538bc9d0 50138 linuxmuster-cli7_7.4.12~edu_all.deb
+ 249634d6fc9ca7e43743f0d3d1b4b2487e252fbc 586 linuxmuster-cli7_7.4.13~edu.dsc
+ be454ba789c5fc9c3b8a8da6dbd689579b702711 50208 linuxmuster-cli7_7.4.13~edu_all.deb
 Checksums-Sha256:
- d0e0acdddc6053e36cd28cec78880fde35af7e6a5ff73bbf493470401d9d42d2 586 linuxmuster-cli7_7.4.12~edu.dsc
- 9494a0b6db99bd6481c2fc130477aeca7fb4985aa87c9862c3fec1d7345ad926 50138 linuxmuster-cli7_7.4.12~edu_all.deb
+ 81f4973ece7c767a79b4b04e8cf2c3787c8accba243f49734ba5522f763db218 586 linuxmuster-cli7_7.4.13~edu.dsc
+ 16fc362abf4722a84388230b01bb4a70a7b32c1fc9df4829694a6ff4f57fb343 50208 linuxmuster-cli7_7.4.13~edu_all.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Fri, 13 Nov 2026 19:48:01 +0000
+Build-Date: Wed, 18 Nov 2026 10:26:24 +0000
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-includes
@@ -214,4 +214,4 @@ Environment:
  DEB_BUILD_PROFILES="noudeb"
  LANG="C.UTF-8"
  MAKEFLAGS=""
- SOURCE_DATE_EPOCH="1794567600"
+ SOURCE_DATE_EPOCH="1795006800"
