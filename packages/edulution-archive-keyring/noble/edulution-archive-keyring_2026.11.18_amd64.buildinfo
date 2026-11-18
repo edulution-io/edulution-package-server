@@ -2,16 +2,16 @@ Format: 1.0
 Source: edulution-archive-keyring
 Binary: edulution-archive-keyring
 Architecture: all
-Version: 2026.11.13
+Version: 2026.11.18
 Checksums-Md5:
- 81a1a3ddcfa39f2f49e6c0b230006d84 2048 edulution-archive-keyring_2026.11.13_all.deb
+ c805af6f585ebc259a18a7d517ba4a89 2346 edulution-archive-keyring_2026.11.18_all.deb
 Checksums-Sha1:
- 9aa8b64898d06a591bf836e904da9973429a4cb8 2048 edulution-archive-keyring_2026.11.13_all.deb
+ 4b7fb9034db346b6d846788a6e7132999cc51375 2346 edulution-archive-keyring_2026.11.18_all.deb
 Checksums-Sha256:
- 8b2399b7a920d4e4d685c0b3abe926b33ee779f10d04f6b9c3340e9e491f78be 2048 edulution-archive-keyring_2026.11.13_all.deb
+ 2c999160003148bf24e9ef1baec6b1f6c2d833a8fd0cdf796598f6687feaceea 2346 edulution-archive-keyring_2026.11.18_all.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Fri, 13 Nov 2026 13:54:23 +0000
+Build-Date: Wed, 18 Nov 2026 08:18:21 +0000
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-includes
@@ -215,4 +215,4 @@ Environment:
  DEB_BUILD_OPTIONS="parallel=2"
  DEB_BUILD_PROFILES="noudeb"
  LANG="C.UTF-8"
- SOURCE_DATE_EPOCH="1794567600"
+ SOURCE_DATE_EPOCH="1794989008"
