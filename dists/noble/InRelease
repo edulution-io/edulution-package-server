@@ -4,7 +4,7 @@ Hash: SHA512
 Origin: package.edulution.io
 Label: package.edulution.io
 Codename: noble
-Date: Wed, 18 Nov 2026 10:40:43 UTC
+Date: Wed, 18 Nov 2026 13:42:20 UTC
 Architectures: i386 amd64 arm64
 Components: main
 Description: Ubuntu 24.04 (noble) stable
@@ -12,11 +12,11 @@ MD5Sum:
  15ccf15d490614e91053792a84222f5c 1999 main/binary-i386/Packages
  6ba79aa5fd9e5ebc5e74edfec0f4e902 1047 main/binary-i386/Packages.gz
  acea83b51522524bb8ff8c3916bc11d3 133 main/binary-i386/Release
- 01666fb19836fe92edd7b11687bb40e7 3460 main/binary-amd64/Packages
- 38740de377cdb39b5238a0f95dc03d3e 1648 main/binary-amd64/Packages.gz
+ e3a15b7b2954bcadaf80a460a32aa4e8 3492 main/binary-amd64/Packages
+ ea0fd85f6c7e3d7baf16e62a5567bdcc 1665 main/binary-amd64/Packages.gz
  b75f542ab8c306cfefbe73f18435ddd4 134 main/binary-amd64/Release
- 4c7a1cf58ff4bfba8840e92a75f8bb43 3460 main/binary-arm64/Packages
- 96379b28f873114c55e322f2b2d383f0 1648 main/binary-arm64/Packages.gz
+ 767451e6c61b1b12b5a3db3bb4267871 3492 main/binary-arm64/Packages
+ 87890b617d5ac1596d9f9f2ed23548c9 1668 main/binary-arm64/Packages.gz
  16f5878dda8fc6ab37e007c46f61c390 134 main/binary-arm64/Release
  d41d8cd98f00b204e9800998ecf8427e 0 main/source/Sources
  7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
@@ -25,11 +25,11 @@ SHA1:
  02cd0b2d76906a7602be46988debfd61349f45a8 1999 main/binary-i386/Packages
  cb155289a446c4d4ba647bb82e4974f9d6770387 1047 main/binary-i386/Packages.gz
  f4570b84d00466a7061f1bd2087f88c657604319 133 main/binary-i386/Release
- eee2e2ec984917d8912a46483b533caaa8abd4b8 3460 main/binary-amd64/Packages
- e502ff436002c06186f6832e3e5b06218c6e26a1 1648 main/binary-amd64/Packages.gz
+ b26c74e295d71e6f5293f2c242539feacaba1048 3492 main/binary-amd64/Packages
+ 68c9512b57b193e6bc595a858ebed1d9b97da2c7 1665 main/binary-amd64/Packages.gz
  78e2b942c508e2b7f182a0a5795ae35c0e2f20ff 134 main/binary-amd64/Release
- d5742cd9329b1f752f75073aed7da6b4626500d6 3460 main/binary-arm64/Packages
- 1141010d6632b6960a8a7e42eb258aa8ebbf72cf 1648 main/binary-arm64/Packages.gz
+ b6b041f5d53cab85fc601cdbfffc5f0da1b3e622 3492 main/binary-arm64/Packages
+ 30f0fad3024829e983880c1cc9e1cfd96dc77554 1668 main/binary-arm64/Packages.gz
  e13fde79256f04e4a1a999f4fca593f1a61f16d8 134 main/binary-arm64/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/source/Sources
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
@@ -38,19 +38,19 @@ SHA256:
  41f0f6e366f0350297de62626a593237395add10b0053818c0b676ce5707e226 1999 main/binary-i386/Packages
  fcf6dc3ef2f6355537f6de647f0ba5b601a1d510fd18295271d154f4780a1b18 1047 main/binary-i386/Packages.gz
  1b9aa4164c5252c48cf1bfb803ce4ced526d01dba3b7d9c1d69c572468034aa1 133 main/binary-i386/Release
- 589f89b98cfde5f3120498d883a7d2d6195d10d72c4bd11fdb391a63ea28e71a 3460 main/binary-amd64/Packages
- a72039ffeff90816d97c9a6ae8d4ddf1c32e13592cb81de2e33427efac5c3f60 1648 main/binary-amd64/Packages.gz
+ a3006557b9f519cc0d97e3156bfd09e59540818201238c69c294856dd44cb8ef 3492 main/binary-amd64/Packages
+ f759767c8d883c3a7fe0b3231cfcc6656c5ea06656e20a3347934bc07c8107f7 1665 main/binary-amd64/Packages.gz
  74f7bfde17d1f414c85baeadf2b64625668094a01c665aad809e7ccdfe0809fa 134 main/binary-amd64/Release
- 0bbe5a3fb6c5488b74c772332323cb7f6b3bf66694fc366fc705983720401ce5 3460 main/binary-arm64/Packages
- ec3e60078576440e1f1a100cef1a4a116e6bf6462f11129bc840b6e928aca5a1 1648 main/binary-arm64/Packages.gz
+ a2a85b2b792452853900251ba16bf99cada3db66ff05efd441c8223d996b1aa7 3492 main/binary-arm64/Packages
+ d87e44f346afaace6ce03e25f77097525cb905cba850e91c3baee22df18d1cb1 1668 main/binary-arm64/Packages.gz
  4cc76c1f62cdcee0a08e56ef5276208fc92c31d6071f18d1898317d4485e26af 134 main/binary-arm64/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/source/Sources
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
  1edb4cc120289e399d1aedbca7d2a0d19bca42ce2a806fc4eb20b515ba64fc26 135 main/source/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQTdj26S1bjyMzRQrWm9NebbRlUWGwUCav2AqwAKCRC9NebbRlUW
-GzKEAP0XJfVn78GRlsTU9zhgCZlYbEkpB2Aj5TQ8uynWf2esEgEAnIefsvqBOec7
-QY5CfEVz8npnhO2AmYuAVYQm2W2FYwA=
-=M4g9
+iHUEARYKAB0WIQTdj26S1bjyMzRQrWm9NebbRlUWGwUCav2rPAAKCRC9NebbRlUW
+G8dNAQD1P5ef9EYK4i1xZYL5DO8PQDPVOTiQ1Vvq5qvBYXNa3QEAnFR76u9hVXj5
+Y5HBLZcIyh/Iwi02pvrnIy3aVM0JNww=
+=ronc
 -----END PGP SIGNATURE-----

@@ -9,11 +9,11 @@
   },
   {
     "name": "edulution-fileproxy",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "architecture": "amd64",
     "dist": "noble",
-    "size": "8930252",
-    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.5.0_amd64.deb"
+    "size": "9100914",
+    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.6.0_amd64.deb"
   },
   {
     "name": "edulution-linbo-vdi",
@@ -25,11 +25,11 @@
   },
   {
     "name": "edulution-fileproxy",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "architecture": "arm64",
     "dist": "noble",
-    "size": "7840184",
-    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.5.0_arm64.deb"
+    "size": "7984438",
+    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.6.0_arm64.deb"
   },
   {
     "name": "edulution-archive-keyring",
@@ -41,11 +41,11 @@
   },
   {
     "name": "edulution-fileproxy",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "architecture": "amd64",
     "dist": "resolute",
-    "size": "8930252",
-    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.5.0_amd64.deb"
+    "size": "9100914",
+    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.6.0_amd64.deb"
   },
   {
     "name": "edulution-linbo-gui7",
@@ -177,10 +177,10 @@
   },
   {
     "name": "edulution-fileproxy",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "architecture": "arm64",
     "dist": "resolute",
-    "size": "7840184",
-    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.5.0_arm64.deb"
+    "size": "7984438",
+    "filename": "/pool/main/e/edulution-fileproxy/edulution-fileproxy_1.6.0_arm64.deb"
   }
 ]

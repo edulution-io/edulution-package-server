@@ -20,20 +20,19 @@ Description: OpenPGP keys of the edulution.io package repository
  regular upgrade.
 
 Package: edulution-fileproxy
-Version: 1.5.0
+Version: 1.6.0
 Architecture: amd64
-Maintainer: edulution.io <info@netzint.de>
-Installed-Size: 33125
-Depends: openssl
-Recommends: logrotate
+Maintainer: edulution.io <info@edulution.io>
+Installed-Size: 33646
+Depends: adduser, edulution-archive-keyring (>= 2026.11.18), openssl
 Homepage: https://github.com/edulution-io/edulution-fileproxy
 Priority: optional
 Section: utils
-Filename: pool/main/e/edulution-fileproxy/edulution-fileproxy_1.5.0_amd64.deb
-Size: 8930252
-SHA256: 95e2d6a012d02893f0bfb253effb208fb4e12e02787d38b00dc1c39f4e13455c
-SHA1: 1d9f199cf6972951d842d4d3fa596ba6a02501f5
-MD5sum: 86d4ca2b0fcd4d2b64bb6a9df0cb7bf6
+Filename: pool/main/e/edulution-fileproxy/edulution-fileproxy_1.6.0_amd64.deb
+Size: 9100914
+SHA256: 0634af4c1ce551f06f8077c7ff9e0385ea85e92e04fa9ae1d6f6fe63bc29cc34
+SHA1: bbd8b6390679aefddad4f0e798a8a86de66d8133
+MD5sum: 4b21d53c6b6e2186f3c2058da3dbbb49
 Description: WebDAV server with SMB backend and NTLM authentication
  edulution-fileproxy exposes the shares of a Samba/Active Directory file server
  over WebDAV, so that desktop clients and the edulution web UI reach the same
