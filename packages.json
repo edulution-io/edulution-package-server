@@ -81,11 +81,11 @@
   },
   {
     "name": "linuxmuster-cli7",
-    "version": "1:7.4.12~edu",
+    "version": "1:7.4.13~edu",
     "architecture": "all",
     "dist": "resolute",
-    "size": "50138",
-    "filename": "/pool/main/l/linuxmuster-cli7/linuxmuster-cli7_7.4.12~edu_all.deb"
+    "size": "50208",
+    "filename": "/pool/main/l/linuxmuster-cli7/linuxmuster-cli7_7.4.13~edu_all.deb"
   },
   {
     "name": "linuxmuster-common",
