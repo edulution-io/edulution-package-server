@@ -211,6 +211,12 @@ jobs:
           docker run --rm -e TEST_PACKAGES -e TEST_COMMAND -e PYTHONDONTWRITEBYTECODE=1 \
             -v "$GITHUB_WORKSPACE:/w" -w /w/build ubuntu:26.04 bash -euo pipefail -c '
               export DEBIAN_FRONTEND=noninteractive
+              # The Ubuntu mirror the runner itself uses: archive.ubuntu.com and
+              # security.ubuntu.com are slow and at times unreachable from
+              # GitHub-hosted runners.
+              sed -i -e "s#http://archive.ubuntu.com/#http://azure.archive.ubuntu.com/#g" \
+                -e "s#http://security.ubuntu.com/#http://azure.archive.ubuntu.com/#g" /etc/apt/sources.list.d/ubuntu.sources
+              echo "Acquire::Retries \"3\";" > /etc/apt/apt.conf.d/80-retries
               apt-get update -qq
               apt-get install -y -qq --no-install-recommends ca-certificates curl gpg >/dev/null
               curl -fsSL https://package.edulution.io/pub.gpg | gpg --dearmor -o /usr/share/keyrings/edulution.gpg
