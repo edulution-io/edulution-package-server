@@ -57,6 +57,7 @@ jobs:
     # In the given container (lmndev-runner), or on the runner when no image
     # is given. An empty container value makes the job run on the runner.
     runs-on: ${{ inputs.build-image != '' && 'ubuntu-latest' || inputs.build-runner }}
+    timeout-minutes: 45
     container: ${{ inputs.build-image != '' && fromJSON(format('{{"image":"{0}","options":"--user root"}}', inputs.build-image)) || '' }}
     steps:
       - name: Checkout
@@ -91,6 +92,7 @@ jobs:
     # The same runner image as validate-incoming.sh in build-and-deploy.yml,
     # so both see the same lintian version.
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout the package server's allowlists
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -113,7 +115,8 @@ jobs:
       - name: Run lintian
         run: |
           set -uo pipefail
-          sudo apt-get update -qq && sudo apt-get install -y -qq lintian >/dev/null
+          apt="sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30"
+          $apt update -qq && $apt install -y -qq lintian >/dev/null
           lintian --version
           allow=package-server/package_server
           status=0
@@ -137,6 +140,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -195,6 +199,7 @@ jobs:
   tests:
     if: inputs.test-command != ''
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -216,7 +221,7 @@ jobs:
               # GitHub-hosted runners.
               sed -i -e "s#http://archive.ubuntu.com/#http://azure.archive.ubuntu.com/#g" \
                 -e "s#http://security.ubuntu.com/#http://azure.archive.ubuntu.com/#g" /etc/apt/sources.list.d/ubuntu.sources
-              echo "Acquire::Retries \"3\";" > /etc/apt/apt.conf.d/80-retries
+              printf "Acquire::Retries \"3\";\nAcquire::http::Timeout \"30\";\n" > /etc/apt/apt.conf.d/80-retries
               apt-get update -qq
               apt-get install -y -qq --no-install-recommends ca-certificates curl gpg >/dev/null
               curl -fsSL https://package.edulution.io/pub.gpg | gpg --dearmor -o /usr/share/keyrings/edulution.gpg
