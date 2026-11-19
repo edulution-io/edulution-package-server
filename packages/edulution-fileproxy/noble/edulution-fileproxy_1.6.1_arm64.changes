@@ -1,0 +1,36 @@
+Format: 1.8
+Date: Thu, 19 Nov 2026 11:33:59 +0100
+Source: edulution-fileproxy
+Binary: edulution-fileproxy
+Built-For-Profiles: noudeb
+Architecture: arm64
+Version: 1.6.1
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@edulution.io>
+Changed-By: edulution.io <info@edulution.io>
+Description:
+ edulution-fileproxy - WebDAV server with SMB backend and NTLM authentication
+Changes:
+ edulution-fileproxy (1.6.1) noble; urgency=medium
+ .
+   * The upgrade hands the service user a TLS certificate and key that
+     config.yml names elsewhere under /etc/edulution-fileproxy, in a
+     directory the service can enter, also on an upgrade from 1.6.0. 1.6.0
+     handed over only webdav.key, so a pair kept in a subdirectory such as
+     ssl/ stopped the start. For any other pair, such as certbot's, the
+     upgrade prints commands that copy it where the service can read it.
+   * A file postinst cannot hand over, as on a read-only mount, is reported
+     instead of leaving the package unconfigured.
+   * The warning an upgrade prints for a configuration the service refuses
+     links the documentation of each item, and its check no longer waits
+     forever on a FIFO that config.yml names.
+Checksums-Sha1:
+ 3529f1028508fd793a75d4f63de8dabde1d22b1c 5763 edulution-fileproxy_1.6.1_arm64.buildinfo
+ 6658d62658e8f72e366910fd38739d8bc4ce5c98 7987370 edulution-fileproxy_1.6.1_arm64.deb
+Checksums-Sha256:
+ 6dbb5ba9d23b9cad56c8533d2b5d389f77a3212f6b3c7b3431c43096f7f762d8 5763 edulution-fileproxy_1.6.1_arm64.buildinfo
+ c6717bcd42bbd859edcaa8acae99363352491ec26d142f2612d835654ef63ef7 7987370 edulution-fileproxy_1.6.1_arm64.deb
+Files:
+ ffde437e52ec0514aa34cd0e9c67e3cc 5763 utils optional edulution-fileproxy_1.6.1_arm64.buildinfo
+ fde21ce4e0701288d21d65d546f6a29d 7987370 utils optional edulution-fileproxy_1.6.1_arm64.deb
