@@ -20,19 +20,19 @@ Description: OpenPGP keys of the edulution.io package repository
  regular upgrade.
 
 Package: edulution-fileproxy
-Version: 1.6.0
+Version: 1.6.1
 Architecture: arm64
 Maintainer: edulution.io <info@edulution.io>
-Installed-Size: 30458
+Installed-Size: 30465
 Depends: adduser, edulution-archive-keyring (>= 2026.11.18), openssl
 Homepage: https://github.com/edulution-io/edulution-fileproxy
 Priority: optional
 Section: utils
-Filename: pool/main/e/edulution-fileproxy/edulution-fileproxy_1.6.0_arm64.deb
-Size: 7984438
-SHA256: 3202fe6005dd45f44295b1eec8e5609757515186cbd0eb5d7a749454bd5c73f9
-SHA1: 5f0c2907e59b75f958e25706ec295ac76ad46f1c
-MD5sum: 220af4971e15850f5a6b5feeaf237ecc
+Filename: pool/main/e/edulution-fileproxy/edulution-fileproxy_1.6.1_arm64.deb
+Size: 7987370
+SHA256: c6717bcd42bbd859edcaa8acae99363352491ec26d142f2612d835654ef63ef7
+SHA1: 6658d62658e8f72e366910fd38739d8bc4ce5c98
+MD5sum: fde21ce4e0701288d21d65d546f6a29d
 Description: WebDAV server with SMB backend and NTLM authentication
  edulution-fileproxy exposes the shares of a Samba/Active Directory file server
  over WebDAV, so that desktop clients and the edulution web UI reach the same
