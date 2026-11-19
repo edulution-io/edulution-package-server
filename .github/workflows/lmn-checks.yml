@@ -53,8 +53,11 @@ permissions:
   contents: read
 
 jobs:
+  # Two build jobs, only one of them runs. The one that runs is called
+  # "build", so a required status check can name it the same way in every
+  # repository; the skipped one must not show up as a skipped "build".
   build-container:
-    name: build
+    name: ${{ inputs.build-image != '' && 'build' || 'build in container (unused)' }}
     if: inputs.build-image != ''
     runs-on: ubuntu-latest
     container:
@@ -89,7 +92,7 @@ jobs:
           path: dist/*.deb
 
   build-runner:
-    name: build
+    name: ${{ inputs.build-image == '' && 'build' || 'build on runner (unused)' }}
     if: inputs.build-image == ''
     runs-on: ${{ inputs.build-runner }}
     steps:
