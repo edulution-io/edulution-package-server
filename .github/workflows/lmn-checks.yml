@@ -125,7 +125,7 @@ jobs:
             lists=("$allow/lintian-allowlist")
             [ ! -f "$allow/lintian-allowlist.d/$src" ] || lists+=("$allow/lintian-allowlist.d/$src")
             suppress=$(mktemp)
-            cat "${lists[@]}" | sed 's/[[:space:]]*#.*$//' | grep -v '^[[:space:]]*$' | sort -u > "$suppress"
+            cat "${lists[@]}" | sed -e 's/[[:space:]]*#.*$//' -e '/^[[:space:]]*$/d' | sort -u > "$suppress"
             if lintian --fail-on error --tag-display-limit 0 --suppress-tags-from-file "$suppress" "$deb"; then
               echo "  OK  $(basename "$deb") (allowlist: $src)"
             else
@@ -155,8 +155,10 @@ jobs:
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
-          set -uo pipefail
-          shellcheck --version | head -2
+          # No -e: shellcheck exits 1 whenever it finds something, which is
+          # the normal case here and must not end the script.
+          set +e -uo pipefail
+          shellcheck --version | sed -n '1,2p'
           is_shell() {
             case "$1" in *.sh) return 0 ;; esac
             head -c 64 "$1" 2>/dev/null | grep -qaE '^#!.*(/sh|/bash|/dash|env (ba)?sh)'
@@ -221,7 +223,7 @@ jobs:
               apt-get install -y -qq --no-install-recommends python3-pytest python3-pytest-cov $TEST_PACKAGES >/tmp/install.log 2>&1 \
                 || { echo "::warning::Some maintainer scripts failed, see the log:"; tail -5 /tmp/install.log; }
               bash -c "$TEST_COMMAND"
-              data=$(find /w/build -name .coverage -type f | head -1)
+              data=$(find /w/build -name .coverage -type f -print -quit)
               if [ -n "$data" ]; then
                 cd "$(dirname "$data")"
                 python3 -m coverage report --format=total > /w/coverage-total.txt || true
