@@ -172,10 +172,21 @@ jobs:
             old=$(mktemp)
             if git show "$BASE_SHA:$file" > "$old" 2>/dev/null; then before=$(findings "$old"); else before=""; fi
             added=$(comm -13 <(printf '%s\n' "$before" | sed '/^$/d') <(findings "$file"))
-            if [ -n "$added" ]; then
-              status=1
-              printf '%s\n' "$added" | while IFS= read -r line; do echo "::error file=$file::$line"; done
-            fi
+            [ -n "$added" ] || continue
+            status=1
+            # Lines the pull request changed, to place each annotation on the
+            # line that most likely caused it.
+            changed=$(mktemp)
+            git diff -U0 "$BASE_SHA"...HEAD -- "$file" \
+              | awk '/^@@/ { split($3, a, ","); s = substr(a[1], 2); n = (a[2] == "") ? 1 : a[2]; for (i = 0; i < n; i++) print s + i }' > "$changed"
+            while IFS= read -r msg; do
+              lines=$(shellcheck -S error -f gcc "$file" 2>/dev/null \
+                | awk -v m="$msg" '{ l = $0; sub(/^[^:]+:/, "", l); n = l; sub(/:.*/, "", n); sub(/^[0-9]+:[0-9]+: /, "", l); if (l == m) print n }')
+              line=$(printf '%s\n' "$lines" | grep -Fxf "$changed" | head -1)
+              [ -n "$line" ] || line=$(printf '%s\n' "$lines" | head -1)
+              echo "$file:${line:-1}: $msg"
+              echo "::error file=$file,line=${line:-1}::$msg"
+            done <<< "$added"
           done < <(git diff --name-only --diff-filter=AM "$BASE_SHA"...HEAD)
           exit $status
 
