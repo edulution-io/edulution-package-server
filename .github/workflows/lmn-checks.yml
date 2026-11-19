@@ -53,48 +53,11 @@ permissions:
   contents: read
 
 jobs:
-  # Two build jobs, only one of them runs. The one that runs is called
-  # "build", so a required status check can name it the same way in every
-  # repository; the skipped one must not show up as a skipped "build".
-  build-container:
-    name: ${{ inputs.build-image != '' && 'build' || 'build in container (unused)' }}
-    if: inputs.build-image != ''
-    runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.build-image }}
-      options: --user root
-    steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          path: build
-          persist-credentials: false
-
-      - name: Build package
-        env:
-          BUILD_SETUP: ${{ inputs.build-setup }}
-          BUILD_COMMAND: ${{ inputs.build-command }}
-        run: |
-          set -euo pipefail
-          export OUTPUT_DIR="$GITHUB_WORKSPACE/output"
-          mkdir -p "$OUTPUT_DIR" "$GITHUB_WORKSPACE/dist"
-          cd "$GITHUB_WORKSPACE/build"
-          [ -z "$BUILD_SETUP" ] || bash -c "$BUILD_SETUP"
-          bash -c "$BUILD_COMMAND"
-          find "$GITHUB_WORKSPACE" "$OUTPUT_DIR" -maxdepth 1 -name '*.deb' -exec cp {} "$GITHUB_WORKSPACE/dist/" \;
-          ls -l "$GITHUB_WORKSPACE/dist"
-          ls "$GITHUB_WORKSPACE"/dist/*.deb >/dev/null
-
-      - name: Upload packages
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: packages
-          path: dist/*.deb
-
-  build-runner:
-    name: ${{ inputs.build-image == '' && 'build' || 'build on runner (unused)' }}
-    if: inputs.build-image == ''
-    runs-on: ${{ inputs.build-runner }}
+  build:
+    # In the given container (lmndev-runner), or on the runner when no image
+    # is given. An empty container value makes the job run on the runner.
+    runs-on: ${{ inputs.build-image != '' && 'ubuntu-latest' || inputs.build-runner }}
+    container: ${{ inputs.build-image != '' && fromJSON(format('{{"image":"{0}","options":"--user root"}}', inputs.build-image)) || '' }}
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -124,8 +87,7 @@ jobs:
           path: dist/*.deb
 
   lintian:
-    needs: [build-container, build-runner]
-    if: ${{ !cancelled() && (needs.build-container.result == 'success' || needs.build-runner.result == 'success') }}
+    needs: build
     # The same runner image as validate-incoming.sh in build-and-deploy.yml,
     # so both see the same lintian version.
     runs-on: ubuntu-latest
