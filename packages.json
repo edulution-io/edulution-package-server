@@ -49,11 +49,11 @@
   },
   {
     "name": "edulution-linbo-gui7",
-    "version": "1.1.5~edu",
+    "version": "1.1.6~edu",
     "architecture": "all",
     "dist": "resolute",
-    "size": "10393184",
-    "filename": "/pool/main/e/edulution-linbo-gui7/edulution-linbo-gui7_1.1.5~edu_all.deb"
+    "size": "10397466",
+    "filename": "/pool/main/e/edulution-linbo-gui7/edulution-linbo-gui7_1.1.6~edu_all.deb"
   },
   {
     "name": "edulution-linbo-vdi",
@@ -105,11 +105,11 @@
   },
   {
     "name": "linuxmuster-linbo-gui7",
-    "version": "1:1.1.5~edu",
+    "version": "1:1.1.6~edu",
     "architecture": "all",
     "dist": "resolute",
-    "size": "13954",
-    "filename": "/pool/main/e/edulution-linbo-gui7/linuxmuster-linbo-gui7_1.1.5~edu_all.deb"
+    "size": "14552",
+    "filename": "/pool/main/e/edulution-linbo-gui7/linuxmuster-linbo-gui7_1.1.6~edu_all.deb"
   },
   {
     "name": "linuxmuster-linbo7",
