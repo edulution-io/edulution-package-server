@@ -1,0 +1,273 @@
+name: LMN package checks
+
+# Reusable checks for the linuxmuster.net package repositories of edulution
+# (linuxmuster-base7, -tools, -api, sophomorix4, …). Each repository calls it
+# from a short workflow of its own:
+#
+#   jobs:
+#     checks:
+#       uses: edulution-io/edulution-package-server/.github/workflows/lmn-checks.yml@main
+#       with:
+#         build-command: make deb
+#
+# Jobs:
+#   build    builds the .deb the way the repository's release workflow does
+#   lintian  runs lintian with the allowlists of this repository, so a
+#            package that passes here also passes validate-incoming.sh
+#   lint     ruff (errors only: syntax, undefined names) over every Python
+#            file, and shellcheck (errors only) for findings a pull request
+#            adds to the shell scripts it changes; existing findings in
+#            upstream code are not reported
+#   tests    optional: unit tests on Ubuntu 26.04 with the runtime
+#            dependencies from package.edulution.io, coverage in the summary
+
+on:
+  workflow_call:
+    inputs:
+      build-image:
+        description: Container image for the build, e.g. ghcr.io/linuxmuster/lmndev-runner:latest. Empty builds on the runner.
+        type: string
+        default: ''
+      build-runner:
+        description: Runner for a build without container
+        type: string
+        default: ubuntu-latest
+      build-setup:
+        description: Commands run before the build, e.g. installing debhelper
+        type: string
+        default: ''
+      build-command:
+        description: Build command, run in the checkout; .deb files end up next to it or in $OUTPUT_DIR
+        type: string
+        required: true
+      test-packages:
+        description: Packages to install for the tests (Ubuntu 26.04 + package.edulution.io)
+        type: string
+        default: ''
+      test-command:
+        description: Test command, run in the checkout inside the test container. Empty skips the tests.
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # In the given container (lmndev-runner), or on the runner when no image
+    # is given. An empty container value makes the job run on the runner.
+    runs-on: ${{ inputs.build-image != '' && 'ubuntu-latest' || inputs.build-runner }}
+    timeout-minutes: 45
+    container: ${{ inputs.build-image != '' && fromJSON(format('{{"image":"{0}","options":"--user root"}}', inputs.build-image)) || '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: build
+          persist-credentials: false
+
+      - name: Build package
+        env:
+          BUILD_SETUP: ${{ inputs.build-setup }}
+          BUILD_COMMAND: ${{ inputs.build-command }}
+        run: |
+          set -euo pipefail
+          export OUTPUT_DIR="$GITHUB_WORKSPACE/output"
+          mkdir -p "$OUTPUT_DIR" "$GITHUB_WORKSPACE/dist"
+          cd "$GITHUB_WORKSPACE/build"
+          [ -z "$BUILD_SETUP" ] || bash -c "$BUILD_SETUP"
+          bash -c "$BUILD_COMMAND"
+          find "$GITHUB_WORKSPACE" "$OUTPUT_DIR" -maxdepth 1 -name '*.deb' -exec cp {} "$GITHUB_WORKSPACE/dist/" \;
+          ls -l "$GITHUB_WORKSPACE/dist"
+          ls "$GITHUB_WORKSPACE"/dist/*.deb >/dev/null
+
+      - name: Upload packages
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: packages
+          path: dist/*.deb
+
+  lintian:
+    needs: build
+    # The same runner image as validate-incoming.sh in build-and-deploy.yml,
+    # so both see the same lintian version.
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout the package server's allowlists
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: edulution-io/edulution-package-server
+          ref: main
+          path: package-server
+          persist-credentials: false
+          sparse-checkout: |
+            package_server/lintian-allowlist
+            package_server/lintian-allowlist.d
+          sparse-checkout-cone-mode: false
+
+      - name: Download packages
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: packages
+          path: dist
+
+      - name: Run lintian
+        run: |
+          set -uo pipefail
+          apt="sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30"
+          $apt update -qq && $apt install -y -qq lintian >/dev/null
+          lintian --version
+          allow=package-server/package_server
+          status=0
+          for deb in dist/*.deb; do
+            # The allowlists are named after the source package, which is the
+            # directory the release workflow publishes into.
+            src=$(dpkg-deb -f "$deb" Source | awk '{print $1}')
+            [ -n "$src" ] || src=$(dpkg-deb -f "$deb" Package)
+            lists=("$allow/lintian-allowlist")
+            [ ! -f "$allow/lintian-allowlist.d/$src" ] || lists+=("$allow/lintian-allowlist.d/$src")
+            suppress=$(mktemp)
+            cat "${lists[@]}" | sed -e 's/[[:space:]]*#.*$//' -e '/^[[:space:]]*$/d' | sort -u > "$suppress"
+            if lintian --fail-on error --tag-display-limit 0 --suppress-tags-from-file "$suppress" "$deb"; then
+              echo "  OK  $(basename "$deb") (allowlist: $src)"
+            else
+              echo "::error::$(basename "$deb") fails lintian; the package server would refuse it"
+              status=1
+            fi
+          done
+          exit $status
+
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: ruff (errors only)
+        # E9 syntax errors, F63 invalid comparisons, F7 misplaced statements,
+        # F82 undefined names: real bugs, no style rules.
+        run: pipx run ruff==0.17.5 check --no-cache --select E9,F63,F7,F82 --output-format github .
+
+      - name: shellcheck (new findings only)
+        # Also after a ruff failure: both reports are independent.
+        if: ${{ !cancelled() && github.event_name == 'pull_request' }}
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          # No -e: shellcheck exits 1 whenever it finds something, which is
+          # the normal case here and must not end the script.
+          set +e -uo pipefail
+          shellcheck --version | sed -n '1,2p'
+          is_shell() {
+            case "$1" in *.sh) return 0 ;; esac
+            head -c 64 "$1" 2>/dev/null | grep -qaE '^#!.*(/sh|/bash|/dash|env (ba)?sh)'
+          }
+          findings() {
+            # Line numbers move with every edit, so findings are compared by
+            # code and message only.
+            shellcheck -S error -f gcc "$1" 2>/dev/null | sed -E 's/^[^:]+:[0-9]+:[0-9]+: //' | sort
+          }
+          status=0
+          # Renamed scripts (R) are compared against their old path, so a
+          # rename alone reports nothing.
+          while IFS=$'\t' read -r _ src file; do
+            file=${file:-$src}
+            if [ ! -f "$file" ] || ! is_shell "$file"; then continue; fi
+            old=$(mktemp)
+            if git show "$BASE_SHA:$src" > "$old" 2>/dev/null; then before=$(findings "$old"); else before=""; fi
+            added=$(comm -13 <(printf '%s\n' "$before" | sed '/^$/d') <(findings "$file"))
+            [ -n "$added" ] || continue
+            status=1
+            # Lines the pull request changed, to place each annotation on the
+            # line that most likely caused it.
+            changed=$(mktemp)
+            git diff -U0 -M "$BASE_SHA"...HEAD -- "$src" "$file" \
+              | awk '/^@@/ { split($3, a, ","); s = substr(a[1], 2); n = (a[2] == "") ? 1 : a[2]; for (i = 0; i < n; i++) print s + i }' > "$changed"
+            while IFS= read -r msg; do
+              lines=$(shellcheck -S error -f gcc "$file" 2>/dev/null \
+                | awk -v m="$msg" '{ l = $0; sub(/^[^:]+:/, "", l); n = l; sub(/:.*/, "", n); sub(/^[0-9]+:[0-9]+: /, "", l); if (l == m) print n }')
+              line=$(printf '%s\n' "$lines" | grep -Fxf "$changed" | head -1)
+              [ -n "$line" ] || line=$(printf '%s\n' "$lines" | head -1)
+              echo "$file:${line:-1}: $msg"
+              echo "::error file=$file,line=${line:-1}::$msg"
+            done <<< "$added"
+          done < <(git diff --name-status -M --diff-filter=AMR "$BASE_SHA"...HEAD)
+          exit $status
+
+  tests:
+    if: inputs.test-command != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: build
+          persist-credentials: false
+
+      - name: Run tests on Ubuntu 26.04
+        env:
+          TEST_PACKAGES: ${{ inputs.test-packages }}
+          TEST_COMMAND: ${{ inputs.test-command }}
+        run: |
+          set -euo pipefail
+          docker run --rm -e TEST_PACKAGES -e TEST_COMMAND -e PYTHONDONTWRITEBYTECODE=1 \
+            -v "$GITHUB_WORKSPACE:/w" -w /w/build ubuntu:26.04 bash -euo pipefail -c '
+              export DEBIAN_FRONTEND=noninteractive
+              # The Ubuntu mirror the runner itself uses: archive.ubuntu.com and
+              # security.ubuntu.com are slow and at times unreachable from
+              # GitHub-hosted runners.
+              sed -i -e "s#http://archive.ubuntu.com/#http://azure.archive.ubuntu.com/#g" \
+                -e "s#http://security.ubuntu.com/#http://azure.archive.ubuntu.com/#g" /etc/apt/sources.list.d/ubuntu.sources
+              printf "Acquire::Retries \"3\";\nAcquire::http::Timeout \"30\";\n" > /etc/apt/apt.conf.d/80-retries
+              apt-get update -qq
+              apt-get install -y -qq --no-install-recommends ca-certificates curl gpg >/dev/null
+              curl -fsSL https://package.edulution.io/pub.gpg | gpg --dearmor -o /usr/share/keyrings/edulution.gpg
+              echo "deb [signed-by=/usr/share/keyrings/edulution.gpg] https://package.edulution.io/ resolute main" \
+                > /etc/apt/sources.list.d/edulution.list
+              apt-get update -qq
+              # Maintainer scripts of server packages (sophomorix-samba) expect a
+              # provisioned server and may fail here; the tests only need the
+              # unpacked files. A package that is not even unpacked (typo,
+              # unmet dependencies, download error) fails the job right away.
+              pkgs="python3-pytest python3-pytest-cov $TEST_PACKAGES"
+              if ! apt-get install -y -qq --no-install-recommends $pkgs >/tmp/install.log 2>&1; then
+                missing=""
+                for p in $pkgs; do
+                  dpkg-query -W -f="\${Status}" "$p" 2>/dev/null | grep -qE "unpacked|half-configured|installed" || missing="$missing $p"
+                done
+                if [ -n "$missing" ]; then
+                  cat /tmp/install.log
+                  echo "::error::Test packages not installed:$missing"
+                  exit 1
+                fi
+                echo "::warning::Some maintainer scripts failed, see the log:"; tail -5 /tmp/install.log
+              fi
+              bash -c "$TEST_COMMAND"
+              data=$(find /w/build -name .coverage -type f -print -quit)
+              if [ -n "$data" ]; then
+                cd "$(dirname "$data")"
+                python3 -m coverage report --format=total > /w/coverage-total.txt || true
+                python3 -m coverage report --format=markdown --skip-covered > /w/coverage.md || true
+              fi
+            '
+
+      - name: Coverage summary
+        if: always()
+        run: |
+          if [ -s "$GITHUB_WORKSPACE/coverage-total.txt" ]; then
+            {
+              echo "### Coverage: $(cat "$GITHUB_WORKSPACE/coverage-total.txt") %"
+              echo
+              echo "<details><summary>Files below 100 %</summary>"
+              echo
+              cat "$GITHUB_WORKSPACE/coverage.md"
+              echo
+              echo "</details>"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
