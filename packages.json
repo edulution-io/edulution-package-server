@@ -136,44 +136,12 @@
     "filename": "/pool/main/l/linuxmuster-tools7/linuxmuster-tools7_7.4.21~edu_all.deb"
   },
   {
-    "name": "sophomorix-belwue-mail",
-    "version": "1:7.4.8~edu",
-    "architecture": "all",
-    "dist": "resolute",
-    "size": "17448",
-    "filename": "/pool/main/s/sophomorix4/sophomorix-belwue-mail_7.4.8~edu_all.deb"
-  },
-  {
-    "name": "sophomorix-developer",
-    "version": "1:7.4.8~edu",
-    "architecture": "all",
-    "dist": "resolute",
-    "size": "83160",
-    "filename": "/pool/main/s/sophomorix4/sophomorix-developer_7.4.8~edu_all.deb"
-  },
-  {
-    "name": "sophomorix-dump",
-    "version": "1:7.4.8~edu",
-    "architecture": "all",
-    "dist": "resolute",
-    "size": "10386",
-    "filename": "/pool/main/s/sophomorix4/sophomorix-dump_7.4.8~edu_all.deb"
-  },
-  {
     "name": "sophomorix-samba",
     "version": "1:7.4.8~edu",
     "architecture": "all",
     "dist": "resolute",
     "size": "259012",
     "filename": "/pool/main/s/sophomorix4/sophomorix-samba_7.4.8~edu_all.deb"
-  },
-  {
-    "name": "sophomorix-vampire",
-    "version": "1:7.4.8~edu",
-    "architecture": "all",
-    "dist": "resolute",
-    "size": "19784",
-    "filename": "/pool/main/s/sophomorix4/sophomorix-vampire_7.4.8~edu_all.deb"
   },
   {
     "name": "edulution-fileproxy",
