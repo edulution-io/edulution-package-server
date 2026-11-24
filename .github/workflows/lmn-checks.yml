@@ -151,7 +151,22 @@ jobs:
       - name: ruff (errors only)
         # E9 syntax errors, F63 invalid comparisons, F7 misplaced statements,
         # F82 undefined names: real bugs, no style rules.
-        run: pipx run ruff==0.17.5 check --no-cache --select E9,F63,F7,F82 --output-format github .
+        # By itself ruff only picks up *.py files, so Python scripts without
+        # an extension (sbin tools) are found by their shebang and passed
+        # explicitly.
+        run: |
+          set -euo pipefail
+          scripts=()
+          while IFS= read -r -d '' file; do
+            case "$file" in *.py|*.pyi|*.ipynb) continue ;; esac
+            [ -f "$file" ] || continue
+            first=""
+            IFS= read -r first < "$file" || true
+            if [[ $first =~ ^#!.*python ]]; then scripts+=("$file"); fi
+          done < <(git ls-files -z)
+          echo "Python scripts without an extension: ${#scripts[@]}"
+          if [ ${#scripts[@]} -gt 0 ]; then printf '  %s\n' "${scripts[@]}"; fi
+          pipx run ruff==0.17.5 check --no-cache --select E9,F63,F7,F82 --output-format github . "${scripts[@]}"
 
       - name: shellcheck (new findings only)
         # Also after a ruff failure: both reports are independent.
