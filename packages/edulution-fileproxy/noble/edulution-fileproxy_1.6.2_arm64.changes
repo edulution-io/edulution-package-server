@@ -1,0 +1,41 @@
+Format: 1.8
+Date: Mon, 23 Nov 2026 15:49:16 +0100
+Source: edulution-fileproxy
+Binary: edulution-fileproxy
+Built-For-Profiles: noudeb
+Architecture: arm64
+Version: 1.6.2
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@edulution.io>
+Changed-By: edulution.io <info@edulution.io>
+Description:
+ edulution-fileproxy - WebDAV server with SMB backend and NTLM authentication
+Changes:
+ edulution-fileproxy (1.6.2) noble; urgency=medium
+ .
+   * A file server that accepts the connection and then does not answer no
+     longer hangs the service: every SMB login is bounded to 15 seconds and
+     every logoff to 5 seconds, except in the startup signing probe, which
+     bounds its login and logoff together to 15 seconds. Before, it blocked
+     each WebDAV request that needed a new session, and
+     edulution-fileproxy -t -user without limit.
+   * edulution-fileproxy -t -user reports a file server that does not accept
+     the connection and one that does not complete the login as separate
+     timeouts.
+   * A reindex that cannot connect to the file server, or whose SMB login
+     times out, stops and keeps the previous index. Before, a login that did
+     not answer hung it, and a refused connection replaced the index with
+     one that missed the rest of the share.
+   * The startup signing probe logs a file server that does not answer as
+     unreachable, not as unable to sign.
+   * An IPv6 address in smb.server works with and without brackets.
+Checksums-Sha1:
+ 7e04ebbfc0ea81463f26320e13f37ff111b129d9 5763 edulution-fileproxy_1.6.2_arm64.buildinfo
+ 1048fcd8ae503e68f836715124e4bcb4a92570a6 7989468 edulution-fileproxy_1.6.2_arm64.deb
+Checksums-Sha256:
+ f966a7b0a7b17d48f1bc928be055c8b3a8a1d98d8d67a9d8c0d59218151c6b06 5763 edulution-fileproxy_1.6.2_arm64.buildinfo
+ 1229ccff7866584079e9d46804e75bbc8fcaeb505004c45d67ea465fe6677557 7989468 edulution-fileproxy_1.6.2_arm64.deb
+Files:
+ e066f69ef4213aa6732464584f84a01e 5763 utils optional edulution-fileproxy_1.6.2_arm64.buildinfo
+ b2af13a9389dcdd1baff197f8779929a 7989468 utils optional edulution-fileproxy_1.6.2_arm64.deb

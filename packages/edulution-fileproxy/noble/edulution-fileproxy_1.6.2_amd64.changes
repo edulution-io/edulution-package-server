@@ -1,0 +1,41 @@
+Format: 1.8
+Date: Mon, 23 Nov 2026 15:49:16 +0100
+Source: edulution-fileproxy
+Binary: edulution-fileproxy
+Built-For-Profiles: noudeb
+Architecture: amd64
+Version: 1.6.2
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@edulution.io>
+Changed-By: edulution.io <info@edulution.io>
+Description:
+ edulution-fileproxy - WebDAV server with SMB backend and NTLM authentication
+Changes:
+ edulution-fileproxy (1.6.2) noble; urgency=medium
+ .
+   * A file server that accepts the connection and then does not answer no
+     longer hangs the service: every SMB login is bounded to 15 seconds and
+     every logoff to 5 seconds, except in the startup signing probe, which
+     bounds its login and logoff together to 15 seconds. Before, it blocked
+     each WebDAV request that needed a new session, and
+     edulution-fileproxy -t -user without limit.
+   * edulution-fileproxy -t -user reports a file server that does not accept
+     the connection and one that does not complete the login as separate
+     timeouts.
+   * A reindex that cannot connect to the file server, or whose SMB login
+     times out, stops and keeps the previous index. Before, a login that did
+     not answer hung it, and a refused connection replaced the index with
+     one that missed the rest of the share.
+   * The startup signing probe logs a file server that does not answer as
+     unreachable, not as unable to sign.
+   * An IPv6 address in smb.server works with and without brackets.
+Checksums-Sha1:
+ 5cf2a97c15558ed9553e451d1b5d2b058a89ffad 5763 edulution-fileproxy_1.6.2_amd64.buildinfo
+ 586c14443f80c41da0ccc3cac8d8bd8831158e12 9101594 edulution-fileproxy_1.6.2_amd64.deb
+Checksums-Sha256:
+ da6ea7f11092c01e98067f6c6dda4dbd8f4b16542bef354ea053b15c376090f9 5763 edulution-fileproxy_1.6.2_amd64.buildinfo
+ 02504da2c475b82ca5c93cb5f00599daa3a50c5a2e41faa7c2e3eb4455082632 9101594 edulution-fileproxy_1.6.2_amd64.deb
+Files:
+ f5fb9f8db5b2d9ad3f53d67f1d608be7 5763 utils optional edulution-fileproxy_1.6.2_amd64.buildinfo
+ 007f6c53716b00f07db5e85eeb0154f1 9101594 utils optional edulution-fileproxy_1.6.2_amd64.deb

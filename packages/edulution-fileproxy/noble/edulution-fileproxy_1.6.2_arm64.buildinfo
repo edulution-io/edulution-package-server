@@ -2,16 +2,16 @@ Format: 1.0
 Source: edulution-fileproxy
 Binary: edulution-fileproxy
 Architecture: arm64
-Version: 1.6.1
+Version: 1.6.2
 Checksums-Md5:
- fde21ce4e0701288d21d65d546f6a29d 7987370 edulution-fileproxy_1.6.1_arm64.deb
+ b2af13a9389dcdd1baff197f8779929a 7989468 edulution-fileproxy_1.6.2_arm64.deb
 Checksums-Sha1:
- 6658d62658e8f72e366910fd38739d8bc4ce5c98 7987370 edulution-fileproxy_1.6.1_arm64.deb
+ 1048fcd8ae503e68f836715124e4bcb4a92570a6 7989468 edulution-fileproxy_1.6.2_arm64.deb
 Checksums-Sha256:
- c6717bcd42bbd859edcaa8acae99363352491ec26d142f2612d835654ef63ef7 7987370 edulution-fileproxy_1.6.1_arm64.deb
+ 1229ccff7866584079e9d46804e75bbc8fcaeb505004c45d67ea465fe6677557 7989468 edulution-fileproxy_1.6.2_arm64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Thu, 19 Nov 2026 14:35:35 +0000
+Build-Date: Mon, 23 Nov 2026 15:32:18 +0000
 Build-Path: /build/edulution-fileproxy
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
@@ -165,4 +165,4 @@ Environment:
  DEB_BUILD_OPTIONS="parallel=2"
  DEB_BUILD_PROFILES="noudeb"
  LANG="C.UTF-8"
- SOURCE_DATE_EPOCH="1795084439"
+ SOURCE_DATE_EPOCH="1795445356"
