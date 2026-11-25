@@ -1,0 +1,35 @@
+Format: 1.8
+Date: Mon, 23 Nov 2026 13:26:17 +0100
+Source: edulution-linbo-vdi
+Binary: edulution-linbo-vdi
+Built-For-Profiles: noudeb
+Architecture: all
+Version: 1.1.11
+Distribution: noble
+Urgency: medium
+Maintainer: edulution.io <info@netzint.de>
+Changed-By: Lukas Spitznagel <lukas.spitznagel@netzint.de>
+Description:
+ edulution-linbo-vdi - VDI service for linuxmuster.net on Proxmox
+Changes:
+ edulution-linbo-vdi (1.1.11) noble; urgency=medium
+ .
+   * School-qualified LINBO group ids (closes #44): a VDI group named
+     <school>__<group> takes its school from the id and matches devices.csv
+     by the plain group. An id is qualified only if that school has its own
+     devices.csv; plain groups work as before.
+   * A VDI group of a non-default school from before per-school groups moves
+     to <school>__<group> once linuxmuster-import-devices has created that
+     start.conf. The service moves its .vdi file once (never overwriting),
+     keeps the old one as a hidden backup, and keeps its masters and clones.
+   * vdi-setup names a group of another school <school>__<group> when the
+     installed linuxmuster-tools supports it; VM names keep the plain group.
+Checksums-Sha1:
+ 4d109c3a26c7dd6170510cdbe8c2ab5519ce1016 81312 edulution-linbo-vdi_1.1.11_all.deb
+ cf88d6435edd2bbe1cdf6cfb896dfa70f3ded28d 9018 edulution-linbo-vdi_1.1.11_amd64.buildinfo
+Checksums-Sha256:
+ a3944f4416ae88ef12d18457e35b1989e81d4ffa4e30907000e4406de73f9df4 81312 edulution-linbo-vdi_1.1.11_all.deb
+ eac51113e8f63247c60c7f62ca074ff10e6855b0661ea6a0fbe0060da7a65ed7 9018 edulution-linbo-vdi_1.1.11_amd64.buildinfo
+Files:
+ 40fa04957ad3f71f64cf92983648a046 81312 admin optional edulution-linbo-vdi_1.1.11_all.deb
+ e1ca346c96227bb2302ee07fe9759453 9018 admin optional edulution-linbo-vdi_1.1.11_amd64.buildinfo
